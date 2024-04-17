@@ -1,0 +1,27 @@
+.server__table_container {
+  padding: 20px;
+  width: 90%;
+}
+
+.server_card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  width: 82%;
+  margin-left: 17%;
+}
+
+.server__info_table {
+  width: 70%;
+  border-collapse: collapse;
+}
+
+.server__info_table td {
+  border-bottom: 1px solid #ccc;
+  padding: 8px;
+}
+
+.server__info_table td:first-child {
+  font-weight: bold;
+}

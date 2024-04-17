@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./configuration.module.css";
+import style from "./detail.module.css";
 
 const Configuration = () => {
   return <div></div>;
