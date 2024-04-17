@@ -1,12 +1,13 @@
 import React from "react";
+
+import MainRoutes from "./routes/MainRoutes";
 import Sidebar from "./components/home/Sidebar";
-import ServerTable from "./components/detail/MyServer";
 
 const App = () => {
   return (
     <div>
+      <MainRoutes />
       <Sidebar />
-      <ServerTable />
     </div>
   );
 };

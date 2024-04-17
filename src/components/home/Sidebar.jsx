@@ -4,16 +4,15 @@ import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import styles from "./home.module.css";
+import { Link, NavLink } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -36,117 +35,6 @@ function Sidebar(props) {
       setMobileOpen(!mobileOpen);
     }
   };
-
-  const drawerItems = [
-    {
-      text: "Мои сервера",
-      icon: (
-        <img
-          width="30"
-          height="30"
-          src="https://img.icons8.com/ios-filled/50/server-shutdown.png"
-          alt="choose"
-        />
-      ),
-    },
-    {
-      text: "Заказать сервер",
-      icon: (
-        <img
-          width="30"
-          height="30"
-          src="https://img.icons8.com/ios-filled/50/aliexpress.png"
-          alt="aliexpress"
-        />
-      ),
-    },
-    {
-      text: "Конфигурация",
-      icon: (
-        <img
-          width="30"
-          height="30"
-          src="https://img.icons8.com/fluency-systems-filled/48/choose.png"
-          alt="server-shutdown"
-        />
-      ),
-    },
-    {
-      text: "Мои билеты",
-      icon: (
-        <img
-          width="30"
-          height="30"
-          src="https://img.icons8.com/ios-filled/50/combi-ticket.png"
-          alt="combi-ticket"
-        />
-      ),
-    },
-  ];
-
-  const newsItems = [
-    {
-      text: "Новости",
-      icon: (
-        <img
-          width="30"
-          height="30"
-          src="https://img.icons8.com/ios-filled/50/news.png"
-          alt="news"
-        />
-      ),
-    },
-    {
-      text: "Вопросы",
-      icon: (
-        <img
-          width="30"
-          height="30"
-          src="https://img.icons8.com/ios-filled/50/questions.png"
-          alt="questions"
-        />
-      ),
-    },
-    {
-      text: "Помощь",
-      icon: (
-        <img
-          width="30"
-          height="30"
-          src="https://img.icons8.com/glyph-neue/64/online-support.png"
-          alt="online-support"
-        />
-      ),
-    },
-  ];
-
-  const drawer = (
-    <div>
-      <Toolbar />
-      <Divider />
-      <List>
-        {drawerItems.map(({ text, icon }, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>{icon}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {newsItems.map(({ text, icon }, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>{icon}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </div>
-  );
 
   const container =
     window !== undefined ? () => window().document.body : undefined;
@@ -229,9 +117,7 @@ function Sidebar(props) {
                 width: drawerWidth,
               },
             }}
-          >
-            {drawer}
-          </Drawer>
+          ></Drawer>
           <Drawer
             variant="permanent"
             sx={{
@@ -243,7 +129,116 @@ function Sidebar(props) {
             }}
             open
           >
-            {drawer}
+            <div>
+              <Toolbar />
+              <Divider />
+              <List>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <img
+                        width="30"
+                        height="30"
+                        src="https://img.icons8.com/ios-filled/50/server-shutdown.png"
+                        alt="choose"
+                      />
+                    </ListItemIcon>
+                    <Link
+                      style={{ color: "black", textDecoration: "none" }}
+                      to={"/myserver"}
+                    >
+                      <ListItemText primary="Мои сервера" />
+                    </Link>
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <img
+                        width="30"
+                        height="30"
+                        src="https://img.icons8.com/ios-filled/50/aliexpress.png"
+                        alt="aliexpress"
+                      />
+                    </ListItemIcon>
+                    <Link
+                      style={{ color: "black", textDecoration: "none" }}
+                      to={"/order"}
+                    >
+                      <ListItemText primary="Заказать сервер" />
+                    </Link>
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <img
+                        width="30"
+                        height="30"
+                        src="https://img.icons8.com/fluency-systems-filled/48/choose.png"
+                        alt="server-shutdown"
+                      />
+                    </ListItemIcon>
+                    <ListItemText primary="Конфигурация" />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <img
+                        width="30"
+                        height="30"
+                        src="https://img.icons8.com/ios-filled/50/combi-ticket.png"
+                        alt="combi-ticket"
+                      />
+                    </ListItemIcon>
+                    <ListItemText primary="Мои билеты" />
+                  </ListItemButton>
+                </ListItem>
+              </List>
+              <Divider />
+              <List>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <img
+                        width="30"
+                        height="30"
+                        src="https://img.icons8.com/ios-filled/50/news.png"
+                        alt="news"
+                      />
+                    </ListItemIcon>
+                    <ListItemText primary="Новости" />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <img
+                        width="30"
+                        height="30"
+                        src="https://img.icons8.com/ios-filled/50/questions.png"
+                        alt="questions"
+                      />
+                    </ListItemIcon>
+                    <ListItemText primary="Вопросы" />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <img
+                        width="30"
+                        height="30"
+                        src="https://img.icons8.com/glyph-neue/64/online-support.png"
+                        alt="online-support"
+                      />
+                    </ListItemIcon>
+                    <ListItemText primary="Помощь" />
+                  </ListItemButton>
+                </ListItem>
+              </List>
+            </div>
           </Drawer>
         </Box>
       </Box>

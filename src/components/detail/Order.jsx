@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./detail.module.css";
-
-const MyServer = () => {
+const Order = () => {
   const servers = [
     {
       model: "Cloud VPS 1",
@@ -52,7 +51,6 @@ const MyServer = () => {
       Price: "$25.75 / month",
     },
   ];
-
   return (
     <div className={styles.server__table__container}>
       <h1>Мои сервера</h1>
@@ -79,7 +77,7 @@ const MyServer = () => {
                 <td>{server.Price}</td>
 
                 <td>
-                  <button className={styles.btn}>Подробнее</button>
+                  <button className={styles.btn}>Заказать</button>
                 </td>
               </tr>
             ))}
@@ -90,4 +88,4 @@ const MyServer = () => {
   );
 };
 
-export default MyServer;
+export default Order;

@@ -1,15 +1,15 @@
 import React from "react";
-import { Route, Router, Routes } from "react-router-dom";
-import Server from "../components/home/Server";
 import Auth from "../components/auth/Auth";
-import Configuration from "../components/configuration/Configuration";
+import MyServer from "../components/detail/MyServer";
+import { Route, Routes } from "react-router-dom";
+import Order from "../components/detail/Order";
 
 const MainRoutes = () => {
   return (
     <Routes>
-      {/* <Route path="/" element={<Server />} /> */}
       <Route path="/auth" element={<Auth />} />
-      <Route path="/config" element={<Configuration />} />
+      <Route path="/myserver" element={<MyServer />} />
+      <Route path="/order" element={<Order />} />
     </Routes>
   );
 };
