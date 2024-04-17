@@ -7,7 +7,7 @@ import Configuration from "../components/configuration/Configuration";
 const MainRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Server />} />
+      {/* <Route path="/" element={<Server />} /> */}
       <Route path="/auth" element={<Auth />} />
       <Route path="/config" element={<Configuration />} />
     </Routes>

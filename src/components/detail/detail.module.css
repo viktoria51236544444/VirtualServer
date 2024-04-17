@@ -1,0 +1,72 @@
+.server__table_container {
+  padding: 20px;
+  width: 90%;
+}
+
+.server_card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  width: 82%;
+  margin-left: 17%;
+}
+
+.server__info_table {
+  width: 70%;
+  border-collapse: collapse;
+}
+
+.server__info_table td {
+  border-bottom: 1px solid #ccc;
+  padding: 8px;
+}
+
+.server__info_table td:first-child {
+  font-weight: bold;
+}
+/* detail.module.css */
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: #f9f9f9;
+  color: #333;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 200px;
+  text-transform: uppercase;
+}
+
+.dropdown_content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 5px;
+}
+
+.dropdown_content label {
+  display: block;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.dropdown_content label:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown_content {
+  display: block;
+}
+.features_container label {
+  display: flex;
+}
