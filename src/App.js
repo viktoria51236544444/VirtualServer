@@ -1,12 +1,7 @@
 import React from "react";
-import Auth from "./components/auth/Auth";
 
 const App = () => {
-  return (
-    <div>
-      <Auth />
-    </div>
-  );
+  return <div></div>;
 };
 
 export default App;
