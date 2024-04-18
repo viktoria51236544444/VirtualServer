@@ -1,6 +1,20 @@
-@import url("https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400;1,700&family=Comfortaa:wght@300..700&family=Comic+Neue:wght@400;700&family=Dancing+Script:wght@400..700&family=Josefin+Sans:wght@500&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik+Bubbles&family=Rubik+Doodle+Shadow&family=Rubik+Glitch&family=Sevillana&family=Single+Day&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400;1,700&family=Comfortaa:wght@300..700&family=Comic+Neue:wght@400;700&family=Dancing+Script:wght@400..700&family=Josefin+Sans:wght@500&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik+Bubbles&family=Rubik+Doodle+Shadow&family=Rubik+Glitch&family=Sevillana&family=Single+Day&display=swap");
 body {
   padding: 0px;
   margin: 0px;
-  font-family: Andika;
+  font-family: Nunito;
+  background-color: #f3fdff !important;
+}
+.tableCell {
+  font-family: Nunito !important;
+  color: #25396f !important;
+}
+.tableCell2 {
+  font-family: Nunito !important;
+  color: #25396f !important;
+}
+.tableCell3 {
+  font-family: Nunito !important;
+  color: #25396f !important;
+  border-radius: 30px !important;
 }
