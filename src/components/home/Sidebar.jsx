@@ -65,68 +65,69 @@ function Sidebar(props) {
             <div>
               <Toolbar />
               <List>
-                <ListItem
-                  disablePadding
-                  className={`${styles.listItem} ${
-                    selectedItem === "servers" ? styles.selectedItem : ""
-                  }`}
+                <Link
+                  to={"/myserver"}
+                  style={{ color: "inherit", textDecoration: "none" }}
                 >
-                  <ListItemButton onClick={() => handleItemClick("servers")}>
-                    <ListItemIcon className={styles.listItemIcon}>
-                      <img style={{ width: "22px" }} src={Group1} alt="" />
-                    </ListItemIcon>
-                    <Link
-                      to={"/myserver"}
-                      style={{ color: "inherit", textDecoration: "none" }}
-                    >
+                  <ListItem
+                    disablePadding
+                    className={`${styles.listItem} ${
+                      selectedItem === "servers" ? styles.selectedItem : ""
+                    }`}
+                  >
+                    <ListItemButton onClick={() => handleItemClick("servers")}>
+                      <ListItemIcon className={styles.listItemIcon}>
+                        <img style={{ width: "22px" }} src={Group1} alt="" />
+                      </ListItemIcon>
+
                       <ListItemText
                         className={styles.listItemText}
                         primary="Мои сервера"
                       />
-                    </Link>
-                  </ListItemButton>
-                </ListItem>
-
-                <ListItem
-                  disablePadding
-                  className={`${styles.listItem} ${
-                    selectedItem === "order" ? styles.selectedItem : ""
-                  }`}
+                    </ListItemButton>
+                  </ListItem>
+                </Link>
+                <Link
+                  to={"/order"}
+                  style={{ color: "inherit", textDecoration: "none" }}
                 >
-                  <ListItemButton onClick={() => handleItemClick("order")}>
-                    <ListItemIcon className={styles.listItemIcon}>
-                      <img style={{ width: "30px" }} src={Group2} alt="" />
-                    </ListItemIcon>
-                    <Link
-                      to={"/order"}
-                      style={{ color: "inherit", textDecoration: "none" }}
-                    >
+                  <ListItem
+                    disablePadding
+                    className={`${styles.listItem} ${
+                      selectedItem === "order" ? styles.selectedItem : ""
+                    }`}
+                  >
+                    <ListItemButton onClick={() => handleItemClick("order")}>
+                      <ListItemIcon className={styles.listItemIcon}>
+                        <img style={{ width: "30px" }} src={Group2} alt="" />
+                      </ListItemIcon>
+
                       <ListItemText
                         className={styles.listItemText}
                         primary="Заказать сервер"
                       />
-                    </Link>
-                  </ListItemButton>
-                </ListItem>
+                    </ListItemButton>
+                  </ListItem>
+                </Link>
+                <Link to={"/config"} style={{ textDecoration: "none" }}>
+                  <ListItem
+                    disablePadding
+                    className={`${styles.listItem} ${
+                      selectedItem === "config" ? styles.selectedItem : ""
+                    }`}
+                  >
+                    <ListItemButton onClick={() => handleItemClick("config")}>
+                      <ListItemIcon className={styles.listItemIcon}>
+                        <img style={{ width: "22px" }} src={Group3} alt="" />
+                      </ListItemIcon>
 
-                <ListItem
-                  disablePadding
-                  className={`${styles.listItem} ${
-                    selectedItem === "config" ? styles.selectedItem : ""
-                  }`}
-                >
-                  <ListItemButton onClick={() => handleItemClick("config")}>
-                    <ListItemIcon className={styles.listItemIcon}>
-                      <img style={{ width: "22px" }} src={Group3} alt="" />
-                    </ListItemIcon>
-                    <Link to={"/config"} style={{ textDecoration: "none" }}>
                       <ListItemText
                         className={styles.listItemText}
                         primary="Конфигурация"
                       />
-                    </Link>
-                  </ListItemButton>
-                </ListItem>
+                    </ListItemButton>
+                  </ListItem>
+                </Link>
 
                 <ListItem
                   disablePadding
