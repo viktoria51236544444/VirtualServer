@@ -1,7 +1,6 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
-
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -58,53 +57,56 @@ function Sidebar(props) {
               <Toolbar />
               <List>
                 <ListItem disablePadding className={styles.listItem}>
-                  <ListItemButton>
-                    <ListItemIcon className={styles.listItemIcon}>
-                      <img style={{ width: "22px" }} src={Group1} alt="" />
-                    </ListItemIcon>
-                    <Link
-                      style={{
-                        color: "inherit",
-                        textDecoration: "none",
-                      }}
-                      to={"/myserver"}
-                    >
+                  <Link
+                    style={{
+                      color: "inherit",
+                      textDecoration: "none",
+                    }}
+                    to={"/myserver"}
+                  >
+                    <ListItemButton>
+                      <ListItemIcon className={styles.listItemIcon}>
+                        <img style={{ width: "22px" }} src={Group1} alt="" />
+                      </ListItemIcon>
+
                       <ListItemText
                         className={styles.listItemText}
                         primary="Мои сервера"
                       />
-                    </Link>
-                  </ListItemButton>
+                    </ListItemButton>
+                  </Link>
                 </ListItem>
 
                 <ListItem disablePadding className={styles.listItem}>
-                  <ListItemButton>
-                    <ListItemIcon className={styles.listItemIcon}>
-                      <img style={{ width: "30px" }} src={Group2} alt="" />
-                    </ListItemIcon>
-                    <Link
-                      style={{ color: "inherit", textDecoration: "none" }}
-                      to={"/order"}
-                    >
+                  <Link
+                    style={{ color: "inherit", textDecoration: "none" }}
+                    to={"/order"}
+                  >
+                    <ListItemButton>
+                      <ListItemIcon className={styles.listItemIcon}>
+                        <img style={{ width: "30px" }} src={Group2} alt="" />
+                      </ListItemIcon>
+
                       <ListItemText
                         className={styles.listItemText}
                         primary="Заказать сервер"
                       />
-                    </Link>
-                  </ListItemButton>
+                    </ListItemButton>
+                  </Link>
                 </ListItem>
                 <ListItem disablePadding className={styles.listItem}>
-                  <ListItemButton>
-                    <ListItemIcon className={styles.listItemIcon}>
-                      <img style={{ width: "22px" }} src={Group3} alt="" />
-                    </ListItemIcon>
-                    <Link to={"/config"} style={{ textDecoration: "none" }}>
+                  <Link to={"/config"} style={{ textDecoration: "none" }}>
+                    <ListItemButton>
+                      <ListItemIcon className={styles.listItemIcon}>
+                        <img style={{ width: "22px" }} src={Group3} alt="" />
+                      </ListItemIcon>
+
                       <ListItemText
                         className={styles.listItemText}
                         primary="Конфигурация"
                       />
-                    </Link>
-                  </ListItemButton>
+                    </ListItemButton>
+                  </Link>
                 </ListItem>
                 <ListItem disablePadding className={styles.listItem}>
                   <ListItemButton>
