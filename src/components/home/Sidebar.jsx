@@ -49,6 +49,7 @@ function Sidebar(props) {
                 width: drawerWidth,
                 backgroundColor: "#fff",
                 color: "#25396f",
+                boxShadow: "0 10px 20px rgba(0, 0, 0, 0.2)",
               },
             }}
             open
