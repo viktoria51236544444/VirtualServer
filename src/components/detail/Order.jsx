@@ -4,6 +4,8 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import { Button } from "@mui/material";
+import CloudVPSIcon from "./CloudVPSIcon";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -57,7 +59,7 @@ export default function Order() {
         ram: "6 GB RAM",
         storage: "100 GB NVMe or 400 GB SSD",
         dataTransfer: "32 TB Traffic",
-        price: "$7.75 / month",
+        price: " $10.75 / month",
       },
       {
         label: "Cloud VPS 2",
@@ -214,15 +216,22 @@ export default function Order() {
         {tabsContent.map((tab, index) => (
           <Tab
             key={index}
-            label={tab.label}
+            label={
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <CloudVPSIcon width={24} height={24} /> {/* Вставляем иконку */}
+                <span style={{ marginLeft: "8px" }}>{tab.label}</span>
+              </div>
+            }
             {...a11yProps(index)}
             style={{
               borderTopRightRadius: "35%",
               borderTopLeftRadius: "35%",
-              border: "2px solid black",
+              boxShadow: "0 10px 20px rgba(0, 0, 0, 0.2)",
               minHeight: "9vh",
               minWidth: "28vh",
               marginRight: "0.5%",
+              backgroundColor: "#57caeb",
+              color: "white",
             }}
           />
         ))}
@@ -231,13 +240,21 @@ export default function Order() {
         <table
           style={{
             borderCollapse: "collapse",
-            width: "60%",
-            marginLeft: "-6.8%",
-            marginTop: "-1%",
+            width: "61.4%",
+            marginLeft: "-7.6%",
+            marginTop: "-1.5%",
+            backgroundColor: "white",
+            boxShadow: "0 10px 20px rgba(0, 0, 0, 0.2)",
+            borderRadius: "2%",
           }}
         >
           <thead>
-            <tr style={{ borderBottom: "1px solid lightgrey", height: "20%" }}>
+            <tr
+              style={{
+                borderBottom: "1px solid lightgrey",
+                lineHeight: "4",
+              }}
+            >
               <th>Label</th>
               <th>CPU</th>
               <th>RAM</th>
@@ -252,14 +269,28 @@ export default function Order() {
                 key={idx}
                 style={{
                   borderBottom: "1px solid lightgrey",
+                  padding: "10px",
                 }}
               >
-                <td style={{ lineHeight: "4" }}>{example.label}</td>
+                <td style={{ lineHeight: "4", paddingLeft: "20px" }}>
+                  {example.label}
+                </td>
                 <td style={{ lineHeight: "4" }}>{example.cpu}</td>
                 <td style={{ lineHeight: "4" }}>{example.ram}</td>
                 <td style={{ lineHeight: "4" }}>{example.storage}</td>
                 <td style={{ lineHeight: "4" }}>{example.dataTransfer}</td>
-                <td style={{ lineHeight: "4" }}>{example.price}</td>
+                <td style={{ lineHeight: "4", verticalAlign: "middle" }}>
+                  {" "}
+                  {/* Выравниваем контент по вертикали */}
+                  {example.price}
+                  <Button
+                    variant="outlined"
+                    style={{ marginLeft: "10px", verticalAlign: "middle" }}
+                  >
+                    Заказать
+                  </Button>{" "}
+                  {/* Добавляем кнопку */}
+                </td>
               </tr>
             ))}
           </tbody>
