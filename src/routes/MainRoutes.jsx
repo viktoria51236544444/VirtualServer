@@ -8,8 +8,7 @@ const MainRoutes = () => {
   return (
     <Routes>
       <Route path="/auth" element={<Auth />} />
-      <Route path="/myserver" element={<MyServer />} />
-      <Route path="/order" element={<Order />} />
+      <Route path="/config" element={<Configuration />} />
     </Routes>
   );
 };

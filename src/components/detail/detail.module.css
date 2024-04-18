@@ -43,4 +43,9 @@
 .features_container label {
   display: flex;
 }
+.configuration_container_third {
+  display: flex;
+  flex-direction: column;
+  gap: 10%;
+}
 /* ! table */
