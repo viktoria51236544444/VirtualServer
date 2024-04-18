@@ -7,98 +7,125 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { TableVirtuoso } from "react-virtuoso";
+import Box from "@mui/material/Box";
 
-const staticData = [
+const localServersData = [
   {
     id: 1,
-    dessert: "Apple Pie",
-    calories: 237,
-    fat: 9.0,
-    carbs: 37,
-    protein: 4.3,
+    name: "Server A",
+    location: "New York",
+    type: "Web Server",
+    status: "Active",
   },
   {
     id: 2,
-    dessert: "Chocolate Cake",
-    calories: 262,
-    fat: 16.0,
-    carbs: 24,
-    protein: 6.0,
+    name: "Server B",
+    location: "London",
+    type: "Database Server",
+    status: "Inactive",
+  },
+  {
+    id: 2,
+    name: "Server B",
+    location: "London",
+    type: "Database Server",
+    status: "Inactive",
   },
   {
     id: 3,
-    dessert: "Chocolate Cake",
-    calories: 262,
-    fat: 16.0,
-    carbs: 24,
-    protein: 6.0,
+    name: "Server C",
+    location: "Tokyo",
+    type: "Application Server",
+    status: "Active",
   },
   {
     id: 4,
-    dessert: "Chocolate Cake",
-    calories: 262,
-    fat: 16.0,
-    carbs: 24,
-    protein: 6.0,
+    name: "Server D",
+    location: "Sydney",
+    type: "Backup Server",
+    status: "Active",
   },
   {
     id: 5,
-    dessert: "Chocolate Cake",
-    calories: 262,
-    fat: 16.0,
-    carbs: 24,
-    protein: 6.0,
+    name: "Server E",
+    location: "Berlin",
+    type: "File Server",
+    status: "Inactive",
   },
   {
     id: 6,
-    dessert: "Chocolate Cake",
-    calories: 262,
-    fat: 16.0,
-    carbs: 24,
-    protein: 6.0,
+    name: "Server F",
+    location: "Paris",
+    type: "Web Server",
+    status: "Active",
   },
   {
     id: 7,
-    dessert: "Chocolate Cake",
-    calories: 262,
-    fat: 16.0,
-    carbs: 24,
-    protein: 6.0,
+    name: "Server G",
+    location: "Moscow",
+    type: "Database Server",
+    status: "Active",
   },
   {
     id: 8,
-    dessert: "Chocolate Cake",
-    calories: 262,
-    fat: 16.0,
-    carbs: 24,
-    protein: 6.0,
+    name: "Server H",
+    location: "Beijing",
+    type: "Application Server",
+    status: "Inactive",
+  },
+  {
+    id: 9,
+    name: "Server I",
+    location: "Rio de Janeiro",
+    type: "Backup Server",
+    status: "Active",
+  },
+  {
+    id: 10,
+    name: "Server J",
+    location: "Cape Town",
+    type: "File Server",
+    status: "Inactive",
+  },
+  {
+    id: 11,
+    name: "Server K",
+    location: "Toronto",
+    type: "Web Server",
+    status: "Active",
+  },
+  {
+    id: 12,
+    name: "Server L",
+    location: "Mumbai",
+    type: "Database Server",
+    status: "Active",
+  },
+  {
+    id: 13,
+    name: "Server M",
+    location: "Shanghai",
+    type: "Application Server",
+    status: "Active",
   },
 ];
 
 const columns = [
   {
-    label: "Dessert",
-    dataKey: "dessert",
+    label: "Server Name",
+    dataKey: "name",
   },
   {
-    label: "Calories (g)",
-    dataKey: "calories",
-    numeric: true,
+    label: "Location",
+    dataKey: "location",
   },
   {
-    label: "Fat (g)",
-    dataKey: "fat",
-    numeric: true,
+    label: "Type",
+    dataKey: "type",
   },
   {
-    label: "Carbs (g)",
-    dataKey: "carbs",
-    numeric: true,
-  },
-  {
-    label: "Protein (g)",
-    dataKey: "protein",
-    numeric: true,
+    label: "Status",
+    dataKey: "status",
   },
 ];
 
@@ -126,8 +153,7 @@ function fixedHeaderContent() {
         <TableCell
           key={column.dataKey}
           variant="head"
-          align={column.numeric || false ? "right" : "left"}
-          style={{ width: column.width }}
+          align="left" // Изменил выравнивание на "left"
           sx={{
             backgroundColor: "background.paper",
           }}
@@ -146,7 +172,7 @@ function rowContent(_index, row) {
       {columns.map((column) => (
         <TableCell
           key={column.dataKey}
-          align={column.numeric || false ? "right" : "left"}
+          align="left" // Изменил выравнивание на "left"
           className="tableCell2"
         >
           {row[column.dataKey]}
@@ -160,16 +186,17 @@ export default function MyServer() {
   return (
     <Paper
       style={{
-        height: 400,
+        height: 500,
         width: "70%",
         marginLeft: "20%",
         marginTop: "5%",
-        borderRadius: 30,
+        borderRadius: 15,
         overflow: "hidden",
+        boxShadow: "0 10px 20px rgba(0, 0, 0, 0.2)",
       }}
     >
       <TableVirtuoso
-        data={staticData}
+        data={localServersData} // Использую данные о локальных серверах
         components={VirtuosoTableComponents}
         fixedHeaderContent={fixedHeaderContent}
         itemContent={rowContent}
