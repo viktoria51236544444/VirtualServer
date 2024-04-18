@@ -1,7 +1,7 @@
 import * as React from "react";
+import { useState } from "react";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
-
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -25,6 +25,14 @@ function Sidebar(props) {
   const { window } = props;
   const container =
     window !== undefined ? () => window().document.body : undefined;
+
+  // Состояние для хранения выбранного пункта навигации
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  // Функция для обновления выбранного пункта навигации
+  const handleItemClick = (item) => {
+    setSelectedItem(item);
+  };
 
   return (
     <div className={styles.sidebar__container}>
@@ -57,17 +65,19 @@ function Sidebar(props) {
             <div>
               <Toolbar />
               <List>
-                <ListItem disablePadding className={styles.listItem}>
-                  <ListItemButton>
+                <ListItem
+                  disablePadding
+                  className={`${styles.listItem} ${
+                    selectedItem === "servers" ? styles.selectedItem : ""
+                  }`}
+                >
+                  <ListItemButton onClick={() => handleItemClick("servers")}>
                     <ListItemIcon className={styles.listItemIcon}>
                       <img style={{ width: "22px" }} src={Group1} alt="" />
                     </ListItemIcon>
                     <Link
-                      style={{
-                        color: "inherit",
-                        textDecoration: "none",
-                      }}
                       to={"/myserver"}
+                      style={{ color: "inherit", textDecoration: "none" }}
                     >
                       <ListItemText
                         className={styles.listItemText}
@@ -77,14 +87,19 @@ function Sidebar(props) {
                   </ListItemButton>
                 </ListItem>
 
-                <ListItem disablePadding className={styles.listItem}>
-                  <ListItemButton>
+                <ListItem
+                  disablePadding
+                  className={`${styles.listItem} ${
+                    selectedItem === "order" ? styles.selectedItem : ""
+                  }`}
+                >
+                  <ListItemButton onClick={() => handleItemClick("order")}>
                     <ListItemIcon className={styles.listItemIcon}>
                       <img style={{ width: "30px" }} src={Group2} alt="" />
                     </ListItemIcon>
                     <Link
-                      style={{ color: "inherit", textDecoration: "none" }}
                       to={"/order"}
+                      style={{ color: "inherit", textDecoration: "none" }}
                     >
                       <ListItemText
                         className={styles.listItemText}
@@ -93,8 +108,14 @@ function Sidebar(props) {
                     </Link>
                   </ListItemButton>
                 </ListItem>
-                <ListItem disablePadding className={styles.listItem}>
-                  <ListItemButton>
+
+                <ListItem
+                  disablePadding
+                  className={`${styles.listItem} ${
+                    selectedItem === "config" ? styles.selectedItem : ""
+                  }`}
+                >
+                  <ListItemButton onClick={() => handleItemClick("config")}>
                     <ListItemIcon className={styles.listItemIcon}>
                       <img style={{ width: "22px" }} src={Group3} alt="" />
                     </ListItemIcon>
@@ -106,8 +127,14 @@ function Sidebar(props) {
                     </Link>
                   </ListItemButton>
                 </ListItem>
-                <ListItem disablePadding className={styles.listItem}>
-                  <ListItemButton>
+
+                <ListItem
+                  disablePadding
+                  className={`${styles.listItem} ${
+                    selectedItem === "tickets" ? styles.selectedItem : ""
+                  }`}
+                >
+                  <ListItemButton onClick={() => handleItemClick("tickets")}>
                     <ListItemIcon className={styles.listItemIcon}>
                       <img style={{ width: "22px" }} src={Group4} alt="" />
                     </ListItemIcon>
@@ -117,10 +144,14 @@ function Sidebar(props) {
                     />
                   </ListItemButton>
                 </ListItem>
-              </List>
-              <List>
-                <ListItem disablePadding className={styles.listItem}>
-                  <ListItemButton>
+
+                <ListItem
+                  disablePadding
+                  className={`${styles.listItem} ${
+                    selectedItem === "news" ? styles.selectedItem : ""
+                  }`}
+                >
+                  <ListItemButton onClick={() => handleItemClick("news")}>
                     <ListItemIcon className={styles.listItemIcon}>
                       <img style={{ width: "22px" }} src={Group5} alt="news" />
                     </ListItemIcon>
@@ -130,8 +161,14 @@ function Sidebar(props) {
                     />
                   </ListItemButton>
                 </ListItem>
-                <ListItem disablePadding className={styles.listItem}>
-                  <ListItemButton>
+
+                <ListItem
+                  disablePadding
+                  className={`${styles.listItem} ${
+                    selectedItem === "questions" ? styles.selectedItem : ""
+                  }`}
+                >
+                  <ListItemButton onClick={() => handleItemClick("questions")}>
                     <ListItemIcon className={styles.listItemIcon}>
                       <img
                         style={{ width: "23px" }}
@@ -145,8 +182,14 @@ function Sidebar(props) {
                     />
                   </ListItemButton>
                 </ListItem>
-                <ListItem disablePadding className={styles.listItem}>
-                  <ListItemButton>
+
+                <ListItem
+                  disablePadding
+                  className={`${styles.listItem} ${
+                    selectedItem === "help" ? styles.selectedItem : ""
+                  }`}
+                >
+                  <ListItemButton onClick={() => handleItemClick("help")}>
                     <ListItemIcon className={styles.listItemIcon}>
                       <img
                         style={{ width: "25px" }}

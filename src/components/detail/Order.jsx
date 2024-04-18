@@ -198,11 +198,18 @@ export default function Order() {
   ];
 
   return (
-    <Box sx={{ width: "80%", marginLeft: "30%", marginTop: "5%" }}>
+    <Box
+      sx={{
+        width: "114%",
+        marginLeft: "30%",
+        marginTop: "5%",
+      }}
+    >
       <Tabs
         value={value}
         onChange={handleChange}
         aria-label="basic tabs example"
+        style={{ marginLeft: "-6%" }}
       >
         {tabsContent.map((tab, index) => (
           <Tab
@@ -213,15 +220,24 @@ export default function Order() {
               borderTopRightRadius: "35%",
               borderTopLeftRadius: "35%",
               border: "2px solid black",
-              minHeight: "10vh",
+              minHeight: "9vh",
+              minWidth: "28vh",
+              marginRight: "0.5%",
             }}
           />
         ))}
       </Tabs>
       <CustomTabPanel value={value} index={value}>
-        <table style={{ borderCollapse: "collapse", width: "60%" }}>
+        <table
+          style={{
+            borderCollapse: "collapse",
+            width: "60%",
+            marginLeft: "-6.8%",
+            marginTop: "-1%",
+          }}
+        >
           <thead>
-            <tr style={{ borderBottom: "1px solid lightgrey" }}>
+            <tr style={{ borderBottom: "1px solid lightgrey", height: "20%" }}>
               <th>Label</th>
               <th>CPU</th>
               <th>RAM</th>
@@ -232,13 +248,18 @@ export default function Order() {
           </thead>
           <tbody>
             {filteredExamples.map((example, idx) => (
-              <tr key={idx} style={{ borderBottom: "1px solid lightgrey" }}>
-                <td>{example.label}</td>
-                <td>{example.cpu}</td>
-                <td>{example.ram}</td>
-                <td>{example.storage}</td>
-                <td>{example.dataTransfer}</td>
-                <td>{example.price}</td>
+              <tr
+                key={idx}
+                style={{
+                  borderBottom: "1px solid lightgrey",
+                }}
+              >
+                <td style={{ lineHeight: "4" }}>{example.label}</td>
+                <td style={{ lineHeight: "4" }}>{example.cpu}</td>
+                <td style={{ lineHeight: "4" }}>{example.ram}</td>
+                <td style={{ lineHeight: "4" }}>{example.storage}</td>
+                <td style={{ lineHeight: "4" }}>{example.dataTransfer}</td>
+                <td style={{ lineHeight: "4" }}>{example.price}</td>
               </tr>
             ))}
           </tbody>
