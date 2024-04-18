@@ -218,7 +218,7 @@ export default function Order() {
             key={index}
             label={
               <div style={{ display: "flex", alignItems: "center" }}>
-                <CloudVPSIcon width={24} height={24} /> {/* Вставляем иконку */}
+                <CloudVPSIcon width={24} height={24} />
                 <span style={{ marginLeft: "8px" }}>{tab.label}</span>
               </div>
             }
