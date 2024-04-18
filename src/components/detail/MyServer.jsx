@@ -156,7 +156,7 @@ function rowContent(_index, row) {
   );
 }
 
-export default function ReactVirtualizedTable() {
+export default function MyServer() {
   return (
     <Paper
       style={{

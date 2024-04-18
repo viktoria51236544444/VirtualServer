@@ -317,7 +317,7 @@ const Configuration = () => {
         </div>
       </div>
       <div className={style.total_price_container}>
-        <h3>Общая сумма: {totalPrice} сом</h3>
+        <h3>Общая сумма: {totalPrice} сом в месяц</h3>
         <div className={style.selected_options}>
           {selectedOptions.map((option, index) => (
             <div key={index} className={style.selected_option}>
