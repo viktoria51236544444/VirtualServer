@@ -1,19 +1,18 @@
-/* detail.module.css */
-
 .dropdown {
   position: relative;
   display: inline-block;
 }
 
 .dropbtn {
-  background-color: #f9f9f9;
-  color: #333;
+  background-color: #5ddab4;
+  color: white;
   padding: 10px;
   font-size: 16px;
   border: none;
   cursor: pointer;
   border-radius: 5px;
   width: 200px;
+  height: 60px;
   text-transform: uppercase;
 }
 
@@ -43,9 +42,37 @@
 .features_container label {
   display: flex;
 }
-.configuration_container_third {
+.container__block1 {
   display: flex;
-  flex-direction: column;
-  gap: 10%;
+  gap: 20%;
+  width: 60%;
+  height: 60vh;
+  background-color: white;
+  text-align: center;
+  border-radius: 30px;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
-/* ! table */
+
+.total_price_container {
+  margin-left: 5%;
+  width: 30%;
+  height: 50vh;
+  background-color: white;
+  border-radius: 30px;
+  text-align: center;
+  margin-top: 5%;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.configuration_container {
+  font-family: Nunito !important;
+}
+
+.btns {
+  margin-top: 7%;
+}
+.button_resert {
+  margin-right: 4%;
+}

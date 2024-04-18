@@ -13,9 +13,9 @@ const Configuration = () => {
   const [selectedKVM, setSelectedKVM] = useState(false);
   const [selectedPrivateNetwork, setSelectedPrivateNetwork] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [selectedOptions, setSelectedOptions] = useState([]); // State to store selected options
+  const [selectedOptions, setSelectedOptions] = useState([]);
 
-  const [isOpenRegion, setIsOpenRegion] = useState(false); // Adding state for dropdown
+  const [isOpenRegion, setIsOpenRegion] = useState(false);
 
   const handleCoresChange = (event) => {
     setSelectedCores(parseInt(event.target.value));
@@ -109,7 +109,7 @@ const Configuration = () => {
             max={maxSize}
             value={diskSize || ""}
             onChange={handleDiskSizeChange}
-            className={style.slider}
+            className={`${style.slider} custom-slider`}
           />
           <span>{diskSize}</span>
         </div>
@@ -155,7 +155,7 @@ const Configuration = () => {
 
     const ramPrice = selectedRAM * 2;
     totalPrice += ramPrice;
-    options.push({ name: "Объем RAM", value: `${selectedRAM} ГБ` });
+    options.push({ name: "Объем RAM", value: `${selectedRAM} ГБ ` });
 
     const diskPrices = {
       ssd_sata: 10,
@@ -169,7 +169,7 @@ const Configuration = () => {
     }
     if (diskSize) {
       totalPrice += diskSize * 0.01;
-      options.push({ name: "Размер диска", value: `${diskSize} ГБ` });
+      options.push({ name: "Размер диска", value: ` ${diskSize} ГБ ` });
     }
 
     const additionalOptionsPrices = {
@@ -199,7 +199,7 @@ const Configuration = () => {
     }
 
     setTotalPrice(totalPrice);
-    setSelectedOptions(options); // Update selected options
+    setSelectedOptions(options);
   };
   const handleResetFilters = () => {
     setSelectedProcessor(null);
@@ -219,101 +219,102 @@ const Configuration = () => {
         display: "flex",
         marginLeft: "20%",
         marginTop: "5%",
-        gap: "10%",
       }}
     >
-      <div className={style.configuration_container_first}>
-        <div className={style.config_proccessor}>
-          <h3>Процессоры</h3>
-          <div className={style.dropdown}>
-            <button
-              className={style.dropbtn}
-              onClick={() => setIsOpenRegion(!isOpenRegion)}
-            >
-              {selectedProcessor || "Все процессоры"} ▼
-            </button>
-            {isOpenRegion && (
-              <div className={style.dropdown_content}>
-                {getProcessorOptions().map((processor) => (
-                  <label key={processor.value}>
-                    <input
-                      type="radio"
-                      name="processor"
-                      value={processor.value}
-                      onChange={handleProcessorSelect}
-                      checked={selectedProcessor === processor.value}
-                    />
-                    {processor.name}
-                  </label>
-                ))}
-              </div>
-            )}
+      <div className={style.container__block1}>
+        <div className={style.configuration_container_first}>
+          <div className={style.config_proccessor}>
+            <h3>Процессоры</h3>
+            <div className={style.dropdown}>
+              <button
+                className={style.dropbtn}
+                onClick={() => setIsOpenRegion(!isOpenRegion)}
+              >
+                {selectedProcessor || "процессоры"} ▼
+              </button>
+              {isOpenRegion && (
+                <div className={style.dropdown_content}>
+                  {getProcessorOptions().map((processor) => (
+                    <label key={processor.value}>
+                      <input
+                        type="radio"
+                        name="processor"
+                        value={processor.value}
+                        onChange={handleProcessorSelect}
+                        checked={selectedProcessor === processor.value}
+                      />
+                      {processor.name}
+                    </label>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+          <div className={style.cores_container}>
+            <h3>Ядра, шт</h3>
+            <input
+              type="range"
+              min="2"
+              max="198"
+              value={selectedCores}
+              onChange={handleCoresChange}
+              className={style.slider}
+            />
+            <span>{selectedCores}</span>
+          </div>
+          <div className={style.ram_container}>
+            <h3>Объем RAM, ГБ</h3>
+            <input
+              type="range"
+              min="4"
+              max="1536"
+              value={selectedRAM}
+              onChange={handleRAMChange}
+              className={style.slider}
+            />
+            <span>{selectedRAM}</span>
           </div>
         </div>
-        <div className={style.cores_container}>
-          <h3>Ядра, шт</h3>
-          <input
-            type="range"
-            min="2"
-            max="198"
-            value={selectedCores}
-            onChange={handleCoresChange}
-            className={style.slider}
-          />
-          <span>{selectedCores}</span>
-        </div>
-        <div className={style.ram_container}>
-          <h3>Объем RAM, ГБ</h3>
-          <input
-            type="range"
-            min="4"
-            max="1536"
-            value={selectedRAM}
-            onChange={handleRAMChange}
-            className={style.slider}
-          />
-          <span>{selectedRAM}</span>
-        </div>
-      </div>
-      <div className={style.configuration_container_second}>
-        <div className={style.discs_container}>
-          <h3>Диски</h3>
-          {renderDiskOptions()}
-        </div>
-        <div className={style.features_container}>
-          <h3>Особенности конфигурации</h3>
-          <label>
-            <input
-              type="checkbox"
-              checked={selectedGPU}
-              onChange={handleGPUSelect}
-            />
-            GPU
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              checked={selectedPowerSupply}
-              onChange={handlePowerSupplySelect}
-            />
-            2 блока питания
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              checked={selectedKVM}
-              onChange={handleKVMSelect}
-            />
-            KVM-консоль
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              checked={selectedPrivateNetwork}
-              onChange={handlePrivateNetworkSelect}
-            />
-            Приватная сеть
-          </label>
+        <div className={style.configuration_container_second}>
+          <div className={style.discs_container}>
+            <h3>Диски</h3>
+            {renderDiskOptions()}
+          </div>
+          <div className={style.features_container}>
+            <h3>Особенности</h3>
+            <label>
+              <input
+                type="checkbox"
+                checked={selectedGPU}
+                onChange={handleGPUSelect}
+              />
+              GPU
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                checked={selectedPowerSupply}
+                onChange={handlePowerSupplySelect}
+              />
+              2 блока питания
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                checked={selectedKVM}
+                onChange={handleKVMSelect}
+              />
+              KVM-консоль
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                checked={selectedPrivateNetwork}
+                onChange={handlePrivateNetworkSelect}
+              />
+              Приватная сеть
+            </label>
+          </div>
         </div>
       </div>
       <div className={style.total_price_container}>
@@ -325,15 +326,33 @@ const Configuration = () => {
             </div>
           ))}
         </div>
-        <div style={{ display: "flex" }}>
+        <div className={style.btns}>
           <Button
             onClick={handleResetFilters}
             variant="outlined"
             color="primary"
+            className={style.button_resert}
+            sx={{
+              backgroundColor: "#9694ff",
+              border: "none",
+              color: "white",
+              height: "40px",
+              borderRadius: "5px",
+              marginRight: "7%",
+            }}
           >
             Сбросить фильтры
           </Button>
-          <Button variant="contained" style={{ backgroundColor: "gold" }}>
+          <Button
+            sx={{
+              border: "none",
+              color: "white",
+              height: "40px",
+              borderRadius: "5px",
+              backgroundColor: "#FF5F4A",
+            }}
+            variant="contained"
+          >
             Заказать
           </Button>
         </div>
