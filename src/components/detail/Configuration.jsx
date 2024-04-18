@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./detail.module.css";
+import { Button } from "@mui/material";
 
 const Configuration = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const [selectedProcessor, setSelectedProcessor] = useState(null);
   const [selectedCores, setSelectedCores] = useState(2);
-  const [selectedFrequency, setSelectedFrequency] = useState(1.5);
   const [selectedRAM, setSelectedRAM] = useState(4);
   const [selectedDisk, setSelectedDisk] = useState(null);
   const [diskSize, setDiskSize] = useState(null);
@@ -13,26 +12,13 @@ const Configuration = () => {
   const [selectedPowerSupply, setSelectedPowerSupply] = useState(false);
   const [selectedKVM, setSelectedKVM] = useState(false);
   const [selectedPrivateNetwork, setSelectedPrivateNetwork] = useState(false);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [selectedOptions, setSelectedOptions] = useState([]); // State to store selected options
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const handleProcessorSelect = (event) => {
-    const { value, checked } = event.target;
-    if (checked) {
-      setSelectedProcessor(value);
-    } else {
-      setSelectedProcessor(null);
-    }
-  };
+  const [isOpenRegion, setIsOpenRegion] = useState(false); // Adding state for dropdown
 
   const handleCoresChange = (event) => {
     setSelectedCores(parseInt(event.target.value));
-  };
-
-  const handleFrequencyChange = (event) => {
-    setSelectedFrequency(parseFloat(event.target.value));
   };
 
   const handleRAMChange = (event) => {
@@ -41,7 +27,7 @@ const Configuration = () => {
 
   const handleDiskSelect = (disk) => {
     setSelectedDisk(disk);
-    setDiskSize(null); // Сбросить выбранное значение размера диска при изменении типа диска
+    setDiskSize(null);
   };
 
   const handleDiskSizeChange = (event) => {
@@ -62,6 +48,10 @@ const Configuration = () => {
 
   const handlePrivateNetworkSelect = () => {
     setSelectedPrivateNetwork(!selectedPrivateNetwork);
+  };
+
+  const handleProcessorSelect = (event) => {
+    setSelectedProcessor(event.target.value);
   };
 
   const getProcessorOptions = () => {
@@ -125,25 +115,129 @@ const Configuration = () => {
         </div>
       );
     } else {
-      return null; // Ничего не отображать для MicroSD
+      return null;
     }
   };
 
+  useEffect(() => {
+    calculateTotalPrice();
+  }, [
+    selectedProcessor,
+    selectedCores,
+    selectedRAM,
+    selectedDisk,
+    diskSize,
+    selectedGPU,
+    selectedPowerSupply,
+    selectedKVM,
+    selectedPrivateNetwork,
+  ]);
+
+  const calculateTotalPrice = () => {
+    let totalPrice = 0;
+    const options = [];
+
+    const processorPrices = {
+      intel: 100,
+      amd: 90,
+      ampere: 110,
+      apple: 120,
+      broadcom: 80,
+    };
+    if (selectedProcessor) {
+      totalPrice += processorPrices[selectedProcessor];
+      options.push({ name: "Процессор", value: selectedProcessor });
+    }
+
+    const corePrice = 5;
+    totalPrice += corePrice * selectedCores;
+    options.push({ name: "Ядра", value: selectedCores });
+
+    const ramPrice = selectedRAM * 2;
+    totalPrice += ramPrice;
+    options.push({ name: "Объем RAM", value: `${selectedRAM} ГБ` });
+
+    const diskPrices = {
+      ssd_sata: 10,
+      hdd_sata: 8,
+      ssd_nvme: 15,
+      micro_sd: 5,
+    };
+    if (selectedDisk) {
+      totalPrice += diskPrices[selectedDisk];
+      options.push({ name: "Диск", value: selectedDisk });
+    }
+    if (diskSize) {
+      totalPrice += diskSize * 0.01;
+      options.push({ name: "Размер диска", value: `${diskSize} ГБ` });
+    }
+
+    const additionalOptionsPrices = {
+      gpu: 50,
+      powerSupply: 20,
+      kvm: 30,
+      privateNetwork: 40,
+    };
+    if (selectedGPU) {
+      totalPrice += additionalOptionsPrices.gpu;
+      options.push({ name: "GPU", value: "Да" });
+    }
+    if (selectedPowerSupply) {
+      totalPrice += additionalOptionsPrices.powerSupply;
+      options.push({
+        name: "Дополнительный блок питания",
+        value: "Да",
+      });
+    }
+    if (selectedKVM) {
+      totalPrice += additionalOptionsPrices.kvm;
+      options.push({ name: "KVM-консоль", value: "Да" });
+    }
+    if (selectedPrivateNetwork) {
+      totalPrice += additionalOptionsPrices.privateNetwork;
+      options.push({ name: "Приватная сеть", value: "Да" });
+    }
+
+    setTotalPrice(totalPrice);
+    setSelectedOptions(options); // Update selected options
+  };
+  const handleResetFilters = () => {
+    setSelectedProcessor(null);
+    setSelectedCores(2);
+    setSelectedRAM(4);
+    setSelectedDisk(null);
+    setDiskSize(null);
+    setSelectedGPU(false);
+    setSelectedPowerSupply(false);
+    setSelectedKVM(false);
+    setSelectedPrivateNetwork(false);
+  };
   return (
-    <div className={style.configuration_container} style={{ display: "flex" }}>
+    <div
+      className={style.configuration_container}
+      style={{
+        display: "flex",
+        marginLeft: "20%",
+        marginTop: "5%",
+        gap: "10%",
+      }}
+    >
       <div className={style.configuration_container_first}>
         <div className={style.config_proccessor}>
           <h3>Процессоры</h3>
           <div className={style.dropdown}>
-            <button className={style.dropbtn} onClick={toggleDropdown}>
+            <button
+              className={style.dropbtn}
+              onClick={() => setIsOpenRegion(!isOpenRegion)}
+            >
               {selectedProcessor || "Все процессоры"} ▼
             </button>
-            {isOpen && (
+            {isOpenRegion && (
               <div className={style.dropdown_content}>
                 {getProcessorOptions().map((processor) => (
                   <label key={processor.value}>
                     <input
-                      type="checkbox"
+                      type="radio"
                       name="processor"
                       value={processor.value}
                       onChange={handleProcessorSelect}
@@ -167,19 +261,6 @@ const Configuration = () => {
             className={style.slider}
           />
           <span>{selectedCores}</span>
-        </div>
-        <div className={style.frequency_container}>
-          <h3>Частота процессора, ГГц</h3>
-          <input
-            type="range"
-            min="1.5"
-            max="4.5"
-            step="0.1"
-            value={selectedFrequency}
-            onChange={handleFrequencyChange}
-            className={style.slider}
-          />
-          <span>{selectedFrequency.toFixed(1)}</span>
         </div>
         <div className={style.ram_container}>
           <h3>Объем RAM, ГБ</h3>
@@ -233,6 +314,28 @@ const Configuration = () => {
             />
             Приватная сеть
           </label>
+        </div>
+      </div>
+      <div className={style.total_price_container}>
+        <h3>Общая сумма: {totalPrice} сом</h3>
+        <div className={style.selected_options}>
+          {selectedOptions.map((option, index) => (
+            <div key={index} className={style.selected_option}>
+              {option.name}: {option.value}
+            </div>
+          ))}
+        </div>
+        <div style={{ display: "flex" }}>
+          <Button
+            onClick={handleResetFilters}
+            variant="outlined"
+            color="primary"
+          >
+            Сбросить фильтры
+          </Button>
+          <Button variant="contained" style={{ backgroundColor: "gold" }}>
+            Заказать
+          </Button>
         </div>
       </div>
     </div>
