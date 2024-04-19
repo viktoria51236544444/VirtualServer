@@ -99,7 +99,9 @@ function Sidebar(props) {
                 src="https://zuramai.github.io/mazer/demo/assets/compiled/jpg/5.jpg"
                 alt=""
               />
-              <p>Виктория</p>
+              <Link to={"/auth"} style={{ textDecoration: "none" }}>
+                <p>Виктория</p>
+              </Link>
               <p style={{ marginLeft: "6%" }}>2000$</p>
               <img style={{ width: "40px" }} src={Group26} alt="" />
             </div>

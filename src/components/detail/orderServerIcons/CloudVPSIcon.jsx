@@ -1,6 +1,6 @@
 // CloudVPSIcon.js
 import React from "react";
-import styles from "./detail.module.css";
+
 function CloudVPSIcon(props) {
   return (
     <svg
