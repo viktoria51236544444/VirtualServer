@@ -5,7 +5,11 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { Button } from "@mui/material";
-import CloudVPSIcon from "./CloudVPSIcon";
+import CloudVPSIcon from "./orderServerIcons/CloudVPSIcon";
+import StorageVPSIcon from "./orderServerIcons/StorageVPSIcon";
+import CloudVDSIcon from "./CloudVDSIcon";
+import BareMetalIcon from "./orderServerIcons/BareMetalIcon";
+import ObjectStorageIcon from "./ObjectStorageIcon";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -207,18 +211,23 @@ export default function Order() {
   const tabsContent = [
     {
       label: "Cloud VPS",
+      icon: <CloudVPSIcon width={24} height={24} />,
     },
     {
       label: "Storage VPS",
+      icon: <StorageVPSIcon width={24} height={24} />,
     },
     {
       label: "Cloud VDS",
+      icon: <CloudVDSIcon width={24} height={24} />,
     },
     {
       label: "Bare Metal",
+      icon: <BareMetalIcon width={24} height={24} />,
     },
     {
       label: "Object Storage",
+      icon: <ObjectStorageIcon width={24} height={24} />,
     },
   ];
 
@@ -242,7 +251,7 @@ export default function Order() {
             key={index}
             label={
               <div style={{ display: "flex", alignItems: "center" }}>
-                <CloudVPSIcon width={24} height={24} />
+                {tab.icon}
                 <span style={{ marginLeft: "8px" }}>{tab.label}</span>
               </div>
             }

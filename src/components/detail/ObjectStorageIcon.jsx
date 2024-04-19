@@ -1,6 +1,7 @@
+// ObjectStorageIcon.js
 import React from "react";
 
-function CloudVPSIcon(props) {
+function ObjectStorageIcon(props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14,9 +15,9 @@ function CloudVPSIcon(props) {
       strokeLinejoin="round"
       {...props}
     >
-      <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4l2 3h6a2 2 0 012 2v11a2 2 0 01-2 2z" />
+      <path d="M12 5v13M5 12l7 7 7-7" />
     </svg>
   );
 }
 
-export default CloudVPSIcon;
+export default ObjectStorageIcon;

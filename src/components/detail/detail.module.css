@@ -76,3 +76,9 @@
 .button_resert {
   margin-right: 4%;
 }
+.cloudVps_green {
+  background-color: green;
+}
+.cloudVps_red {
+  background-color: red;
+}
