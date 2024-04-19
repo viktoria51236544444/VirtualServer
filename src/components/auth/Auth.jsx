@@ -33,7 +33,7 @@ const Auth = () => {
       window.particlesJS("particles-js", {
         particles: {
           number: {
-            value: 20,
+            value: 30,
             density: {
               enable: true,
               value_area: 500,
@@ -138,7 +138,7 @@ const Auth = () => {
         retina_detect: true,
         config_demo: {
           hide_card: false,
-          background_color: "#b61924",
+          background_color: "#0000",
           background_image: "",
           background_position: "50% 50%",
           background_repeat: "no-repeat",
