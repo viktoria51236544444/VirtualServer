@@ -50,6 +50,23 @@ export default function Order() {
     setFilteredExamples(examples[newValue]);
   };
 
+  // Массивы столбцов и индексов столбцов для каждой вкладки
+  const columns = [
+    ["Model", "CPU", "RAM", "Storage", "Data Transfer", "Price"],
+    ["Model", "CPU", "RAM", "Storage", "Port", "Data Transfer", "Price"],
+    ["Model", "CPU", "RAM", "Storage", "Data Transfer", "Price"],
+    ["Model", "CPU", "RAM", "Storage", "Port", "Data Transfer", "Price"],
+    ["Model", "Price"],
+  ];
+
+  const columnIndex = [
+    [0, 1, 2, 3, 4, 5],
+    [0, 1, 2, 3, 4, 5, 6],
+    [0, 1, 2, 3, 4, 5],
+    [0, 1, 2, 3, 4, 5, 6],
+    [0, 5],
+  ];
+
   const examples = [
     // Примеры для вкладки "Cloud VPS"
     [
@@ -58,7 +75,7 @@ export default function Order() {
         cpu: "4 vCPU Cores",
         ram: "6 GB RAM",
         storage: "100 GB NVMe or 400 GB SSD",
-        dataTransfer: "32 TB Traffic",
+        dataTransfer: "32 TB Traffic or Unlimited Incoming ",
         price: " $10.75 / month",
       },
       {
@@ -66,7 +83,7 @@ export default function Order() {
         cpu: "6 vCPU Cores",
         ram: "16 GB RAM",
         storage: "200 GB NVMe or 400 GB SSD",
-        dataTransfer: "32 TB Traffic",
+        dataTransfer: "32 TB Traffic or Unlimited Incoming",
         price: "$15.80 / month",
       },
       {
@@ -74,7 +91,7 @@ export default function Order() {
         cpu: "8 vCPU Cores",
         ram: "24 GB RAM",
         storage: "300 GB NVMe or 1.2 TB SSD",
-        dataTransfer: "32 TB Traffic",
+        dataTransfer: "32 TB Traffic or Unlimited Incoming ",
         price: "$22.54 / month",
       },
     ],
@@ -85,7 +102,8 @@ export default function Order() {
         cpu: "2 vCPU Cores",
         ram: "3 GB RAM",
         storage: "800 GB SSD",
-        dataTransfer: "200 Mbit/s Port",
+        port: "200 Mbit/s Port",
+        dataTransfer: "Data Transfer Value",
         price: "$7.75 / month",
       },
       {
@@ -93,7 +111,8 @@ export default function Order() {
         cpu: "4 vCPU Cores",
         ram: "8 GB RAM",
         storage: "800 GB SSD",
-        dataTransfer: "400 Mbit/s Port",
+        port: "400 Mbit/s Port",
+        dataTransfer: "Data Transfer Value",
         price: "$15.80 / month",
       },
       {
@@ -101,7 +120,8 @@ export default function Order() {
         cpu: "6 vCPU Cores",
         ram: "12 GB RAM",
         storage: "2.4 TB SSD",
-        dataTransfer: "600 Mbit/s Port",
+        port: "600 Mbit/s Port",
+        dataTransfer: "Data Transfer Value",
         price: "$22.54 / month",
       },
     ],
@@ -109,26 +129,26 @@ export default function Order() {
     [
       {
         label: "Cloud VDS S",
-        cpu: "3 Physical Cores",
+        cpu: "3 Physical Cores or AMD EPYC 7282 2.8 GHz",
         ram: "24 GB RAM",
-        storage: "180 GB NVMe",
-        dataTransfer: "250 Mbit/s Port",
+        storage: "180 GB NVMe or More storage available",
+        dataTransfer: "250 Mbit/s Port or Unlimited Available",
         price: "$57.27 / month",
       },
       {
         label: "Cloud VDS M",
-        cpu: "4 Physical Cores",
+        cpu: "4 Physical Cores or AMD EPYC 7282 2.8 GHz",
         ram: "32 GB RAM",
-        storage: "240 GB NVMe",
-        dataTransfer: "500 Mbit/s Port",
+        storage: "240 GB NVMe or More storage available",
+        dataTransfer: "500 Mbit/s Port or Unlimited Available",
         price: "$71.71 / month",
       },
       {
         label: "Cloud VDS L",
-        cpu: "6 Physical Cores",
+        cpu: "6 Physical Cores or AMD EPYC 7282 2.8 GHz",
         ram: "48 GB RAM",
-        storage: "360 GB NVMe",
-        dataTransfer: "750 Mbit/s Port",
+        storage: "360 GB NVMe or More storage available",
+        dataTransfer: "750 Mbit/s Port or Unlimited Available",
         price: "$109.62 / month",
       },
     ],
@@ -136,26 +156,29 @@ export default function Order() {
     [
       {
         label: "AMD Ryzen 12",
-        cpu: "AMD Ryzen 9 7900",
-        ram: "64 GB REG ECC",
-        storage: "1 TB NVMe",
-        dataTransfer: "1 Gbit/s Port",
+        cpu: "AMD Ryzen 9 7900 or 12 x 3.70 GHz",
+        ram: "64 GB REG ECC or Up to 128 GB RAM",
+        storage: "1 TB NVMe or More storage available",
+        port: "1 Gbit/s Port",
+        dataTransfer: "1 Gbit/s Port or Up to 324 TB",
         price: "$149.04 / month",
       },
       {
         label: "AMD EPYC 16 Cores",
-        cpu: "AMD EPYC 7282",
-        ram: "256 GB REG ECC",
-        storage: "3 TB HDD",
-        dataTransfer: "1 Gbit/s Port",
+        cpu: "AMD EPYC 7282 or 12 x 3.70 GHz",
+        ram: "256 GB REG ECC or Up to 128 GB RAM",
+        storage: "3 TB HDD or More storage available",
+        port: "1 Gbit/s Port",
+        dataTransfer: "1 Gbit/s Port or Up to 324 TB",
         price: "$330.49 / month",
       },
       {
         label: "AMD EPYC 32 Cores",
-        cpu: "2 x AMD EPYC 7282",
-        ram: "256 GB REG ECC",
-        storage: "3 TB HDD",
-        dataTransfer: "1 Gbit/s Port",
+        cpu: "2 x AMD EPYC 7282 or 12 x 3.70 GHz",
+        ram: "256 GB REG ECC or Up to 128 GB RAM",
+        storage: "3 TB HDD or More storage available",
+        port: "1 Gbit/s Port",
+        dataTransfer: "1 Gbit/s Port or Up to 324 TB",
         price: "$433.49 / month",
       },
     ],
@@ -205,6 +228,7 @@ export default function Order() {
         width: "114%",
         marginLeft: "30%",
         marginTop: "5%",
+        fontFamily: "Nunito",
       }}
     >
       <Tabs
@@ -255,12 +279,11 @@ export default function Order() {
                 lineHeight: "4",
               }}
             >
-              <th>Label</th>
-              <th>CPU</th>
-              <th>RAM</th>
-              <th>Storage</th>
-              <th>Data Transfer</th>
-              <th>Price</th>
+              {columns[value].map((column, idx) => (
+                <th key={idx} style={{ textAlign: "left", marginLeft: "2%" }}>
+                  {column}
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
@@ -272,24 +295,22 @@ export default function Order() {
                   padding: "10px",
                 }}
               >
-                <td style={{ lineHeight: "4", paddingLeft: "20px" }}>
-                  {example.label}
-                </td>
-                <td style={{ lineHeight: "4" }}>{example.cpu}</td>
-                <td style={{ lineHeight: "4" }}>{example.ram}</td>
-                <td style={{ lineHeight: "4" }}>{example.storage}</td>
-                <td style={{ lineHeight: "4" }}>{example.dataTransfer}</td>
+                {columnIndex[value].map((index, colIdx) => (
+                  <td
+                    key={colIdx}
+                    style={{ lineHeight: "4", paddingLeft: "20px" }}
+                  >
+                    {example[Object.keys(example)[index]]}
+                  </td>
+                ))}
                 <td style={{ lineHeight: "4", verticalAlign: "middle" }}>
-                  {" "}
-                  {/* Выравниваем контент по вертикали */}
                   {example.price}
                   <Button
                     variant="outlined"
                     style={{ marginLeft: "10px", verticalAlign: "middle" }}
                   >
                     Заказать
-                  </Button>{" "}
-                  {/* Добавляем кнопку */}
+                  </Button>
                 </td>
               </tr>
             ))}
