@@ -5,6 +5,7 @@ import Configuration from "../components/detail/Configuration";
 import Order from "../components/detail/Order";
 import MyServer from "../components/detail/MyServer";
 import Auth from "../components/auth/Auth";
+import Home from "../page/Home";
 
 const MainRoutes = () => {
   return (

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./auth.module.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Link } from "react-router-dom";
 
 const Auth = () => {
   useEffect(() => {
@@ -177,12 +178,14 @@ const Auth = () => {
               onChange={(e) => setPassword(e.target.value)}
               className={styles.form_control}
             />
-            <button
-              type="submit"
-              className={`${styles.btn} ${styles.btn_default} ${styles.btn_block} ${styles.btn_custom}`}
-            >
-              Войти
-            </button>
+            <Link to={"/home"}>
+              <button
+                type="submit"
+                className={`${styles.btn} ${styles.btn_default} ${styles.btn_block} ${styles.btn_custom}`}
+              >
+                Войти
+              </button>
+            </Link>
           </form>
         </div>
       </div>
