@@ -218,7 +218,7 @@ const Configuration = () => {
       style={{
         display: "flex",
         marginLeft: "20%",
-        marginTop: "5%",
+        marginTop: "3%",
       }}
     >
       <div className={style.container__block1}>
@@ -327,34 +327,19 @@ const Configuration = () => {
           ))}
         </div>
         <div className={style.btns}>
-          <Button
+          <button
+            style={{ width: "170px", marginRight: "2%" }}
             onClick={handleResetFilters}
-            variant="outlined"
-            color="primary"
-            className={style.button_resert}
-            sx={{
-              backgroundColor: "#7c8db5",
-              border: "none",
-              color: "white",
-              height: "40px",
-              borderRadius: "5px",
-              marginRight: "7%",
-            }}
+            className={`${style.button} ${style.button_reset}`}
           >
             Сбросить фильтры
-          </Button>
-          <Button
-            sx={{
-              border: "none",
-              color: "white",
-              height: "40px",
-              borderRadius: "5px",
-              backgroundColor: "#7c8db5",
-            }}
-            variant="contained"
+          </button>
+          <button
+            style={{ width: "110px" }}
+            className={`${style.button} ${style.button_order}`}
           >
             Заказать
-          </Button>
+          </button>
         </div>
       </div>
     </div>
