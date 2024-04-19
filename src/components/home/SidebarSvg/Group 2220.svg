@@ -18,12 +18,12 @@
 <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_10_101" result="shape"/>
 </filter>
 <linearGradient id="paint0_linear_10_101" x1="59" y1="22" x2="59" y2="82" gradientUnits="userSpaceOnUse">
-<stop stop-color="#80E480"/>
-<stop offset="1" stop-color="#1DAB37"/>
+<stop stop-color="#9c8db5"/>
+<stop offset="1" stop-color="#7c8db5"/>
 </linearGradient>
 <linearGradient id="paint1_linear_10_101" x1="41" y1="0" x2="41" y2="82" gradientUnits="userSpaceOnUse">
-<stop stop-color="#80E480"/>
-<stop offset="1" stop-color="#1DAB37"/>
+<stop stop-color="#9c8db5"/>
+<stop offset="1" stop-color="#7c8db5"/>
 </linearGradient>
 <linearGradient id="paint2_linear_10_101" x1="41" y1="0" x2="41" y2="82" gradientUnits="userSpaceOnUse">
 <stop stop-color="white" stop-opacity="0.2"/>
