@@ -7,7 +7,6 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { TableVirtuoso } from "react-virtuoso";
-import Box from "@mui/material/Box";
 
 const localServersData = [
   {
@@ -153,7 +152,7 @@ function fixedHeaderContent() {
         <TableCell
           key={column.dataKey}
           variant="head"
-          align="left" // Изменил выравнивание на "left"
+          align="left"
           sx={{
             backgroundColor: "background.paper",
           }}
@@ -170,11 +169,7 @@ function rowContent(_index, row) {
   return (
     <React.Fragment>
       {columns.map((column) => (
-        <TableCell
-          key={column.dataKey}
-          align="left" // Изменил выравнивание на "left"
-          className="tableCell2"
-        >
+        <TableCell key={column.dataKey} align="left" className="tableCell2">
           {row[column.dataKey]}
         </TableCell>
       ))}
@@ -196,7 +191,7 @@ export default function MyServer() {
       }}
     >
       <TableVirtuoso
-        data={localServersData} // Использую данные о локальных серверах
+        data={localServersData}
         components={VirtuosoTableComponents}
         fixedHeaderContent={fixedHeaderContent}
         itemContent={rowContent}
