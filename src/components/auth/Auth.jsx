@@ -1,26 +1,17 @@
 import React, { useEffect, useState } from "react";
 import styles from "./auth.module.css";
-import Lock from "./assets/lock.png";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-const UserIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    width="50"
-    height="50"
-    fill="#435ebe"
-  >
-    <path fill="none" d="M0 0h24v24H0z" />
-    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-  </svg>
-);
+
 const Auth = () => {
   useEffect(() => {
     const script = document.createElement("script");
     script.src =
       "https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js";
     script.async = true;
+    script.onload = () => {
+      initializeParticles();
+    };
     document.body.appendChild(script);
 
     return () => {
@@ -28,7 +19,7 @@ const Auth = () => {
     };
   }, []);
 
-  useEffect(() => {
+  const initializeParticles = () => {
     if (window.particlesJS) {
       window.particlesJS("particles-js", {
         particles: {
@@ -138,7 +129,7 @@ const Auth = () => {
         retina_detect: true,
         config_demo: {
           hide_card: false,
-          background_color: "#b61924",
+          background_color: "black",
           background_image: "",
           background_position: "50% 50%",
           background_repeat: "no-repeat",
@@ -146,9 +137,11 @@ const Auth = () => {
         },
       });
     }
-  }, []);
+  };
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!username || !password) {
@@ -159,13 +152,11 @@ const Auth = () => {
       toast.error("Пожалуйста, введите правильный email и пароль.");
     }
   };
+
   return (
     <div className={styles.auth_container}>
       <div id={styles.login_box}>
         <div className={styles.logo}>
-          {/* <div style={{ marginLeft: "40%" }}>
-            <UserIcon />
-          </div> */}
           <h1 className={styles.logo_caption}>Business Soft</h1>
         </div>
         <div className={styles.controls}>

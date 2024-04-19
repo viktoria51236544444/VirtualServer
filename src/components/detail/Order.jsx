@@ -7,7 +7,7 @@ import Box from "@mui/material/Box";
 import { Button } from "@mui/material";
 import CloudVPSIcon from "./orderServerIcons/CloudVPSIcon";
 import StorageVPSIcon from "./orderServerIcons/StorageVPSIcon";
-import CloudVDSIcon from "./orderServerIcons/orderServerIcons/BareMetalIcon";
+import CloudVDSIcon from "./orderServerIcons/CloudVDSIcon";
 import BareMetalIcon from "./orderServerIcons/BareMetalIcon";
 import ObjectStorageIcon from "./orderServerIcons/ObjectStorageIcon";
 
