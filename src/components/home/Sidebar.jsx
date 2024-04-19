@@ -1,5 +1,5 @@
-import * as React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Drawer from "@mui/material/Drawer";
@@ -8,9 +8,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import Toolbar from "@mui/material/Toolbar";
 import styles from "./home.module.css";
-import { Link } from "react-router-dom";
 import Group1 from "./image/Group 2226.svg";
 import Group2 from "./image/文件夹.svg";
 import Group3 from "./image/Group 2213.svg";
@@ -18,18 +16,51 @@ import Group4 from "./image/Group 2212.svg";
 import Group5 from "./image/Group 2201.svg";
 import Group6 from "./image/Group 2225.svg";
 import Group7 from "./image/Group 2220.svg";
+import Group26 from "./image/Group 26.svg";
 
-const drawerWidth = 240;
+const drawerWidth = 290;
+
+const navigationItems = {
+  servers: {
+    text: "Мои сервера",
+    icon: Group1,
+    link: "/myserver",
+  },
+  order: {
+    text: "Заказать сервер",
+    icon: Group2,
+    link: "/order",
+  },
+  config: {
+    text: "Конфигурация",
+    icon: Group3,
+    link: "/config",
+  },
+  tickets: {
+    text: "Мои тикеты",
+    icon: Group4,
+  },
+  news: {
+    text: "Новости",
+    icon: Group5,
+  },
+  questions: {
+    text: "Вопросы",
+    icon: Group6,
+  },
+  help: {
+    text: "Помощь",
+    icon: Group7,
+  },
+};
 
 function Sidebar(props) {
   const { window } = props;
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
-  // Состояние для хранения выбранного пункта навигации
   const [selectedItem, setSelectedItem] = useState(null);
 
-  // Функция для обновления выбранного пункта навигации
   const handleItemClick = (item) => {
     setSelectedItem(item);
   };
@@ -62,148 +93,46 @@ function Sidebar(props) {
             }}
             open
           >
+            <div className={styles.container__header_sidebar}>
+              <img
+                className={styles.img_user}
+                src="https://zuramai.github.io/mazer/demo/assets/compiled/jpg/5.jpg"
+                alt=""
+              />
+              <p>Виктория</p>
+              <p style={{ marginLeft: "6%" }}>2000$</p>
+              <img style={{ width: "40px" }} src={Group26} alt="" />
+            </div>
             <div>
-              <Toolbar />
               <List>
-                <Link
-                  to={"/myserver"}
-                  style={{ color: "inherit", textDecoration: "none" }}
-                >
-                  <ListItem
-                    disablePadding
-                    className={`${styles.listItem} ${
-                      selectedItem === "servers" ? styles.selectedItem : ""
-                    }`}
+                {Object.entries(navigationItems).map(([itemId, item]) => (
+                  <Link
+                    key={itemId}
+                    to={item.link}
+                    style={{ color: "inherit", textDecoration: "none" }}
                   >
-                    <ListItemButton onClick={() => handleItemClick("servers")}>
-                      <ListItemIcon className={styles.listItemIcon}>
-                        <img style={{ width: "22px" }} src={Group1} alt="" />
-                      </ListItemIcon>
-
-                      <ListItemText
-                        className={styles.listItemText}
-                        primary="Мои сервера"
-                      />
-                    </ListItemButton>
-                  </ListItem>
-                </Link>
-                <Link
-                  to={"/order"}
-                  style={{ color: "inherit", textDecoration: "none" }}
-                >
-                  <ListItem
-                    disablePadding
-                    className={`${styles.listItem} ${
-                      selectedItem === "order" ? styles.selectedItem : ""
-                    }`}
-                  >
-                    <ListItemButton onClick={() => handleItemClick("order")}>
-                      <ListItemIcon className={styles.listItemIcon}>
-                        <img style={{ width: "30px" }} src={Group2} alt="" />
-                      </ListItemIcon>
-
-                      <ListItemText
-                        className={styles.listItemText}
-                        primary="Заказать сервер"
-                      />
-                    </ListItemButton>
-                  </ListItem>
-                </Link>
-                <Link to={"/config"} style={{ textDecoration: "none" }}>
-                  <ListItem
-                    disablePadding
-                    className={`${styles.listItem} ${
-                      selectedItem === "config" ? styles.selectedItem : ""
-                    }`}
-                  >
-                    <ListItemButton onClick={() => handleItemClick("config")}>
-                      <ListItemIcon className={styles.listItemIcon}>
-                        <img style={{ width: "22px" }} src={Group3} alt="" />
-                      </ListItemIcon>
-
-                      <ListItemText
-                        className={styles.listItemText}
-                        primary="Конфигурация"
-                      />
-                    </ListItemButton>
-                  </ListItem>
-                </Link>
-
-                <ListItem
-                  disablePadding
-                  className={`${styles.listItem} ${
-                    selectedItem === "tickets" ? styles.selectedItem : ""
-                  }`}
-                >
-                  <ListItemButton onClick={() => handleItemClick("tickets")}>
-                    <ListItemIcon className={styles.listItemIcon}>
-                      <img style={{ width: "22px" }} src={Group4} alt="" />
-                    </ListItemIcon>
-                    <ListItemText
-                      className={styles.listItemText}
-                      primary="Мои тикеты"
-                    />
-                  </ListItemButton>
-                </ListItem>
-
-                <ListItem
-                  disablePadding
-                  className={`${styles.listItem} ${
-                    selectedItem === "news" ? styles.selectedItem : ""
-                  }`}
-                >
-                  <ListItemButton onClick={() => handleItemClick("news")}>
-                    <ListItemIcon className={styles.listItemIcon}>
-                      <img style={{ width: "22px" }} src={Group5} alt="news" />
-                    </ListItemIcon>
-                    <ListItemText
-                      className={styles.listItemText}
-                      primary="Новости"
-                    />
-                  </ListItemButton>
-                </ListItem>
-
-                <ListItem
-                  disablePadding
-                  className={`${styles.listItem} ${
-                    selectedItem === "questions" ? styles.selectedItem : ""
-                  }`}
-                >
-                  <ListItemButton onClick={() => handleItemClick("questions")}>
-                    <ListItemIcon className={styles.listItemIcon}>
-                      <img
-                        style={{ width: "23px" }}
-                        src={Group6}
-                        alt="questions"
-                      />
-                    </ListItemIcon>
-                    <ListItemText
-                      className={styles.listItemText}
-                      primary="Вопросы"
-                    />
-                  </ListItemButton>
-                </ListItem>
-
-                <ListItem
-                  disablePadding
-                  className={`${styles.listItem} ${
-                    selectedItem === "help" ? styles.selectedItem : ""
-                  }`}
-                >
-                  <ListItemButton onClick={() => handleItemClick("help")}>
-                    <ListItemIcon className={styles.listItemIcon}>
-                      <img
-                        style={{ width: "25px" }}
-                        src={Group7}
-                        alt="online-support"
-                      />
-                    </ListItemIcon>
-                    <ListItemText
-                      className={styles.listItemText}
-                      primary="Помощь"
-                    />
-                  </ListItemButton>
-                </ListItem>
+                    <ListItem
+                      disablePadding
+                      className={`${styles.listItem} ${
+                        selectedItem === itemId ? styles.selectedItem : ""
+                      }`}
+                    >
+                      <ListItemButton onClick={() => handleItemClick(itemId)}>
+                        <ListItemIcon className={styles.listItemIcon}>
+                          <img
+                            style={{ width: "22px" }}
+                            src={item.icon}
+                            alt=""
+                          />
+                        </ListItemIcon>
+                        <ListItemText
+                          className={styles.listItemText}
+                          primary={item.text}
+                        />
+                      </ListItemButton>
+                    </ListItem>
+                  </Link>
+                ))}
               </List>
             </div>
           </Drawer>
