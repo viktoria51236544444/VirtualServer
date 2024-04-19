@@ -7,9 +7,9 @@ import Box from "@mui/material/Box";
 import { Button } from "@mui/material";
 import CloudVPSIcon from "./orderServerIcons/CloudVPSIcon";
 import StorageVPSIcon from "./orderServerIcons/StorageVPSIcon";
-import CloudVDSIcon from "./CloudVDSIcon";
+import CloudVDSIcon from "./orderServerIcons/BareMetalIcon";
 import BareMetalIcon from "./orderServerIcons/BareMetalIcon";
-import ObjectStorageIcon from "./ObjectStorageIcon";
+import ObjectStorageIcon from "./orderServerIcons/ObjectStorageIcon";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;

@@ -333,7 +333,7 @@ const Configuration = () => {
             color="primary"
             className={style.button_resert}
             sx={{
-              backgroundColor: "#9694ff",
+              backgroundColor: "#7c8db5",
               border: "none",
               color: "white",
               height: "40px",
@@ -349,7 +349,7 @@ const Configuration = () => {
               color: "white",
               height: "40px",
               borderRadius: "5px",
-              backgroundColor: "#FF5F4A",
+              backgroundColor: "#7c8db5",
             }}
             variant="contained"
           >
