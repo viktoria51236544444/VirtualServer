@@ -8,6 +8,12 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import MenuItem from "@mui/material/MenuItem";
+import Menu from "@mui/material/Menu";
+import IconButton from "@mui/material/IconButton";
+import LanguageIcon from "@mui/icons-material/Language";
+import { useTranslation } from "react-i18next"; // Добавлено
+
 import styles from "./home.module.css";
 import Group1 from "./SidebarSvg/Group 2226.svg";
 import Group2 from "./SidebarSvg/Group 2215.svg";
@@ -22,34 +28,34 @@ const drawerWidth = 290;
 
 const navigationItems = {
   servers: {
-    text: "Мои сервера",
+    text: "servers", // Используйте ключи для перевода
     icon: Group1,
     link: "/myserver",
   },
   order: {
-    text: "Заказать сервер",
+    text: "order",
     icon: Group2,
     link: "/order",
   },
   config: {
-    text: "Конфигурация",
+    text: "config",
     icon: Group3,
     link: "/config",
   },
   tickets: {
-    text: "Мои тикеты",
+    text: "tickets",
     icon: Group4,
   },
   news: {
-    text: "Новости",
+    text: "news",
     icon: Group5,
   },
   questions: {
-    text: "Вопросы",
+    text: "questions",
     icon: Group6,
   },
   help: {
-    text: "Помощь",
+    text: "help",
     icon: Group7,
   },
 };
@@ -60,22 +66,30 @@ function Sidebar(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   const [selectedItem, setSelectedItem] = useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [selectedLanguage, setSelectedLanguage] = useState("ru");
 
   const handleItemClick = (item) => {
     setSelectedItem(item);
   };
 
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-    // Здесь вы можете добавить логику для изменения темы вашего приложения
-    // например, изменение классов, цветов или использование стилей из переменных состояния
+  const handleLanguageClick = (event) => {
+    setAnchorEl(event.currentTarget);
   };
+
+  const handleLanguageClose = (lang) => {
+    setAnchorEl(null);
+    setSelectedLanguage(lang);
+  };
+
+  const isMenuOpen = Boolean(anchorEl);
+
+  // Используйте хуки useTranslation для получения функций перевода
+  const { t } = useTranslation();
+
   return (
     <div className={styles.container}>
       <CssBaseline />
-      {/* Навбар */}
       <Box
         sx={{
           width: `calc(98% - ${drawerWidth}px)`,
@@ -95,16 +109,29 @@ function Sidebar(props) {
           <input
             className={styles.search__input}
             type="text"
-            placeholder="Search"
+            placeholder={t("search")}
           />
         </div>
 
         <div className={styles.navbarRight}>
-          <img
-            src="ссылка_на_иконку_смены_языка"
-            alt="сменить язык"
-            className={styles.navbarIcon}
-          />
+          <IconButton onClick={handleLanguageClick}>
+            <LanguageIcon />
+          </IconButton>
+          <Menu
+            anchorEl={anchorEl}
+            open={isMenuOpen}
+            onClose={() => handleLanguageClose(selectedLanguage)}
+          >
+            <MenuItem onClick={() => handleLanguageClose("ru")}>
+              Русский
+            </MenuItem>
+            <MenuItem onClick={() => handleLanguageClose("en")}>
+              English
+            </MenuItem>
+            <MenuItem onClick={() => handleLanguageClose("kg")}>
+              Кыргызча
+            </MenuItem>
+          </Menu>
         </div>
       </Box>
 
@@ -164,7 +191,7 @@ function Sidebar(props) {
                       </ListItemIcon>
                       <ListItemText
                         className={styles.listItemText}
-                        primary={item.text}
+                        primary={t(item.text)} // Используйте функцию перевода для текста
                       />
                     </ListItemButton>
                   </ListItem>
