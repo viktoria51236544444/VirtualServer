@@ -8,11 +8,9 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 9999;
-  width: 350px; /* Ширина формы */
+  width: 350px;
   padding: 20px;
-  border-radius: 20px; /* Выпуклые края */
-  /* background-color: white; Белый фон с прозрачностью */
-  /* box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);  */
+  border-radius: 20px;
 }
 
 #login_box .logo .logo_caption {
