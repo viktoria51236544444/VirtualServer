@@ -247,6 +247,16 @@ export default function Order() {
     },
   ];
 
+  const [hoveredExampleIndex, setHoveredExampleIndex] = React.useState(null);
+
+  // Обработчики событий для наведения курсора на элементы example
+  const handleMouseEnter = (index) => {
+    setHoveredExampleIndex(index);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredExampleIndex(null);
+  };
   return (
     <div>
       <Box
@@ -317,9 +327,14 @@ export default function Order() {
               {filteredExamples.map((example, idx) => (
                 <tr
                   key={idx}
+                  onMouseEnter={() => handleMouseEnter(idx)}
+                  onMouseLeave={handleMouseLeave}
                   style={{
                     borderBottom: "1px solid lightgrey",
                     padding: "5px",
+                    transform:
+                      hoveredExampleIndex === idx ? "scale(1.02)" : "scale(1)",
+                    transition: "transform 0.2s ease",
                   }}
                 >
                   {columnIndex[value].map((index, colIdx) => (
