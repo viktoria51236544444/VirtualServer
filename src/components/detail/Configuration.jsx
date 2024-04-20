@@ -219,7 +219,7 @@ const Configuration = () => {
       style={{
         display: "flex",
         marginLeft: "20%",
-        marginTop: "3%",
+        marginTop: "4%",
       }}
     >
       <div className={style.container__block1}>
@@ -343,7 +343,6 @@ const Configuration = () => {
           </button>
         </div>
       </div>
-      <Slider />
     </div>
   );
 };
