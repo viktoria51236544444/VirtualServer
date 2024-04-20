@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import style from "./detail.module.css";
 import { Button } from "@mui/material";
+import Slider from "./Slider";
 
 const Configuration = () => {
   const [selectedProcessor, setSelectedProcessor] = useState(null);
@@ -342,6 +343,7 @@ const Configuration = () => {
           </button>
         </div>
       </div>
+      <Slider />
     </div>
   );
 };
