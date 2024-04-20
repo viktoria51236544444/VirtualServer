@@ -57,7 +57,7 @@
 }
 
 .total_price_container {
-  margin-left: 3%;
+  margin-left: 1.5%;
   width: 30%;
   height: 50vh;
   background-color: white;
@@ -110,3 +110,62 @@
   background-color: #9694ff;
   box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
 }
+
+/* ! slider news  */
+.slider_container {
+  position: fixed;
+  margin-top: 2%;
+  right: 0;
+  margin-right: 2%;
+  width: 17%;
+  height: 80%;
+  overflow: hidden;
+  font-size: 12px;
+  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
+  font-family: Nunito !important;
+  color: #565b6b;
+}
+
+.slider {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.slide {
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.5s ease;
+}
+
+.content {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  top: 0;
+}
+.slider_container .content {
+  font-weight: normal !important;
+}
+.slider_button {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.slider_button:hover {
+  background-color: #0056b3;
+}
+/* ! slider news  */
