@@ -4,7 +4,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { Button } from "@mui/material";
+import { Button, Drawer, List, ListItem, ListItemText } from "@mui/material";
 import CloudVPSIcon from "./orderServerIcons/CloudVPSIcon";
 import StorageVPSIcon from "./orderServerIcons/StorageVPSIcon";
 import CloudVDSIcon from "./orderServerIcons/CloudVDSIcon";
@@ -47,226 +47,139 @@ function a11yProps(index) {
 export default function Order() {
   const [value, setValue] = React.useState(0);
   const [filteredExamples, setFilteredExamples] = React.useState([]);
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
+  const [selectedServer, setSelectedServer] = React.useState(null);
 
-  // const handleChange = (event, newValue) => {
-  //   setValue(newValue);
-  //   // Устанавливаем отфильтрованные примеры для текущей вкладки
-  //   setFilteredExamples(examples[newValue]);
-  // };
-
-  // Массивы столбцов и индексов столбцов для каждой вкладки
   const columns = [
-    ["Model", "CPU", "RAM", "Storage", "Data Transfer", "Price"],
-    ["Model", "CPU", "RAM", "Storage", "Port", "Data Transfer", "Price"],
-    ["Model", "CPU", "RAM", "Storage", "Port", "Data Transfer", "Price"],
-    ["Model", "CPU", "RAM", "Storage", "Port", "Data Transfer", "Price"],
-    ["Model", "CPU", "RAM", "Storage", "Data Transfer", "Price"],
+    ["Модель", "RAM", "CPU", "SSD Nvme", "Цена"],
+    ["Модель", "RAM", "CPU", "SSD Nvme", "Цена"],
+    ["Модель", "RAM", "CPU", "SSD Nvme", "Цена"],
+    ["Модель", "RAM", "CPU", "SSD Nvme", "Цена"],
   ];
 
   const columnIndex = [
-    [0, 1, 2, 3, 4, 5],
-    [0, 1, 2, 3, 4, 5, 6],
-    [0, 1, 2, 3, 4, 5],
-    [0, 1, 2, 3, 4, 5, 6],
-    [0, 1, 2, 3, 4, 5],
+    [0, 1, 2, 3, 4],
+    [0, 1, 2, 3, 4],
+    [0, 1, 2, 3, 4],
+    [0, 1, 2, 3, 4],
   ];
 
-  const examples = [
+  const servers = [
     [
       {
-        label: "Cloud VPS 1",
-        cpu: "4 vCPU Cores",
+        label: "VDS",
+        ram: "2 GB RAM",
+        cpu: "CPU 2",
+        ssd: "SSD nvme 32 Gb",
+        price: "475 сомов",
+      },
+      {
+        label: "VDS",
+        ram: "2 GB RAM",
+        cpu: "CPU 2",
+        ssd: "SSD nvme 32 Gb",
+        price: "475 сомов",
+      },
+      {
+        label: "VDS",
+        ram: "2 GB RAM",
+        cpu: "CPU 2",
+        ssd: "SSD nvme 32 Gb",
+        price: "475 сомов",
+      },
+    ],
+    [
+      {
+        label: "VDS",
+        ram: "4 GB RAM",
+        cpu: "CPU 4",
+        ssd: "SSD nvme 32 Gb",
+        price: "750 сомов",
+      },
+      {
+        label: "VDS",
+        ram: "4 GB RAM",
+        cpu: "CPU 4",
+        ssd: "SSD nvme 32 Gb",
+        price: "750 сомов",
+      },
+      {
+        label: "VDS",
+        ram: "4 GB RAM",
+        cpu: "CPU 4",
+        ssd: "SSD nvme 32 Gb",
+        price: "750 сомов",
+      },
+    ],
+    [
+      {
+        label: "VDS",
         ram: "6 GB RAM",
-        storage: ["100 GB NVMe", "400 GB SSD"],
-        dataTransfer: ["32 TB Traffic", "Unlimited Incoming"],
-        price: " $10.75 / month",
+        cpu: "CPU 6",
+        ssd: "SSD nvme 32 Gb",
+        price: "900 сомов",
       },
       {
-        label: "Cloud VPS 2",
-        cpu: "5 vCPU Cores",
-        ram: "7 GB RAM",
-        storage: ["200 GB NVMe", "400 GB SSD"],
-        dataTransfer: ["32 TB Traffic", "Unlimited Incoming "],
-        price: " $10.75 / month",
+        label: "VDS",
+        ram: "6 GB RAM",
+        cpu: "CPU 6",
+        ssd: "SSD nvme 32 Gb",
+        price: "900 сомов",
       },
       {
-        label: "Cloud VPS 3",
-        cpu: "5 vCPU Cores",
-        ram: "7 GB RAM",
-        storage: ["200 GB NVMe", "400 GB SSD"],
-        dataTransfer: ["32 TB Traffic", "Unlimited Incoming "],
-        price: " $10.75 / month",
-      },
-      {
-        label: "Cloud VPS 4",
-        cpu: "5 vCPU Cores",
-        ram: "7 GB RAM",
-        storage: ["200 GB NVMe", "400 GB SSD"],
-        dataTransfer: ["32 TB Traffic", "Unlimited Incoming "],
-        price: " $10.75 / month",
+        label: "VDS",
+        ram: "6 GB RAM",
+        cpu: "CPU 6",
+        ssd: "SSD nvme 32 Gb",
+        price: "900 сомов",
       },
     ],
     [
       {
-        label: "Storage VPS 1",
-        cpu: "2 vCPU Cores",
-        ram: "3 GB RAM",
-        storage: ["800 GB SSD"],
-        port: "200 Mbit/s Port",
-        dataTransfer: ["32 TB Traffic", "Unlimited Incoming "],
-        price: "$7.75 / month",
+        label: "VDS",
+        ram: "8 GB RAM",
+        cpu: "CPU 8",
+        ssd: "SSD nvme 64 Gb",
+        price: "1500 сомов",
       },
       {
-        label: "Storage VPS 2",
-        cpu: "2 vCPU Cores",
-        ram: "3 GB RAM",
-        storage: ["800 GB SSD"],
-        port: "200 Mbit/s Port",
-        dataTransfer: ["32 TB Traffic", "Unlimited Incoming "],
-        price: "$7.75 / month",
+        label: "VDS",
+        ram: "8 GB RAM",
+        cpu: "CPU 8",
+        ssd: "SSD nvme 64 Gb",
+        price: "1500 сомов",
       },
       {
-        label: "Storage VPS 3",
-        cpu: "2 vCPU Cores",
-        ram: "3 GB RAM",
-        storage: ["800 GB SSD"],
-        port: "200 Mbit/s Port",
-        dataTransfer: ["32 TB Traffic", "Unlimited Incoming "],
-        price: "$7.75 / month",
-      },
-    ],
-    [
-      {
-        label: "Cloud VDS S",
-        cpu: ["3 Physical Cores", "AMD EPYC 7282 2.8 GHz"],
-        ram: "24 GB RAM",
-        storage: ["180 GB NVMe", "More storage available"],
-        port: "200 Mbit/s Port",
-        dataTransfer: ["250 Mbit/s Port", "Unlimited Available"],
-        price: "$57.27 / month",
-      },
-      {
-        label: "Cloud VDS S",
-        cpu: ["3 Physical Cores", "AMD EPYC 7282 2.8 GHz"],
-        ram: "24 GB RAM",
-        storage: ["180 GB NVMe", "More storage available"],
-        port: "200 Mbit/s Port",
-        dataTransfer: ["250 Mbit/s Port", "Unlimited Available"],
-        price: "$57.27 / month",
-      },
-      {
-        label: "Cloud VDS S",
-        cpu: ["3 Physical Cores", "AMD EPYC 7282 2.8 GHz"],
-        ram: "24 GB RAM",
-        storage: ["180 GB NVMe", "More storage available"],
-        port: "200 Mbit/s Port",
-        dataTransfer: ["250 Mbit/s Port", "Unlimited Available"],
-        price: "$57.27 / month",
-      },
-      {
-        label: "Cloud VDS S",
-        cpu: ["3 Physical Cores", "AMD EPYC 7282 2.8 GHz"],
-        ram: "24 GB RAM",
-        storage: ["180 GB NVMe", "More storage available"],
-        port: "200 Mbit/s Port",
-        dataTransfer: ["250 Mbit/s Port", "Unlimited Available"],
-        price: "$57.27 / month",
-      },
-    ],
-    [
-      {
-        label: "AMD Ryzen 12",
-        cpu: ["AMD Ryzen 9 7900", "12 x 3.70 GHz"],
-        ram: ["64 GB REG ECC", "Up to 128 GB RAM"],
-        storage: ["1 TB NVMe", "More storage available"],
-        port: "1 Gbit/s Port",
-        dataTransfer: ["1 Gbit/s Port", " Up to 324 TB"],
-        price: "$149.04 / month",
-      },
-      {
-        label: "AMD Ryzen 12",
-        cpu: ["AMD Ryzen 9 7900", "12 x 3.70 GHz"],
-        ram: ["64 GB REG ECC", "Up to 128 GB RAM"],
-        storage: ["1 TB NVMe", "More storage available"],
-        port: "1 Gbit/s Port",
-        dataTransfer: ["1 Gbit/s Port", " Up to 324 TB"],
-        price: "$149.04 / month",
-      },
-      {
-        label: "AMD Ryzen 12",
-        cpu: ["AMD Ryzen 9 7900", "12 x 3.70 GHz"],
-        ram: ["64 GB REG ECC", "Up to 128 GB RAM"],
-        storage: ["1 TB NVMe", "More storage available"],
-        port: "1 Gbit/s Port",
-        dataTransfer: ["1 Gbit/s Port", " Up to 324 TB"],
-        price: "$149.04 / month",
-      },
-      {
-        label: "AMD Ryzen 12",
-        cpu: ["AMD Ryzen 9 7900", "12 x 3.70 GHz"],
-        ram: ["64 GB REG ECC", "Up to 128 GB RAM"],
-        storage: ["1 TB NVMe", "More storage available"],
-        port: "1 Gbit/s Port",
-        dataTransfer: ["1 Gbit/s Port", " Up to 324 TB"],
-        price: "$149.04 / month",
-      },
-    ],
-    [
-      {
-        label: "250 GB Object Storage",
-        cpu: ["AMD Ryzen 9 7900", "12 x 3.70 GHz"],
-        ram: ["64 GB REG ECC", "Up to 128 GB RAM"],
-        storage: ["1 TB NVMe", "More storage available"],
-
-        dataTransfer: ["1 Gbit/s Port", " Up to 324 TB"],
-        price: "$3.39 / month",
-      },
-      {
-        label: "350 GB Object Storage",
-        cpu: ["AMD Ryzen 9 7900", "12 x 3.70 GHz"],
-        ram: ["64 GB REG ECC", "Up to 128 GB RAM"],
-        storage: ["1 TB NVMe", "More storage available"],
-
-        dataTransfer: ["1 Gbit/s Port", " Up to 324 TB"],
-        price: "$3.39 / month",
-      },
-      {
-        label: "450 GB Object Storage",
-        cpu: ["AMD Ryzen 9 7900", "12 x 3.70 GHz"],
-        ram: ["64 GB REG ECC", "Up to 128 GB RAM"],
-        storage: ["1 TB NVMe", "More storage available"],
-
-        dataTransfer: ["1 Gbit/s Port", " Up to 324 TB"],
-        price: "$3.39 / month",
+        label: "VDS",
+        ram: "8 GB RAM",
+        cpu: "CPU 8",
+        ssd: "SSD nvme 64 Gb",
+        price: "1500 сомов",
       },
     ],
   ];
 
   // Изначально устанавливаем примеры для первой вкладки
   React.useEffect(() => {
-    setFilteredExamples(examples[value]);
-  }, [value, examples]);
+    setFilteredExamples(servers[value]);
+  }, [value, servers]);
 
   const tabsContent = [
     {
-      label: "Cloud VPS",
+      label: "VDS 2GB",
       icon: <CloudVPSIcon width={24} height={24} />,
     },
     {
-      label: "Storage VPS",
+      label: "VDS 4GB",
       icon: <StorageVPSIcon width={24} height={24} />,
     },
     {
-      label: "Cloud VDS",
+      label: "VDS 6GB",
       icon: <CloudVDSIcon width={24} height={24} />,
     },
     {
-      label: "Bare Metal",
+      label: "VDS 8GB",
       icon: <BareMetalIcon width={24} height={24} />,
-    },
-    {
-      label: "Object Storage",
-      icon: <ObjectStorageIcon width={24} height={24} />,
     },
   ];
 
@@ -278,28 +191,40 @@ export default function Order() {
   const handleMouseLeave = () => {
     setHoveredExampleIndex(null);
   };
+
+  const handleOrderClick = (server) => {
+    setSelectedServer(server);
+    setDrawerOpen(true);
+  };
+
+  const handleCloseDrawer = () => {
+    setDrawerOpen(false);
+  };
+
   const [activeTab, setActiveTab] = React.useState(0);
   const handleActive = (event, newValue) => {
     setActiveTab(newValue);
     setValue(newValue);
     // Устанавливаем отфильтрованные примеры для текущей вкладки
-    setFilteredExamples(examples[newValue]);
+    setFilteredExamples(servers[newValue]);
   };
 
   return (
-    <div>
+    <div style={{ overflow: "hidden" }}>
       <Box
         sx={{
           marginLeft: "24%",
           marginTop: "3%",
           fontFamily: "Nunito",
+          width: "70%",
+          minHeight: "40vh",
         }}
       >
         <Tabs
           value={value}
           onChange={handleActive}
           aria-label="basic tabs example"
-          style={{ marginLeft: "-5%", width: "100%" }}
+          style={{ marginLeft: "-5%", width: "140%" }}
         >
           {tabsContent.map((tab, index) => (
             <Tab
@@ -332,7 +257,7 @@ export default function Order() {
           <table
             style={{
               borderCollapse: "collapse",
-              width: "104.4%",
+              width: "117%",
               marginLeft: "-7.5%",
               marginTop: "-3%",
               backgroundColor: "white",
@@ -353,14 +278,14 @@ export default function Order() {
               </tr>
             </thead>
             <tbody>
-              {filteredExamples.map((example, idx) => (
+              {filteredExamples.map((servers, idx) => (
                 <tr
                   key={idx}
                   onMouseEnter={() => handleMouseEnter(idx)}
                   onMouseLeave={handleMouseLeave}
                   style={{
                     borderBottom: "1px solid lightgrey",
-                    padding: "5px",
+
                     transform:
                       hoveredExampleIndex === idx ? "scale(1.02)" : "scale(1)",
                     transition: "transform 0.2s ease",
@@ -370,15 +295,15 @@ export default function Order() {
                     <td
                       key={colIdx}
                       style={{
-                        lineHeight: "2",
-                        paddingLeft: "20px",
-                        fontSize: "14px",
+                        lineHeight: "8",
+                        paddingLeft: "30px",
+                        fontSize: "16px",
                       }}
                     >
                       {/* Если значение - массив, отображаем каждый элемент на новой строке */}
-                      {Array.isArray(example[Object.keys(example)[index]]) ? (
+                      {Array.isArray(servers[Object.keys(servers)[index]]) ? (
                         <>
-                          {example[Object.keys(example)[index]].map(
+                          {servers[Object.keys(servers)[index]].map(
                             (item, itemIdx) => (
                               <div key={itemIdx}>{item}</div>
                             )
@@ -386,7 +311,7 @@ export default function Order() {
                         </>
                       ) : (
                         // Если значение - не массив, просто отображаем его
-                        example[Object.keys(example)[index]]
+                        servers[Object.keys(servers)[index]]
                       )}
                     </td>
                   ))}
@@ -394,6 +319,7 @@ export default function Order() {
                     <Button
                       variant="outlined"
                       style={{ marginLeft: "10px", verticalAlign: "middle" }}
+                      onClick={() => handleOrderClick(servers)}
                     >
                       Заказать
                     </Button>
@@ -404,6 +330,75 @@ export default function Order() {
           </table>
         </CustomTabPanel>
       </Box>
+
+      <Drawer anchor="right" open={drawerOpen} onClose={handleCloseDrawer}>
+        <div
+          style={{
+            width: "300px",
+            padding: "20px",
+          }}
+        >
+          <Typography variant="h6" gutterBottom>
+            Полная характеристика
+          </Typography>
+          {selectedServer && (
+            <List>
+              <ListItem>
+                <ListItemText primary={`Модель: ${selectedServer.label}`} />
+              </ListItem>
+              <ListItem>
+                <ListItemText primary={`RAM: ${selectedServer.ram}`} />
+              </ListItem>
+              <ListItem>
+                <ListItemText primary={`CPU: ${selectedServer.cpu}`} />
+              </ListItem>
+              <ListItem>
+                <ListItemText primary={`SSD: ${selectedServer.ssd}`} />
+              </ListItem>
+              <ListItem>
+                <ListItemText primary={`Цена: ${selectedServer.price}`} />
+              </ListItem>
+            </List>
+          )}
+
+          <Typography variant="h6" gutterBottom style={{ marginTop: "20px" }}>
+            Реквизиты оплаты
+          </Typography>
+          <List>
+            <ListItem>
+              <ListItemText primary="На Мбанк: 996557070199" />
+            </ListItem>
+            <ListItem>
+              <ListItemText primary="На Оптима банк: 4169585344332211" />
+            </ListItem>
+          </List>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <Button
+              component="label"
+              style={{ backgroundColor: "#9694ff", color: "white" }}
+            >
+              Прикрепить чек
+              <input type="file" style={{ display: "none" }} />
+            </Button>
+
+            <Button
+              style={{
+                backgroundColor: "#7694ff",
+                color: "white",
+                marginTop: "3%",
+              }}
+              onClick={handleCloseDrawer}
+            >
+              Заказать
+            </Button>
+          </div>
+        </div>
+      </Drawer>
     </div>
   );
 }
