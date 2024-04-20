@@ -13,7 +13,6 @@ import Menu from "@mui/material/Menu";
 import IconButton from "@mui/material/IconButton";
 import LanguageIcon from "@mui/icons-material/Language";
 import { useTranslation } from "react-i18next"; // Добавлено
-
 import styles from "./home.module.css";
 import Group1 from "./SidebarSvg/Group 2226.svg";
 import Group2 from "./SidebarSvg/Group 2215.svg";
@@ -28,38 +27,37 @@ const drawerWidth = 290;
 
 const navigationItems = {
   servers: {
-    text: "servers", // Используйте ключи для перевода
+    text: "Мои сервера",
     icon: Group1,
     link: "/myserver",
   },
   order: {
-    text: "order",
+    text: "Заказать сервер",
     icon: Group2,
     link: "/order",
   },
   config: {
-    text: "config",
+    text: "Конфигурация",
     icon: Group3,
     link: "/config",
   },
   tickets: {
-    text: "tickets",
+    text: "Мои тикеты",
     icon: Group4,
   },
   news: {
-    text: "news",
+    text: "Новости",
     icon: Group5,
   },
   questions: {
-    text: "questions",
+    text: "Вопросы",
     icon: Group6,
   },
   help: {
-    text: "help",
+    text: "Помощь",
     icon: Group7,
   },
 };
-
 function Sidebar(props) {
   const { window } = props;
   const container =
