@@ -114,14 +114,13 @@
   position: absolute;
   top: 0;
   right: 0;
-  margin-top: 6%;
+  margin-top: 6.2%;
   width: 300px;
   padding: 20px;
   background-color: #f4f4f4;
   border-left: 1px solid #ccc;
   max-height: 80vh;
   overflow-y: auto;
-  z-index: -1;
 }
 
 .slide {
