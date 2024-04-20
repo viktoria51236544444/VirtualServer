@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./auth.module.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Link } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Auth = () => {
   useEffect(() => {
@@ -28,7 +28,7 @@ const Auth = () => {
             value: 30,
             density: {
               enable: true,
-              value_area: 500,
+              value_area: 400,
             },
           },
           color: {
@@ -142,17 +142,29 @@ const Auth = () => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  const [isValidData, setIsValidData] = useState(false);
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!username || !password) {
       toast.error("Пожалуйста, заполните все поля.");
     } else {
-      // Проверка других условий, например, валидация email и пароля
-      // Если не прошли валидацию, отображаем соответствующее сообщение об ошибке
-      toast.error("Пожалуйста, введите правильный email и пароль.");
+      // Проверка правильности введенных данных
+      if (username === "admin@gmail.com" && password === "654321") {
+        // Если данные правильные, устанавливаем флаг в true
+        setIsValidData(true);
+      } else {
+        // Если данные неправильные, показываем ошибку
+        toast.error("Пожалуйста, введите правильный email и пароль.");
+      }
     }
   };
+  useEffect(() => {
+    if (isValidData) {
+      // Если данные правильные, перенаправляем на "/home"
+      navigate("/home");
+    }
+  }, [isValidData, navigate]);
 
   return (
     <div className={styles.auth_container}>
@@ -178,14 +190,13 @@ const Auth = () => {
               onChange={(e) => setPassword(e.target.value)}
               className={styles.form_control}
             />
-            <Link to={"/home"}>
-              <button
-                type="submit"
-                className={`${styles.btn} ${styles.btn_default} ${styles.btn_block} ${styles.btn_custom}`}
-              >
-                Войти
-              </button>
-            </Link>
+
+            <button
+              type="submit"
+              className={`${styles.btn} ${styles.btn_default} ${styles.btn_block} ${styles.btn_custom}`}
+            >
+              Войти
+            </button>
           </form>
         </div>
       </div>

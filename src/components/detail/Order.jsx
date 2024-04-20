@@ -48,11 +48,11 @@ export default function Order() {
   const [value, setValue] = React.useState(0);
   const [filteredExamples, setFilteredExamples] = React.useState([]);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-    // Устанавливаем отфильтрованные примеры для текущей вкладки
-    setFilteredExamples(examples[newValue]);
-  };
+  // const handleChange = (event, newValue) => {
+  //   setValue(newValue);
+  //   // Устанавливаем отфильтрованные примеры для текущей вкладки
+  //   setFilteredExamples(examples[newValue]);
+  // };
 
   // Массивы столбцов и индексов столбцов для каждой вкладки
   const columns = [
@@ -60,7 +60,7 @@ export default function Order() {
     ["Model", "CPU", "RAM", "Storage", "Port", "Data Transfer", "Price"],
     ["Model", "CPU", "RAM", "Storage", "Port", "Data Transfer", "Price"],
     ["Model", "CPU", "RAM", "Storage", "Port", "Data Transfer", "Price"],
-    ["Model", "Price"],
+    ["Model", "CPU", "RAM", "Storage", "Data Transfer", "Price"],
   ];
 
   const columnIndex = [
@@ -68,7 +68,7 @@ export default function Order() {
     [0, 1, 2, 3, 4, 5, 6],
     [0, 1, 2, 3, 4, 5],
     [0, 1, 2, 3, 4, 5, 6],
-    [0, 5],
+    [0, 1, 2, 3, 4, 5],
   ];
 
   const examples = [
@@ -213,7 +213,30 @@ export default function Order() {
     ],
     [
       {
-        label: "250 GB Object Storage in Singapore",
+        label: "250 GB Object Storage",
+        cpu: ["AMD Ryzen 9 7900", "12 x 3.70 GHz"],
+        ram: ["64 GB REG ECC", "Up to 128 GB RAM"],
+        storage: ["1 TB NVMe", "More storage available"],
+
+        dataTransfer: ["1 Gbit/s Port", " Up to 324 TB"],
+        price: "$3.39 / month",
+      },
+      {
+        label: "350 GB Object Storage",
+        cpu: ["AMD Ryzen 9 7900", "12 x 3.70 GHz"],
+        ram: ["64 GB REG ECC", "Up to 128 GB RAM"],
+        storage: ["1 TB NVMe", "More storage available"],
+
+        dataTransfer: ["1 Gbit/s Port", " Up to 324 TB"],
+        price: "$3.39 / month",
+      },
+      {
+        label: "450 GB Object Storage",
+        cpu: ["AMD Ryzen 9 7900", "12 x 3.70 GHz"],
+        ram: ["64 GB REG ECC", "Up to 128 GB RAM"],
+        storage: ["1 TB NVMe", "More storage available"],
+
+        dataTransfer: ["1 Gbit/s Port", " Up to 324 TB"],
         price: "$3.39 / month",
       },
     ],
@@ -247,6 +270,22 @@ export default function Order() {
     },
   ];
 
+  const [hoveredExampleIndex, setHoveredExampleIndex] = React.useState(null);
+  const handleMouseEnter = (index) => {
+    setHoveredExampleIndex(index);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredExampleIndex(null);
+  };
+  const [activeTab, setActiveTab] = React.useState(0);
+  const handleActive = (event, newValue) => {
+    setActiveTab(newValue);
+    setValue(newValue);
+    // Устанавливаем отфильтрованные примеры для текущей вкладки
+    setFilteredExamples(examples[newValue]);
+  };
+
   return (
     <div>
       <Box
@@ -258,7 +297,7 @@ export default function Order() {
       >
         <Tabs
           value={value}
-          onChange={handleChange}
+          onChange={handleActive}
           aria-label="basic tabs example"
           style={{ marginLeft: "-5%", width: "100%" }}
         >
@@ -283,7 +322,7 @@ export default function Order() {
                 boxShadow: "0 10px 20px rgba(0, 0, 0, 0.2)",
                 minHeight: "9vh",
                 width: "20%",
-                backgroundColor: "#57caeb",
+                backgroundColor: activeTab === index ? "lightblue" : "#7c8db5", // Изменяем цвет фона в зависимости от активной вкладки
                 color: "white",
               }}
             />
@@ -317,9 +356,14 @@ export default function Order() {
               {filteredExamples.map((example, idx) => (
                 <tr
                   key={idx}
+                  onMouseEnter={() => handleMouseEnter(idx)}
+                  onMouseLeave={handleMouseLeave}
                   style={{
                     borderBottom: "1px solid lightgrey",
                     padding: "5px",
+                    transform:
+                      hoveredExampleIndex === idx ? "scale(1.02)" : "scale(1)",
+                    transition: "transform 0.2s ease",
                   }}
                 >
                   {columnIndex[value].map((index, colIdx) => (
