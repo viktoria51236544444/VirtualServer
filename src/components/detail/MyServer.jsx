@@ -183,9 +183,9 @@ export default function MyServer() {
     <Paper
       style={{
         height: 500,
-        width: "60%",
-        marginLeft: "20%",
-        marginTop: "3%",
+        width: "70%",
+        marginLeft: "25%",
+        marginTop: "4%",
         borderRadius: 15,
         overflow: "hidden",
         boxShadow: "0 10px 20px rgba(0, 0, 0, 0.2)",
