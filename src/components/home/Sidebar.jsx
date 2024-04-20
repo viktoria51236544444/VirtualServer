@@ -12,7 +12,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import IconButton from "@mui/material/IconButton";
 import LanguageIcon from "@mui/icons-material/Language";
-import { useTranslation } from "react-i18next"; // Добавлено
+import { useTranslation } from "react-i18next";
 import styles from "./home.module.css";
 import Group1 from "./SidebarSvg/Group 2226.svg";
 import Group2 from "./SidebarSvg/Group 2215.svg";
@@ -22,7 +22,7 @@ import Group5 from "./SidebarSvg/Group 2201.svg";
 import Group6 from "./SidebarSvg/Group 2225.svg";
 import Group7 from "./SidebarSvg/Group 2220.svg";
 import Group26 from "./SidebarSvg/Group 26.svg";
-import { Button } from "@mui/material";
+import { Modal, Backdrop, Fade, Button } from "@mui/material";
 
 const drawerWidth = 290;
 
@@ -84,6 +84,13 @@ function Sidebar(props) {
   const isMenuOpen = Boolean(anchorEl);
 
   const { t } = useTranslation();
+  const [openModal, setOpenModal] = useState(false);
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
 
   return (
     <div className={styles.container}>
@@ -120,7 +127,58 @@ function Sidebar(props) {
         >
           <p>2000$</p>
           <img style={{ width: "40px" }} src={Group26} alt="" />
-          <Button>Пополнить</Button>
+          <Button onClick={handleOpenModal}>Пополнить</Button>
+          <Modal
+            aria-labelledby="transition-modal-title"
+            aria-describedby="transition-modal-description"
+            open={openModal}
+            onClose={handleCloseModal}
+            closeAfterTransition
+          >
+            <Fade
+              style={{
+                marginLeft: "35%",
+                marginTop: "5%",
+                borderRadius: "10px",
+                width: "30%",
+                height: "40%",
+                boxShadow: "0 10px 20px rgba(0, 0, 0, 0.2)",
+                textAlign: "center",
+              }}
+              in={openModal}
+            >
+              <div
+                style={{
+                  backgroundColor: "white",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "flex-end",
+                  alignItems: "center",
+                  padding: "80px",
+                }}
+                className={styles.modal}
+              >
+                <h2 id="transition-modal-title">Как можно пополнить</h2>
+                <p style={{ margin: "15" }}>О!Деньги: 996501304053</p>
+                <p style={{ margin: "0" }}>Mbank: 996501304053</p>
+                <Button
+                  variant="contained"
+                  component="label"
+                  style={{
+                    transition: "background-color 0.3s",
+                    marginBottom: "-15%",
+                    marginTop: "15%",
+                    "&:hover": {
+                      backgroundColor: "#4caf50",
+                    },
+                  }}
+                >
+                  Прикрепить чек
+                  <input type="file" style={{ display: "none" }} />
+                </Button>
+              </div>
+            </Fade>
+          </Modal>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
           <svg
