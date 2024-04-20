@@ -100,7 +100,7 @@ const Slider = () => {
   };
 
   return (
-    <div className={styles.slider_container}>
+    <div className={styles.slider_container2}>
       <div ref={sliderRef}></div>
       <div className={styles.slider}>
         {slides[currentSet] &&

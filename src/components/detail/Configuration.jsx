@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import style from "./detail.module.css";
-import { Button } from "@mui/material";
-import Slider from "./Slider";
+import { Modal, Backdrop, Fade, Button } from "@mui/material";
 
 const Configuration = () => {
   const [selectedProcessor, setSelectedProcessor] = useState(null);
@@ -213,6 +212,18 @@ const Configuration = () => {
     setSelectedKVM(false);
     setSelectedPrivateNetwork(false);
   };
+
+  const [openModal, setOpenModal] = useState(false);
+
+  // Функция для открытия модального окна пополнения
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+
+  // Функция для закрытия модального окна пополнения
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
   return (
     <div
       className={style.configuration_container}
@@ -336,11 +347,71 @@ const Configuration = () => {
             Сбросить фильтры
           </button>
           <button
+            onClick={handleOpenModal}
             style={{ width: "110px" }}
             className={`${style.button} ${style.button_order}`}
           >
             Заказать
           </button>
+          <Modal
+            aria-labelledby="transition-modal-title"
+            aria-describedby="transition-modal-description"
+            open={openModal}
+            onClose={handleCloseModal}
+            closeAfterTransition
+          >
+            <Fade
+              style={{
+                marginLeft: "30%",
+                marginTop: "3%",
+                borderRadius: "10px",
+                width: "40%",
+                height: "80%",
+                boxShadow: "0 10px 20px rgba(0, 0, 0, 0.2)",
+                textAlign: "center",
+              }}
+              in={openModal}
+            >
+              <div
+                style={{
+                  backgroundColor: "white",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "flex-end",
+                  alignItems: "center",
+                  padding: "90px",
+                }}
+                className={style.modal}
+              >
+                <h3>Общая сумма: {totalPrice} сом в месяц</h3>
+                <div className={style.selected_options}>
+                  {selectedOptions.map((option, index) => (
+                    <div key={index} className={style.selected_option}>
+                      {option.name}: {option.value}
+                    </div>
+                  ))}
+                </div>
+                <h2 id="transition-modal-title">Как можно оплатить</h2>
+                <p style={{ margin: "10" }}>О!Деньги: 996501304053</p>
+                <p style={{ margin: "0" }}>Mbank: 996501304053</p>
+                <Button
+                  variant="contained"
+                  component="label"
+                  style={{
+                    transition: "background-color 0.3s",
+                    marginBottom: "-10%",
+                    marginTop: "5%",
+                    "&:hover": {
+                      backgroundColor: "#4caf50",
+                    },
+                  }}
+                >
+                  Прикрепить чек
+                  <input type="file" style={{ display: "none" }} />
+                </Button>
+              </div>
+            </Fade>
+          </Modal>
         </div>
       </div>
     </div>
