@@ -39,15 +39,12 @@
   margin: 15% 0% 15% 6%;
   border-radius: 10px;
 }
-.container__header_sidebar {
-  display: flex;
-  gap: 4%;
-  text-align: center;
-  align-items: center;
-}
+
 .container__header_sidebar p {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: bold;
+  margin-left: 5%;
+  margin-top: 15%;
 }
 
 .search__input {

@@ -22,6 +22,7 @@ import Group5 from "./SidebarSvg/Group 2201.svg";
 import Group6 from "./SidebarSvg/Group 2225.svg";
 import Group7 from "./SidebarSvg/Group 2220.svg";
 import Group26 from "./SidebarSvg/Group 26.svg";
+import { Button } from "@mui/material";
 
 const drawerWidth = 290;
 
@@ -82,7 +83,6 @@ function Sidebar(props) {
 
   const isMenuOpen = Boolean(anchorEl);
 
-  // Используйте хуки useTranslation для получения функций перевода
   const { t } = useTranslation();
 
   return (
@@ -110,7 +110,31 @@ function Sidebar(props) {
             placeholder={t("search")}
           />
         </div>
-
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "flex-end",
+            alignItems: "center",
+            marginLeft: "30%",
+          }}
+        >
+          <p>2000$</p>
+          <img style={{ width: "40px" }} src={Group26} alt="" />
+          <Button>Пополнить</Button>
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-person"
+            viewBox="0 0 16 16"
+          >
+            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
+          </svg>
+          <p>admin@gmail.com</p>
+        </div>
         <div className={styles.navbarRight}>
           <IconButton onClick={handleLanguageClick}>
             <LanguageIcon />
@@ -158,16 +182,9 @@ function Sidebar(props) {
           open
         >
           <div className={styles.container__header_sidebar}>
-            <img
-              className={styles.img_user}
-              src="https://zuramai.github.io/mazer/demo/assets/compiled/jpg/5.jpg"
-              alt=""
-            />
-            <Link to={"/auth"} style={{ textDecoration: "none" }}>
-              <p>Виктория</p>
+            <Link to={"/"} style={{ textDecoration: "none" }}>
+              <p>Business Soft</p>
             </Link>
-            <p style={{ marginLeft: "6%" }}>2000$</p>
-            <img style={{ width: "40px" }} src={Group26} alt="" />
           </div>
           <div>
             <List>
@@ -189,7 +206,7 @@ function Sidebar(props) {
                       </ListItemIcon>
                       <ListItemText
                         className={styles.listItemText}
-                        primary={t(item.text)} // Используйте функцию перевода для текста
+                        primary={t(item.text)}
                       />
                     </ListItemButton>
                   </ListItem>
