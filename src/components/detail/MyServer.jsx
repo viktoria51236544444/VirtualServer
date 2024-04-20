@@ -8,6 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { TableVirtuoso } from "react-virtuoso";
 import Box from "@mui/material/Box";
+import Slider from "./Slider";
 
 const localServersData = [
   {
@@ -191,6 +192,7 @@ export default function MyServer() {
         boxShadow: "0 10px 20px rgba(0, 0, 0, 0.2)",
       }}
     >
+      <Slider />
       <TableVirtuoso
         data={localServersData}
         components={VirtuosoTableComponents}
