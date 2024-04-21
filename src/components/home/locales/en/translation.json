@@ -1,10 +1,10 @@
 {
   "search": "Search",
-  "servers": "Servers",
-  "order": "Order",
-  "config": "Configuration",
-  "tickets": "Tickets",
-  "news": "News",
-  "questions": "Questions",
-  "help": "Help"
+  "Мои сервера": "My Servers",
+  "Заказать сервер": "Order Server",
+  "Конфигурация": "Configuration",
+  "Мои тикеты": "My Tickets",
+  "Новости": "News",
+  "Вопросы": "Questions",
+  "Помощь": "Help"
 }
