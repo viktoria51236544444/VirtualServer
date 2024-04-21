@@ -6,7 +6,6 @@ const Slider = () => {
   const [slides, setSlides] = useState([]);
   const sliderRef = useRef(null);
 
-  // Массив новостей
   const newsData = [
     {
       title: "Заголовок новости 1",
