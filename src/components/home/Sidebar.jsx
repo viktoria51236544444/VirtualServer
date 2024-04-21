@@ -53,6 +53,7 @@ const navigationItems = {
   questions: {
     text: "Вопросы",
     icon: Group6,
+    link: "/questions",
   },
   help: {
     text: "Помощь",
