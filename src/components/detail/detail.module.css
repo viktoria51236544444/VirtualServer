@@ -4,17 +4,15 @@
 }
 
 .dropbtn {
-  background-color: #7c8db5;
+  background-color: #54b548;
   color: white;
-  padding: 10px;
-  font-size: 16px;
+  font-size: 14px;
   border: none;
   cursor: pointer;
   border-radius: 4px;
-  width: 200px;
-  height: 60px;
+  width: 150px;
+  height: 45px;
   text-transform: uppercase;
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .dropdown_content {
@@ -22,9 +20,7 @@
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   z-index: 1;
-  border-radius: 5px;
 }
 
 .dropdown_content label {
@@ -50,10 +46,9 @@
   height: 60vh;
   background-color: white;
   text-align: center;
-  border-radius: 20px;
+  border-radius: 5px;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .total_price_container {
@@ -61,10 +56,9 @@
   width: 35%;
   height: 50vh;
   background-color: white;
-  border-radius: 20px;
+  border-radius: 5px;
   text-align: center;
   margin-top: 5%;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .configuration_container {
@@ -97,18 +91,28 @@
 .button {
   border: none;
   color: white;
-  height: 45px;
+  height: 50px;
   border-radius: 5px;
   cursor: pointer;
   background-color: #7c8db5;
   transition: all 0.3s ease;
-  box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.1);
 }
-
+.button2 {
+  border: none;
+  color: white;
+  height: 50px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #54b548;
+  transition: all 0.3s ease;
+}
 .button:hover {
   transform: scale(1.05);
   background-color: #9694ff;
-  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
+}
+.button2:hover {
+  transform: scale(1.05);
+  background-color: #5ecc50;
 }
 .slider_container2 {
   position: absolute;
@@ -116,8 +120,8 @@
   right: 0;
   margin-top: 6.2%;
   width: 300px;
-  padding: 20px;
-  background-color: #f4f4f4;
+  padding: 30px;
+  background-color: #e0dddd;
   border-left: 1px solid #ccc;
   max-height: 80vh;
   overflow-y: auto;
@@ -129,11 +133,19 @@
 
 .content {
   background-color: rgba(255, 255, 255, 0.8);
-  padding: 20px;
-  border-radius: 10px;
+  padding: 8px;
+  border-radius: 8px;
   text-align: justify;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+
   margin-bottom: 20px;
+}
+
+.content h3 {
+  font-size: 16px;
+}
+
+.content p {
+  font-size: 14px;
 }
 
 .slider_button {
@@ -144,7 +156,7 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+
   margin-top: 20px;
 }
 

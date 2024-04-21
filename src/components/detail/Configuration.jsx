@@ -225,193 +225,440 @@ const Configuration = () => {
     setOpenModal(false);
   };
   return (
-    <div
-      className={style.configuration_container}
-      style={{
-        display: "flex",
-        marginLeft: "20%",
-        marginTop: "4%",
-      }}
-    >
-      <div className={style.container__block1}>
-        <div className={style.configuration_container_first}>
-          <div className={style.config_proccessor}>
-            <h3>Процессоры</h3>
-            <div className={style.dropdown}>
-              <button
-                className={style.dropbtn}
-                onClick={() => setIsOpenRegion(!isOpenRegion)}
-              >
-                {selectedProcessor || "процессоры"} ▼
-              </button>
-              {isOpenRegion && (
-                <div className={style.dropdown_content}>
-                  {getProcessorOptions().map((processor) => (
-                    <label key={processor.value}>
-                      <input
-                        type="radio"
-                        name="processor"
-                        value={processor.value}
-                        onChange={handleProcessorSelect}
-                        checked={selectedProcessor === processor.value}
-                      />
-                      {processor.name}
-                    </label>
-                  ))}
-                </div>
-              )}
+    <div>
+      <div
+        className={style.configuration_container}
+        style={{
+          display: "flex",
+          marginLeft: "20%",
+          marginTop: "4%",
+        }}
+      >
+        <div className={style.container__block1}>
+          <div className={style.configuration_container_first}>
+            <div className={style.config_proccessor}>
+              <h3>Процессоры</h3>
+              <div className={style.dropdown}>
+                <button
+                  className={style.dropbtn}
+                  onClick={() => setIsOpenRegion(!isOpenRegion)}
+                >
+                  {selectedProcessor || "процессоры"} ▼
+                </button>
+                {isOpenRegion && (
+                  <div className={style.dropdown_content}>
+                    {getProcessorOptions().map((processor) => (
+                      <label key={processor.value}>
+                        <input
+                          type="radio"
+                          name="processor"
+                          value={processor.value}
+                          onChange={handleProcessorSelect}
+                          checked={selectedProcessor === processor.value}
+                        />
+                        {processor.name}
+                      </label>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+            <div className={style.cores_container}>
+              <h3>Ядра, шт</h3>
+              <input
+                type="range"
+                min="2"
+                max="198"
+                value={selectedCores}
+                onChange={handleCoresChange}
+                className={style.slider}
+              />
+              <span>{selectedCores}</span>
+            </div>
+            <div className={style.ram_container}>
+              <h3>Объем RAM, ГБ</h3>
+              <input
+                type="range"
+                min="4"
+                max="1536"
+                value={selectedRAM}
+                onChange={handleRAMChange}
+                className={style.slider}
+              />
+              <span>{selectedRAM}</span>
             </div>
           </div>
-          <div className={style.cores_container}>
-            <h3>Ядра, шт</h3>
-            <input
-              type="range"
-              min="2"
-              max="198"
-              value={selectedCores}
-              onChange={handleCoresChange}
-              className={style.slider}
-            />
-            <span>{selectedCores}</span>
-          </div>
-          <div className={style.ram_container}>
-            <h3>Объем RAM, ГБ</h3>
-            <input
-              type="range"
-              min="4"
-              max="1536"
-              value={selectedRAM}
-              onChange={handleRAMChange}
-              className={style.slider}
-            />
-            <span>{selectedRAM}</span>
+          <div className={style.configuration_container_second}>
+            <div className={style.discs_container}>
+              <h3>Диски</h3>
+              {renderDiskOptions()}
+            </div>
+            <div className={style.features_container}>
+              <h3>Особенности</h3>
+              <label>
+                <input
+                  type="checkbox"
+                  checked={selectedGPU}
+                  onChange={handleGPUSelect}
+                />
+                GPU
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  checked={selectedPowerSupply}
+                  onChange={handlePowerSupplySelect}
+                />
+                2 блока питания
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  checked={selectedKVM}
+                  onChange={handleKVMSelect}
+                />
+                KVM-консоль
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  checked={selectedPrivateNetwork}
+                  onChange={handlePrivateNetworkSelect}
+                />
+                Приватная сеть
+              </label>
+            </div>
           </div>
         </div>
-        <div className={style.configuration_container_second}>
-          <div className={style.discs_container}>
-            <h3>Диски</h3>
-            {renderDiskOptions()}
+
+        <div className={style.total_price_container}>
+          <h3>Общая сумма: {totalPrice} сом в месяц</h3>
+          <div className={style.selected_options}>
+            {selectedOptions.map((option, index) => (
+              <div key={index} className={style.selected_option}>
+                {option.name}: {option.value}
+              </div>
+            ))}
           </div>
-          <div className={style.features_container}>
-            <h3>Особенности</h3>
-            <label>
-              <input
-                type="checkbox"
-                checked={selectedGPU}
-                onChange={handleGPUSelect}
-              />
-              GPU
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                checked={selectedPowerSupply}
-                onChange={handlePowerSupplySelect}
-              />
-              2 блока питания
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                checked={selectedKVM}
-                onChange={handleKVMSelect}
-              />
-              KVM-консоль
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                checked={selectedPrivateNetwork}
-                onChange={handlePrivateNetworkSelect}
-              />
-              Приватная сеть
-            </label>
+          <div className={style.btns}>
+            <button
+              style={{ width: "170px", marginRight: "2%" }}
+              onClick={handleResetFilters}
+              className={`${style.button2} ${style.button_reset}`}
+            >
+              Сбросить фильтры
+            </button>
+            <button
+              onClick={handleOpenModal}
+              style={{ width: "110px" }}
+              className={`${style.button} ${style.button_order}`}
+            >
+              Заказать
+            </button>
+            <Modal
+              aria-labelledby="transition-modal-title"
+              aria-describedby="transition-modal-description"
+              open={openModal}
+              onClose={handleCloseModal}
+              closeAfterTransition
+            >
+              <Fade
+                style={{
+                  marginLeft: "30%",
+                  marginTop: "3%",
+                  borderRadius: "10px",
+                  width: "40%",
+                  height: "80%",
+
+                  textAlign: "center",
+                }}
+                in={openModal}
+              >
+                <div
+                  style={{
+                    backgroundColor: "white",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-end",
+                    alignItems: "center",
+                    padding: "90px",
+                  }}
+                  className={style.modal}
+                >
+                  <h3>Общая сумма: {totalPrice} сом в месяц</h3>
+                  <div className={style.selected_options}>
+                    {selectedOptions.map((option, index) => (
+                      <div key={index} className={style.selected_option}>
+                        {option.name}: {option.value}
+                      </div>
+                    ))}
+                  </div>
+                  <h2 id="transition-modal-title">Как можно оплатить</h2>
+                  <p style={{ margin: "10" }}>О!Деньги: 996501304053</p>
+                  <p style={{ margin: "0" }}>Mbank: 996501304053</p>
+                  <Button
+                    variant="contained"
+                    component="label"
+                    style={{
+                      transition: "background-color 0.3s",
+                      marginBottom: "-10%",
+                      marginTop: "5%",
+                      "&:hover": {
+                        backgroundColor: "#4caf50",
+                      },
+                    }}
+                  >
+                    Прикрепить чек
+                    <input type="file" style={{ display: "none" }} />
+                  </Button>
+                </div>
+              </Fade>
+            </Modal>
           </div>
         </div>
       </div>
-      <div className={style.total_price_container}>
-        <h3>Общая сумма: {totalPrice} сом в месяц</h3>
-        <div className={style.selected_options}>
-          {selectedOptions.map((option, index) => (
-            <div key={index} className={style.selected_option}>
-              {option.name}: {option.value}
+      <div
+        style={{
+          display: "flex",
+          marginTop: "5%",
+          marginLeft: "21%",
+          flexWrap: "wrap",
+          gap: "3%",
+        }}
+      >
+        <div
+          style={{
+            marginRight: "30px",
+            width: "320px",
+            height: "350px",
+            textAlign: "center",
+            marginBottom: "40px",
+          }}
+        >
+          <div
+            style={{
+              border: "2px solid #54b548",
+              padding: "20px",
+              backgroundColor: "white",
+              borderRadius: "5px",
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+            }}
+          >
+            <div>
+              <h3 style={{ marginBottom: "10px" }}>Продукт 1</h3>
+              <p style={{ marginBottom: "20px" }}>Описание продукта 1.</p>
             </div>
-          ))}
-        </div>
-        <div className={style.btns}>
-          <button
-            style={{ width: "170px", marginRight: "2%" }}
-            onClick={handleResetFilters}
-            className={`${style.button} ${style.button_reset}`}
-          >
-            Сбросить фильтры
-          </button>
-          <button
-            onClick={handleOpenModal}
-            style={{ width: "110px" }}
-            className={`${style.button} ${style.button_order}`}
-          >
-            Заказать
-          </button>
-          <Modal
-            aria-labelledby="transition-modal-title"
-            aria-describedby="transition-modal-description"
-            open={openModal}
-            onClose={handleCloseModal}
-            closeAfterTransition
-          >
-            <Fade
+            <Button
+              variant="contained"
               style={{
-                marginLeft: "30%",
-                marginTop: "3%",
-                borderRadius: "10px",
-                width: "40%",
-                height: "80%",
-                boxShadow: "0 10px 20px rgba(0, 0, 0, 0.2)",
-                textAlign: "center",
+                backgroundColor: "#54b548",
+                color: "white",
+                height: "45px",
+                borderRadius: "5px",
               }}
-              in={openModal}
+              onClick={() => console.log("Продукт 1 заказан")}
             >
-              <div
-                style={{
-                  backgroundColor: "white",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-end",
-                  alignItems: "center",
-                  padding: "90px",
-                }}
-                className={style.modal}
-              >
-                <h3>Общая сумма: {totalPrice} сом в месяц</h3>
-                <div className={style.selected_options}>
-                  {selectedOptions.map((option, index) => (
-                    <div key={index} className={style.selected_option}>
-                      {option.name}: {option.value}
-                    </div>
-                  ))}
-                </div>
-                <h2 id="transition-modal-title">Как можно оплатить</h2>
-                <p style={{ margin: "10" }}>О!Деньги: 996501304053</p>
-                <p style={{ margin: "0" }}>Mbank: 996501304053</p>
-                <Button
-                  variant="contained"
-                  component="label"
-                  style={{
-                    transition: "background-color 0.3s",
-                    marginBottom: "-10%",
-                    marginTop: "5%",
-                    "&:hover": {
-                      backgroundColor: "#4caf50",
-                    },
-                  }}
-                >
-                  Прикрепить чек
-                  <input type="file" style={{ display: "none" }} />
-                </Button>
-              </div>
-            </Fade>
-          </Modal>
+              Заказать
+            </Button>
+          </div>
+        </div>
+        <div
+          style={{
+            marginRight: "30px",
+            width: "320px",
+            height: "350px",
+            textAlign: "center",
+            marginBottom: "40px",
+          }}
+        >
+          <div
+            style={{
+              border: "2px solid #54b548",
+              padding: "20px",
+              backgroundColor: "white",
+              borderRadius: "5px",
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+            }}
+          >
+            <div>
+              <h3 style={{ marginBottom: "10px" }}>Продукт 1</h3>
+              <p style={{ marginBottom: "20px" }}>Описание продукта 1.</p>
+            </div>
+            <Button
+              variant="contained"
+              style={{
+                backgroundColor: "#54b548",
+                color: "white",
+                height: "45px",
+                borderRadius: "5px",
+              }}
+              onClick={() => console.log("Продукт 1 заказан")}
+            >
+              Заказать
+            </Button>
+          </div>
+        </div>{" "}
+        <div
+          style={{
+            marginRight: "30px",
+            width: "320px",
+            height: "350px",
+            textAlign: "center",
+            marginBottom: "40px",
+          }}
+        >
+          <div
+            style={{
+              border: "2px solid #54b548",
+              padding: "20px",
+              backgroundColor: "white",
+              borderRadius: "5px",
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+            }}
+          >
+            <div>
+              <h3 style={{ marginBottom: "10px" }}>Продукт 1</h3>
+              <p style={{ marginBottom: "20px" }}>Описание продукта 1.</p>
+            </div>
+            <Button
+              variant="contained"
+              style={{
+                backgroundColor: "#54b548",
+                color: "white",
+                height: "45px",
+                borderRadius: "5px",
+              }}
+              onClick={() => console.log("Продукт 1 заказан")}
+            >
+              Заказать
+            </Button>
+          </div>
+        </div>
+        <div
+          style={{
+            marginRight: "30px",
+            width: "320px",
+            height: "350px",
+            textAlign: "center",
+            marginBottom: "40px",
+          }}
+        >
+          <div
+            style={{
+              border: "2px solid #54b548",
+              padding: "20px",
+              backgroundColor: "white",
+              borderRadius: "5px",
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+            }}
+          >
+            <div>
+              <h3 style={{ marginBottom: "10px" }}>Продукт 1</h3>
+              <p style={{ marginBottom: "20px" }}>Описание продукта 1.</p>
+            </div>
+            <Button
+              variant="contained"
+              style={{
+                backgroundColor: "#54b548",
+                color: "white",
+                height: "45px",
+                borderRadius: "5px",
+              }}
+              onClick={() => console.log("Продукт 1 заказан")}
+            >
+              Заказать
+            </Button>
+          </div>
+        </div>{" "}
+        <div
+          style={{
+            marginRight: "30px",
+            width: "320px",
+            height: "350px",
+            textAlign: "center",
+            marginBottom: "40px",
+          }}
+        >
+          <div
+            style={{
+              border: "2px solid #54b548",
+              padding: "20px",
+              backgroundColor: "white",
+              borderRadius: "5px",
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+            }}
+          >
+            <div>
+              <h3 style={{ marginBottom: "10px" }}>Продукт 1</h3>
+              <p style={{ marginBottom: "20px" }}>Описание продукта 1.</p>
+            </div>
+            <Button
+              variant="contained"
+              style={{
+                backgroundColor: "#54b548",
+                color: "white",
+                height: "45px",
+                borderRadius: "5px",
+              }}
+              onClick={() => console.log("Продукт 1 заказан")}
+            >
+              Заказать
+            </Button>
+          </div>
+        </div>{" "}
+        <div
+          style={{
+            marginRight: "30px",
+            width: "320px",
+            height: "350px",
+            textAlign: "center",
+            marginBottom: "40px",
+          }}
+        >
+          <div
+            style={{
+              border: "2px solid #54b548",
+              padding: "20px",
+              backgroundColor: "white",
+              borderRadius: "5px",
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+            }}
+          >
+            <div>
+              <h3 style={{ marginBottom: "10px" }}>Продукт 1</h3>
+              <p style={{ marginBottom: "20px" }}>Описание продукта 1.</p>
+            </div>
+            <Button
+              variant="contained"
+              style={{
+                backgroundColor: "#54b548",
+                color: "white",
+                height: "45px",
+                borderRadius: "5px",
+              }}
+              onClick={() => console.log("Продукт 1 заказан")}
+            >
+              Заказать
+            </Button>
+          </div>
         </div>
       </div>
     </div>

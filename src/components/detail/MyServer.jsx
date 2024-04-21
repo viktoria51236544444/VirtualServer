@@ -271,7 +271,6 @@ export default function MyServer() {
         marginTop: "3%",
         borderRadius: 15,
         overflow: "hidden",
-        boxShadow: "0 10px 20px rgba(0, 0, 0, 0.2)",
       }}
     >
       <TableVirtuoso

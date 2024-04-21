@@ -15,7 +15,7 @@
 
 #login_box .logo .logo_caption {
   font-family: Nunito;
-  color: #333; /* Цвет текста */
+  color: #333;
   text-align: center;
   margin-bottom: 10px;
 }
@@ -25,31 +25,31 @@
 }
 
 #login_box .controls input {
-  width: 328px; /* Ширина инпутов */
+  width: 328px;
   height: 30px;
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 7px;
   border: 1px solid #ccc;
   background-color: #f9f9f9;
-  color: #333; /* Цвет текста */
+  color: #333;
   font-size: 16px;
 }
 
 #login_box button.btn_custom {
-  width: 100%; /* Ширина кнопки */
+  width: 100%;
   padding: 15px;
   font-size: 16px;
   border: none;
   border-radius: 5px;
-  background-color: #7c8db5; /* Цвет кнопки */
-  color: #fff; /* Цвет текста */
+  background-color: #7c8db5;
+  color: #fff;
   cursor: pointer;
-  transition: background-color 0.3s ease; /* Анимация при наведении */
+  transition: background-color 0.3s ease;
 }
 
 #login_box button.btn_custom:hover {
-  background-color: #8ecaf3; /* Изменение цвета при наведении */
+  background-color: #8ecaf3;
 }
 .logo img {
   margin-left: 40%;

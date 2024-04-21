@@ -159,10 +159,10 @@ export default function Order() {
     ],
   ];
 
-  // Изначально устанавливаем примеры для первой вкладки
-  React.useEffect(() => {
-    setFilteredExamples(servers[value]);
-  }, [value, servers]);
+  // // Изначально устанавливаем примеры для первой вкладки
+  // React.useEffect(() => {
+  //   setFilteredExamples(servers[value]);
+  // }, [value, servers]);
 
   const tabsContent = [
     {
@@ -244,10 +244,10 @@ export default function Order() {
               style={{
                 borderTopRightRadius: "35%",
                 borderTopLeftRadius: "35%",
-                boxShadow: "0 10px 20px rgba(0, 0, 0, 0.2)",
+
                 minHeight: "9vh",
                 width: "20%",
-                backgroundColor: activeTab === index ? "lightblue" : "#7c8db5", // Изменяем цвет фона в зависимости от активной вкладки
+                backgroundColor: activeTab === index ? "lightblue" : "#7c8db5",
                 color: "white",
               }}
             />
@@ -261,7 +261,7 @@ export default function Order() {
               marginLeft: "-7.5%",
               marginTop: "-3%",
               backgroundColor: "white",
-              boxShadow: "0 10px 20px rgba(0, 0, 0, 0.2)",
+
               borderRadius: "2%",
             }}
           >
