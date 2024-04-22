@@ -2,249 +2,363 @@ import React from "react";
 import { Modal, Backdrop, Fade, Button } from "@mui/material";
 const Order = () => {
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        marginTop: "5%",
+        marginLeft: "28%",
+        flexWrap: "wrap",
+      }}
+    >
       <div
         style={{
-          display: "flex",
-          marginTop: "5%",
-          marginLeft: "21%",
-          flexWrap: "wrap",
-          gap: "3%",
+          marginRight: "12px",
+          width: "320px",
+          height: "350px",
+          textAlign: "center",
+          marginBottom: "12px",
         }}
       >
         <div
           style={{
-            marginRight: "30px",
-            width: "320px",
-            height: "350px",
-            textAlign: "center",
-            marginBottom: "40px",
+            padding: "20px",
+            backgroundColor: "white",
+            borderRadius: "5px",
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
           }}
         >
-          <div
-            style={{
-              border: "2px solid #54b548",
-              padding: "20px",
-              backgroundColor: "white",
-              borderRadius: "5px",
-              height: "100%",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-            }}
-          >
-            <div>
-              <h3 style={{ marginBottom: "10px" }}>Продукт 1</h3>
-              <p style={{ marginBottom: "20px" }}>Описание продукта 1.</p>
-            </div>
-            <Button
-              variant="contained"
-              style={{
-                backgroundColor: "#54b548",
-                color: "white",
-                height: "45px",
-                borderRadius: "5px",
-              }}
-              onClick={() => console.log("Продукт 1 заказан")}
-            >
-              Заказать
-            </Button>
+          <div>
+            <h3 style={{ marginBottom: "10px" }}>Продукт 1</h3>
+            <p style={{ marginBottom: "20px" }}>Описание продукта 1.</p>
           </div>
+          <Button
+            variant="contained"
+            style={{
+              color: "#54b548",
+              height: "45px",
+              borderRadius: "5px",
+              backgroundColor: "white",
+              border: "1px solid #54b548",
+            }}
+            onClick={() => console.log("Продукт 1 заказан")}
+          >
+            Заказать
+          </Button>
         </div>
+      </div>
+      <div
+        style={{
+          marginRight: "12px",
+          width: "320px",
+          height: "350px",
+          textAlign: "center",
+          marginBottom: "12px",
+        }}
+      >
         <div
           style={{
-            marginRight: "30px",
-            width: "320px",
-            height: "350px",
-            textAlign: "center",
-            marginBottom: "40px",
+            padding: "20px",
+            backgroundColor: "white",
+            borderRadius: "5px",
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
           }}
         >
-          <div
-            style={{
-              border: "2px solid #54b548",
-              padding: "20px",
-              backgroundColor: "white",
-              borderRadius: "5px",
-              height: "100%",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-            }}
-          >
-            <div>
-              <h3 style={{ marginBottom: "10px" }}>Продукт 1</h3>
-              <p style={{ marginBottom: "20px" }}>Описание продукта 1.</p>
-            </div>
-            <Button
-              variant="contained"
-              style={{
-                backgroundColor: "#54b548",
-                color: "white",
-                height: "45px",
-                borderRadius: "5px",
-              }}
-              onClick={() => console.log("Продукт 1 заказан")}
-            >
-              Заказать
-            </Button>
+          <div>
+            <h3 style={{ marginBottom: "10px" }}>Продукт 2</h3>
+            <p style={{ marginBottom: "20px" }}>Описание продукта 2.</p>
           </div>
-        </div>{" "}
-        <div
-          style={{
-            marginRight: "30px",
-            width: "320px",
-            height: "350px",
-            textAlign: "center",
-            marginBottom: "40px",
-          }}
-        >
-          <div
+          <Button
+            variant="contained"
             style={{
-              border: "2px solid #54b548",
-              padding: "20px",
-              backgroundColor: "white",
+              color: "#54b548",
+              height: "45px",
               borderRadius: "5px",
-              height: "100%",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
+              backgroundColor: "white",
+              border: "1px solid #54b548",
             }}
+            onClick={() => console.log("Продукт 2 заказан")}
           >
-            <div>
-              <h3 style={{ marginBottom: "10px" }}>Продукт 1</h3>
-              <p style={{ marginBottom: "20px" }}>Описание продукта 1.</p>
-            </div>
-            <Button
-              variant="contained"
-              style={{
-                backgroundColor: "#54b548",
-                color: "white",
-                height: "45px",
-                borderRadius: "5px",
-              }}
-              onClick={() => console.log("Продукт 1 заказан")}
-            >
-              Заказать
-            </Button>
-          </div>
+            Заказать
+          </Button>
         </div>
+      </div>
+      <div
+        style={{
+          marginRight: "12px",
+          width: "320px",
+          height: "350px",
+          textAlign: "center",
+          marginBottom: "12px",
+        }}
+      >
         <div
           style={{
-            marginRight: "30px",
-            width: "320px",
-            height: "350px",
-            textAlign: "center",
-            marginBottom: "40px",
+            padding: "20px",
+            backgroundColor: "white",
+            borderRadius: "5px",
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
           }}
         >
-          <div
-            style={{
-              border: "2px solid #54b548",
-              padding: "20px",
-              backgroundColor: "white",
-              borderRadius: "5px",
-              height: "100%",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-            }}
-          >
-            <div>
-              <h3 style={{ marginBottom: "10px" }}>Продукт 1</h3>
-              <p style={{ marginBottom: "20px" }}>Описание продукта 1.</p>
-            </div>
-            <Button
-              variant="contained"
-              style={{
-                backgroundColor: "#54b548",
-                color: "white",
-                height: "45px",
-                borderRadius: "5px",
-              }}
-              onClick={() => console.log("Продукт 1 заказан")}
-            >
-              Заказать
-            </Button>
+          <div>
+            <h3 style={{ marginBottom: "10px" }}>Продукт 3</h3>
+            <p style={{ marginBottom: "20px" }}>Описание продукта 3.</p>
           </div>
-        </div>{" "}
+          <Button
+            variant="contained"
+            style={{
+              color: "#54b548",
+              height: "45px",
+              borderRadius: "5px",
+              backgroundColor: "white",
+              border: "1px solid #54b548",
+            }}
+            onClick={() => console.log("Продукт 3 заказан")}
+          >
+            Заказать
+          </Button>
+        </div>
+      </div>
+      <div
+        style={{
+          marginRight: "12px",
+          width: "320px",
+          height: "350px",
+          textAlign: "center",
+          marginBottom: "12px",
+        }}
+      >
         <div
           style={{
-            marginRight: "30px",
-            width: "320px",
-            height: "350px",
-            textAlign: "center",
-            marginBottom: "40px",
+            padding: "20px",
+            backgroundColor: "white",
+            borderRadius: "5px",
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
           }}
         >
-          <div
-            style={{
-              border: "2px solid #54b548",
-              padding: "20px",
-              backgroundColor: "white",
-              borderRadius: "5px",
-              height: "100%",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-            }}
-          >
-            <div>
-              <h3 style={{ marginBottom: "10px" }}>Продукт 1</h3>
-              <p style={{ marginBottom: "20px" }}>Описание продукта 1.</p>
-            </div>
-            <Button
-              variant="contained"
-              style={{
-                backgroundColor: "#54b548",
-                color: "white",
-                height: "45px",
-                borderRadius: "5px",
-              }}
-              onClick={() => console.log("Продукт 1 заказан")}
-            >
-              Заказать
-            </Button>
+          <div>
+            <h3 style={{ marginBottom: "10px" }}>Продукт 3</h3>
+            <p style={{ marginBottom: "20px" }}>Описание продукта 3.</p>
           </div>
-        </div>{" "}
+          <Button
+            variant="contained"
+            style={{
+              color: "#54b548",
+              height: "45px",
+              borderRadius: "5px",
+              backgroundColor: "white",
+              border: "1px solid #54b548",
+            }}
+            onClick={() => console.log("Продукт 3 заказан")}
+          >
+            Заказать
+          </Button>
+        </div>
+      </div>{" "}
+      <div
+        style={{
+          marginRight: "12px",
+          width: "320px",
+          height: "350px",
+          textAlign: "center",
+          marginBottom: "12px",
+        }}
+      >
         <div
           style={{
-            marginRight: "30px",
-            width: "320px",
-            height: "350px",
-            textAlign: "center",
-            marginBottom: "40px",
+            padding: "20px",
+            backgroundColor: "white",
+            borderRadius: "5px",
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
           }}
         >
-          <div
-            style={{
-              border: "2px solid #54b548",
-              padding: "20px",
-              backgroundColor: "white",
-              borderRadius: "5px",
-              height: "100%",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-            }}
-          >
-            <div>
-              <h3 style={{ marginBottom: "10px" }}>Продукт 1</h3>
-              <p style={{ marginBottom: "20px" }}>Описание продукта 1.</p>
-            </div>
-            <Button
-              variant="contained"
-              style={{
-                backgroundColor: "#54b548",
-                color: "white",
-                height: "45px",
-                borderRadius: "5px",
-              }}
-              onClick={() => console.log("Продукт 1 заказан")}
-            >
-              Заказать
-            </Button>
+          <div>
+            <h3 style={{ marginBottom: "10px" }}>Продукт 3</h3>
+            <p style={{ marginBottom: "20px" }}>Описание продукта 3.</p>
           </div>
+          <Button
+            variant="contained"
+            style={{
+              color: "#54b548",
+              height: "45px",
+              borderRadius: "5px",
+              backgroundColor: "white",
+              border: "1px solid #54b548",
+            }}
+            onClick={() => console.log("Продукт 3 заказан")}
+          >
+            Заказать
+          </Button>
+        </div>
+      </div>{" "}
+      <div
+        style={{
+          marginRight: "12px",
+          width: "320px",
+          height: "350px",
+          textAlign: "center",
+          marginBottom: "10px",
+        }}
+      >
+        <div
+          style={{
+            padding: "20px",
+            backgroundColor: "white",
+            borderRadius: "5px",
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+          }}
+        >
+          <div>
+            <h3 style={{ marginBottom: "10px" }}>Продукт 3</h3>
+            <p style={{ marginBottom: "20px" }}>Описание продукта 3.</p>
+          </div>
+          <Button
+            variant="contained"
+            style={{
+              color: "#54b548",
+              height: "45px",
+              borderRadius: "5px",
+              backgroundColor: "white",
+              border: "1px solid #54b548",
+            }}
+            onClick={() => console.log("Продукт 3 заказан")}
+          >
+            Заказать
+          </Button>
+        </div>
+      </div>
+      <div
+        style={{
+          marginRight: "12px",
+          width: "320px",
+          height: "350px",
+          textAlign: "center",
+          marginBottom: "10px",
+        }}
+      >
+        <div
+          style={{
+            padding: "20px",
+            backgroundColor: "white",
+            borderRadius: "5px",
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+          }}
+        >
+          <div>
+            <h3 style={{ marginBottom: "10px" }}>Продукт 3</h3>
+            <p style={{ marginBottom: "20px" }}>Описание продукта 3.</p>
+          </div>
+          <Button
+            variant="contained"
+            style={{
+              color: "#54b548",
+              height: "45px",
+              borderRadius: "5px",
+              backgroundColor: "white",
+              border: "1px solid #54b548",
+            }}
+            onClick={() => console.log("Продукт 3 заказан")}
+          >
+            Заказать
+          </Button>
+        </div>
+      </div>{" "}
+      <div
+        style={{
+          marginRight: "12px",
+          width: "320px",
+          height: "350px",
+          textAlign: "center",
+          marginBottom: "10px",
+        }}
+      >
+        <div
+          style={{
+            padding: "20px",
+            backgroundColor: "white",
+            borderRadius: "5px",
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+          }}
+        >
+          <div>
+            <h3 style={{ marginBottom: "10px" }}>Продукт 3</h3>
+            <p style={{ marginBottom: "20px" }}>Описание продукта 3.</p>
+          </div>
+          <Button
+            variant="contained"
+            style={{
+              color: "#54b548",
+              height: "45px",
+              borderRadius: "5px",
+              backgroundColor: "white",
+              border: "1px solid #54b548",
+            }}
+            onClick={() => console.log("Продукт 3 заказан")}
+          >
+            Заказать
+          </Button>
+        </div>
+      </div>{" "}
+      <div
+        style={{
+          marginRight: "12px",
+          width: "320px",
+          height: "350px",
+          textAlign: "center",
+          marginBottom: "10px",
+        }}
+      >
+        <div
+          style={{
+            padding: "20px",
+            backgroundColor: "white",
+            borderRadius: "5px",
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+          }}
+        >
+          <div>
+            <h3 style={{ marginBottom: "10px" }}>Продукт 3</h3>
+            <p style={{ marginBottom: "20px" }}>Описание продукта 3.</p>
+          </div>
+          <Button
+            variant="contained"
+            style={{
+              color: "#54b548",
+              height: "45px",
+              borderRadius: "5px",
+              backgroundColor: "white",
+              border: "1px solid #54b548",
+            }}
+            onClick={() => console.log("Продукт 3 заказан")}
+          >
+            Заказать
+          </Button>
         </div>
       </div>
     </div>

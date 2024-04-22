@@ -66,10 +66,8 @@ const Configuration = () => {
   };
 
   const diskOptions = [
-    { name: "SSD SATA, ГБ", value: "ssd_sata", minSize: 120, maxSize: 3840 },
-    { name: "HDD SATA", value: "hdd_sata", minSize: 500, maxSize: 10000 },
-    { name: "SSD NVMe", value: "ssd_nvme", minSize: 500, maxSize: 15360 },
-    { name: "MicroSD", value: "micro_sd" },
+    { name: "SSD NVMe, ГБ", value: "ssd_nvme", minSize: 0, maxSize: 2000 },
+    { name: "HDD, ГБ", value: "hdd_sata", minSize: 0, maxSize: 10000 },
   ];
 
   const renderDiskOptions = () => {
@@ -229,11 +227,11 @@ const Configuration = () => {
     <div>
       <div
         style={{
-          width: "980px",
+          width: "65%",
           backgroundColor: "rgba(255, 255, 255, 0.8)",
           borderTop: "6px solid #7c8db5",
           marginLeft: "28%",
-          marginTop: "2%",
+          marginTop: "4%",
           height: "70px",
           color: "black",
           display: "flex",
@@ -269,9 +267,7 @@ const Configuration = () => {
         <div className={style.container__block1}>
           <div className={style.configuration_container_first}>
             <div className={style.config_proccessor}>
-              <h3 style={{ marginLeft: "-220%", marginTop: "10%" }}>
-                Процессоры
-              </h3>
+              <h3>Процессоры</h3>
               <div className={style.dropdown}>
                 <button
                   className={style.dropbtn}
@@ -309,12 +305,13 @@ const Configuration = () => {
               />
               <span>{selectedCores}</span>
             </div>
+
             <div className={style.ram_container}>
               <h3>Объем RAM, ГБ</h3>
               <input
                 type="range"
-                min="4"
-                max="1536"
+                min="0"
+                max="256"
                 value={selectedRAM}
                 onChange={handleRAMChange}
                 className={style.range}
