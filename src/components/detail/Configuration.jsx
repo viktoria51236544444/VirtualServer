@@ -66,10 +66,8 @@ const Configuration = () => {
   };
 
   const diskOptions = [
-    { name: "SSD SATA, ГБ", value: "ssd_sata", minSize: 120, maxSize: 3840 },
-    { name: "HDD SATA", value: "hdd_sata", minSize: 500, maxSize: 10000 },
-    { name: "SSD NVMe", value: "ssd_nvme", minSize: 500, maxSize: 15360 },
-    { name: "MicroSD", value: "micro_sd" },
+    { name: "SSD NVMe, ГБ", value: "ssd_nvme", minSize: 0, maxSize: 2000 },
+    { name: "HDD, ГБ", value: "hdd_sata", minSize: 0, maxSize: 10000 },
   ];
 
   const renderDiskOptions = () => {
@@ -216,242 +214,237 @@ const Configuration = () => {
 
   const [openModal, setOpenModal] = useState(false);
 
-  // Функция для открытия модального окна пополнения
+  // модальное окно
   const handleOpenModal = () => {
     setOpenModal(true);
   };
 
-  // Функция для закрытия модального окна пополнения
   const handleCloseModal = () => {
     setOpenModal(false);
   };
   return (
     <div>
-      <div
-        style={{
-          width: "980px",
-          backgroundColor: "rgba(255, 255, 255, 0.8)",
-          borderTop: "6px solid #7c8db5",
-          marginLeft: "28%",
-          marginTop: "2%",
-          height: "70px",
-          color: "black",
-          display: "flex",
-          textAlign: "center",
-          borderRadius: "10px",
-        }}
-      >
-        <div style={{ width: "560px", display: "table-cell", marginTop: "2%" }}>
-          <h4 style={{ marginLeft: "-10%" }}>Конфигуратор</h4>
-        </div>
-
-        <div style={{ marginTop: "2%", display: "flex", gap: "60px" }}>
-          <h4>Общая цена:</h4>
-          <h5
-            style={{
-              marginTop: "-2%",
-              border: "1px solid #7c8db5",
-              padding: "10px",
-            }}
+      <div>
+        <div
+          style={{
+            width: "65%",
+            backgroundColor: "rgba(255, 255, 255, 0.8)",
+            borderTop: "6px solid #7c8db5",
+            marginLeft: "28%",
+            marginTop: "4%",
+            height: "70px",
+            color: "black",
+            display: "flex",
+            textAlign: "center",
+            borderRadius: "10px",
+          }}
+        >
+          <div
+            style={{ width: "560px", display: "table-cell", marginTop: "2%" }}
           >
-            {totalPrice} сом/мес.
-          </h5>
-        </div>
-      </div>
-      <div
-        className={style.configuration_container}
-        style={{
-          display: "flex",
-          marginLeft: "40%",
-          marginTop: "4%",
-        }}
-      >
-        <div className={style.container__block1}>
-          <div className={style.configuration_container_first}>
-            <div className={style.config_proccessor}>
-              <h3 style={{ marginLeft: "-220%", marginTop: "10%" }}>
-                Процессоры
-              </h3>
-              <div className={style.dropdown}>
-                <button
-                  className={style.dropbtn}
-                  onClick={() => setIsOpenRegion(!isOpenRegion)}
-                >
-                  {selectedProcessor || "Процессоры"} ▼
-                </button>
-                {isOpenRegion && (
-                  <div className={style.dropdown_content}>
-                    {getProcessorOptions().map((processor) => (
-                      <label key={processor.value}>
-                        <input
-                          type="radio"
-                          name="processor"
-                          value={processor.value}
-                          onChange={handleProcessorSelect}
-                          checked={selectedProcessor === processor.value}
-                        />
-                        {processor.name}
-                      </label>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
-            <div className={style.cores_container}>
-              <h3>Ядра, шт</h3>
-              <input
-                type="range"
-                min="0"
-                max="40"
-                value={selectedCores}
-                onChange={handleCoresChange}
-                className={style.range}
-              />
-              <span>{selectedCores}</span>
-            </div>
-            <div className={style.ram_container}>
-              <h3>Объем RAM, ГБ</h3>
-              <input
-                type="range"
-                min="4"
-                max="1536"
-                value={selectedRAM}
-                onChange={handleRAMChange}
-                className={style.range}
-              />
-              <span>{selectedRAM}</span>
-            </div>
+            <h4 style={{ marginLeft: "-10%" }}>Конфигуратор</h4>
           </div>
-          <div className={style.configuration_container_second}>
-            <div className={style.discs_container}>
-              <h3>Диски</h3>
-              {renderDiskOptions()}
-            </div>
-            <div className={style.features_container}>
-              <h3>Особенности</h3>
-              <label>
-                <input
-                  type="checkbox"
-                  checked={selectedGPU}
-                  onChange={handleGPUSelect}
-                />
-                GPU
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  checked={selectedPowerSupply}
-                  onChange={handlePowerSupplySelect}
-                />
-                2 блока питания
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  checked={selectedKVM}
-                  onChange={handleKVMSelect}
-                />
-                KVM-консоль
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  checked={selectedPrivateNetwork}
-                  onChange={handlePrivateNetworkSelect}
-                />
-                Приватная сеть
-              </label>
-            </div>
+
+          <div style={{ marginTop: "2%", display: "flex", gap: "60px" }}>
+            <h4>Общая цена:</h4>
+            <h5
+              style={{
+                marginTop: "-2%",
+                border: "1px solid #7c8db5",
+                padding: "10px",
+              }}
+            >
+              {totalPrice} сом/мес.
+            </h5>
           </div>
         </div>
-
-        {/* <div className={style.total_price_container}>
-          <h3>Итоговая сумма: {totalPrice} сом в месяц</h3>
-          <div className={style.selected_options}>
-            {selectedOptions.map((option, index) => (
-              <div key={index} className={style.selected_option}>
-                {option.name}: {option.value}
-              </div>
-            ))}
-          </div>
-          <div className={style.btns}>
-            <button
-              style={{ width: "170px", marginRight: "2%" }}
-              onClick={handleResetFilters}
-              className={`${style.button2} ${style.button_reset}`}
-            >
-              Сбросить фильтры
-            </button>
-            <button
-              onClick={handleOpenModal}
-              style={{ width: "110px" }}
-              className={`${style.button} ${style.button_order}`}
-            >
-              Заказать
-            </button>
-            <Modal
-              aria-labelledby="transition-modal-title"
-              aria-describedby="transition-modal-description"
-              open={openModal}
-              onClose={handleCloseModal}
-              closeAfterTransition
-            >
-              <Fade
-                style={{
-                  marginLeft: "30%",
-                  marginTop: "3%",
-                  borderRadius: "10px",
-                  width: "40%",
-                  height: "80%",
-
-                  textAlign: "center",
-                }}
-                in={openModal}
-              >
-                <div
-                  style={{
-                    backgroundColor: "white",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "flex-end",
-                    alignItems: "center",
-                    padding: "90px",
-                  }}
-                  className={style.modal}
-                >
-                  <h3>Общая сумма: {totalPrice} сом в месяц</h3>
-                  <div className={style.selected_options}>
-                    {selectedOptions.map((option, index) => (
-                      <div key={index} className={style.selected_option}>
-                        {option.name}: {option.value}
-                      </div>
-                    ))}
-                  </div>
-                  <h2 id="transition-modal-title">Как можно оплатить</h2>
-                  <p style={{ margin: "10" }}>О!Деньги: 996501304053</p>
-                  <p style={{ margin: "0" }}>Mbank: 996501304053</p>
-                  <Button
-                    variant="contained"
-                    component="label"
-                    style={{
-                      transition: "background-color 0.3s",
-                      marginBottom: "-10%",
-                      marginTop: "5%",
-                      "&:hover": {
-                        backgroundColor: "#4caf50",
-                      },
-                    }}
+        <div
+          className={style.configuration_container}
+          style={{
+            display: "flex",
+            marginLeft: "40%",
+            marginTop: "4%",
+          }}
+        >
+          <div className={style.container__block1}>
+            <div className={style.configuration_container_first}>
+              <div className={style.config_proccessor}>
+                <h3>Процессоры</h3>
+                <div className={style.dropdown}>
+                  <button
+                    className={style.dropbtn}
+                    onClick={() => setIsOpenRegion(!isOpenRegion)}
                   >
-                    Прикрепить чек
-                    <input type="file" style={{ display: "none" }} />
-                  </Button>
+                    {selectedProcessor || "Процессоры"} ▼
+                  </button>
+                  {isOpenRegion && (
+                    <div className={style.dropdown_content}>
+                      {getProcessorOptions().map((processor) => (
+                        <label key={processor.value}>
+                          <input
+                            type="radio"
+                            name="processor"
+                            value={processor.value}
+                            onChange={handleProcessorSelect}
+                            checked={selectedProcessor === processor.value}
+                          />
+                          {processor.name}
+                        </label>
+                      ))}
+                    </div>
+                  )}
                 </div>
-              </Fade>
-            </Modal>
+              </div>
+              <div className={style.cores_container}>
+                <h3>Ядра, шт</h3>
+                <input
+                  type="range"
+                  min="0"
+                  max="40"
+                  value={selectedCores}
+                  onChange={handleCoresChange}
+                  className={style.range}
+                />
+                <span>{selectedCores}</span>
+              </div>
+
+              <div className={style.ram_container}>
+                <h3>Объем RAM, ГБ</h3>
+                <input
+                  type="range"
+                  min="0"
+                  max="256"
+                  value={selectedRAM}
+                  onChange={handleRAMChange}
+                  className={style.range}
+                />
+                <span>{selectedRAM}</span>
+              </div>
+            </div>
+            <div className={style.configuration_container_second}>
+              <div className={style.discs_container}>
+                <h3>Диски</h3>
+                {renderDiskOptions()}
+              </div>
+              <div className={style.features_container}>
+                <h3>Особенности</h3>
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={selectedGPU}
+                    onChange={handleGPUSelect}
+                  />
+                  GPU
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={selectedPowerSupply}
+                    onChange={handlePowerSupplySelect}
+                  />
+                  2 блока питания
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={selectedKVM}
+                    onChange={handleKVMSelect}
+                  />
+                  KVM-консоль
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={selectedPrivateNetwork}
+                    onChange={handlePrivateNetworkSelect}
+                  />
+                  Приватная сеть
+                </label>
+              </div>
+            </div>
+            <div className={style.card}>
+              <div className={style.cardContent}>
+                <button
+                  onClick={handleResetFilters}
+                  className={`${style.button2} ${style.button_reset}`}
+                >
+                  Сбросить фильтры
+                </button>
+                <button
+                  onClick={handleOpenModal}
+                  className={`${style.button} ${style.button_order}`}
+                >
+                  Заказать
+                </button>
+              </div>
+            </div>
           </div>
-        </div> */}
+
+          <Modal
+            aria-labelledby="transition-modal-title"
+            aria-describedby="transition-modal-description"
+            open={openModal}
+            onClose={handleCloseModal}
+            closeAfterTransition
+          >
+            <Fade
+              style={{
+                marginLeft: "30%",
+                marginTop: "3%",
+                borderRadius: "10px",
+                width: "40%",
+                height: "80%",
+
+                textAlign: "center",
+              }}
+              in={openModal}
+            >
+              <div
+                style={{
+                  backgroundColor: "white",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "flex-end",
+                  alignItems: "center",
+                  padding: "100px",
+                }}
+                className={style.modal}
+              >
+                <h3>Общая сумма: {totalPrice} сом в месяц</h3>
+                <div className={style.selected_options}>
+                  {selectedOptions.map((option, index) => (
+                    <div key={index} className={style.selected_option}>
+                      {option.name}: {option.value}
+                    </div>
+                  ))}
+                </div>
+                <h2 style={{ marginTop: "30px" }} id="transition-modal-title">
+                  Как можно оплатить
+                </h2>
+                <p style={{ margin: "10" }}>О!Деньги: 996501304053</p>
+                <p style={{ margin: "0" }}>Mbank: 996501304053</p>
+                <Button
+                  variant="contained"
+                  component="label"
+                  style={{
+                    transition: "background-color 0.3s",
+                    marginBottom: "-10%",
+                    marginTop: "5%",
+                    "&:hover": {
+                      backgroundColor: "#4caf50",
+                    },
+                  }}
+                >
+                  Прикрепить чек
+                  <input type="file" style={{ display: "none" }} />
+                </Button>
+              </div>
+            </Fade>
+          </Modal>
+        </div>
+
+        <Order />
       </div>
-      <Order />
     </div>
   );
 };

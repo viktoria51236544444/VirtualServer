@@ -2,16 +2,37 @@
   position: relative;
   display: inline-block;
 }
-
-.dropbtn {
-  margin-left: -215%;
-  background-color: whitesmoke;
-  border: none;
-  padding: 20px;
-  border-radius: 5px;
-  width: 200px;
+.configuration_container_first {
+  margin-top: 3%;
+  margin-left: -10%;
 }
-
+.configuration_container_second {
+  margin-left: 18%;
+  font-size: 18px;
+}
+.config_proccessor {
+  margin-top: 2%;
+}
+.dropbtn {
+  background-color: rgb(211, 210, 210);
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  width: 170px;
+}
+.discs_container {
+  margin-top: 22%;
+}
+.ram_container {
+  margin-top: 20%;
+}
+.cores_container {
+  /* margin-left: -220%; */
+  margin-top: 20%;
+}
+.features_container {
+  margin-top: 28%;
+}
 .dropdown_content {
   display: none;
   position: absolute;
@@ -22,10 +43,10 @@
   z-index: 1;
   text-align: left;
   font-size: 17px;
-
   padding: 10px;
   width: 200px;
-  margin-top: -50%;
+  margin-top: -65%;
+  margin-left: 102%;
 }
 
 .dropdown_content label {
@@ -46,11 +67,11 @@
 }
 .container__block1 {
   display: flex;
-  gap: 10%;
+
   width: 108.5%;
   height: 60vh;
   background-color: white;
-  text-align: center;
+  text-align: justify;
   border-radius: 5px;
   justify-content: center;
   margin-left: -19.7%;
@@ -71,49 +92,53 @@
   font-family: Nunito !important;
 }
 
-.btns {
-  margin-top: 7%;
-}
-.button_resert {
-  margin-right: 4%;
-}
 .cloudVps_green {
   background-color: green;
 }
 .cloudVps_red {
   background-color: red;
 }
+.card {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 70px;
+  margin-right: 115px;
+}
 
-.btns {
+.cardContent {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
+  gap: 10px;
 }
 
 .button {
   border: none;
-  color: white;
-  height: 50px;
+  color: black;
+  height: 45px;
   border-radius: 5px;
   cursor: pointer;
-  background-color: #7c8db5;
+  background-color: #5ecc50;
   transition: all 0.3s ease;
+  width: 140px;
 }
 .button2 {
   border: none;
-  color: white;
-  height: 50px;
+  color: black;
+  height: 45px;
   border-radius: 5px;
   cursor: pointer;
-  background-color: #54b548;
+  background-color: rgb(211, 210, 210);
   transition: all 0.3s ease;
 }
 .button:hover {
   transform: scale(1.05);
-  background-color: #9694ff;
-}
-.button2:hover {
-  transform: scale(1.05);
   background-color: #5ecc50;
+}
+
+.button2:hover {
+  transform: scale(1);
+  background-color: rgb(211, 210, 210);
 }
 .range {
   background-color: black;
@@ -167,10 +192,7 @@
 .slider_button:hover {
   background-color: #9694ff;
 }
-.cores_container {
-  margin-left: -220%;
-  margin-top: 2%;
-}
+
 /* ! Вопросы */
 .main {
   width: 80vw;
