@@ -45,9 +45,7 @@ const Questions = () => {
             </div>
 
             <div className={styles.sec} onClick={() => toggleSection(1)}>
-              <span className={styles.section}>
-                {expanded[1] ? "Section 2" : "Section 2"}
-              </span>{" "}
+              <span className={styles.section}>Section 2</span>
               <FontAwesomeIcon
                 icon={expanded[1] ? faMinus : faPlus}
                 className={styles.icon}
@@ -65,9 +63,7 @@ const Questions = () => {
             </div>
 
             <div className={styles.sec} onClick={() => toggleSection(2)}>
-              <span className={styles.section}>
-                {expanded[2] ? "Section 3" : "Section 3"}
-              </span>{" "}
+              <span className={styles.section}>Section 3</span>
               <FontAwesomeIcon
                 icon={expanded[2] ? faMinus : faPlus}
                 className={styles.icon}
@@ -85,16 +81,14 @@ const Questions = () => {
             </div>
 
             <div className={styles.sec} onClick={() => toggleSection(3)}>
-              <span className={styles.section}>
-                {expanded[3] ? "Section 4" : "Section 4"}
-              </span>{" "}
+              <span className={styles.section}>Section 4</span>
               <FontAwesomeIcon
                 icon={expanded[3] ? faMinus : faPlus}
                 className={styles.icon}
               />
             </div>
             <div
-              id="colp4"
+              id="colp3"
               className={styles.collapsable}
               style={{ display: expanded[3] ? "block" : "none" }}
             >
@@ -105,16 +99,14 @@ const Questions = () => {
             </div>
 
             <div className={styles.sec} onClick={() => toggleSection(4)}>
-              <span className={styles.section}>
-                {expanded[4] ? "Section 5" : "Section 5"}
-              </span>{" "}
+              <span className={styles.section}>Section 5</span>
               <FontAwesomeIcon
                 icon={expanded[4] ? faMinus : faPlus}
                 className={styles.icon}
               />
             </div>
             <div
-              id="colp5"
+              id="colp3"
               className={styles.collapsable}
               style={{ display: expanded[4] ? "block" : "none" }}
             >
@@ -125,16 +117,14 @@ const Questions = () => {
             </div>
 
             <div className={styles.sec} onClick={() => toggleSection(5)}>
-              <span className={styles.section}>
-                {expanded[5] ? "Section 6" : "Section 6"}
-              </span>{" "}
+              <span className={styles.section}>Section 6</span>
               <FontAwesomeIcon
                 icon={expanded[5] ? faMinus : faPlus}
                 className={styles.icon}
               />
             </div>
             <div
-              id="colp6"
+              id="colp3"
               className={styles.collapsable}
               style={{ display: expanded[5] ? "block" : "none" }}
             >
