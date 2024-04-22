@@ -365,16 +365,16 @@ const Configuration = () => {
             <div className={style.card}>
               <div className={style.cardContent}>
                 <button
-                  onClick={handleResetFilters}
-                  className={`${style.button2} ${style.button_reset}`}
-                >
-                  Сбросить фильтры
-                </button>
-                <button
                   onClick={handleOpenModal}
                   className={`${style.button} ${style.button_order}`}
                 >
                   Заказать
+                </button>
+                <button
+                  onClick={handleResetFilters}
+                  className={`${style.button2} ${style.button_reset}`}
+                >
+                  Сбросить фильтры
                 </button>
               </div>
             </div>

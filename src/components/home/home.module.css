@@ -41,10 +41,11 @@
 }
 
 .container__header_sidebar p {
-  font-size: 22px;
+  font-size: 25px;
   font-weight: bold;
   margin-left: 5%;
-  margin-top: 15%;
+  margin-top: 5%;
+  margin-bottom: 10%;
 }
 
 .search__input {

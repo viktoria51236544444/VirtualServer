@@ -135,7 +135,9 @@
   transform: scale(1.05);
   background-color: #5ecc50;
 }
-
+.ransition-modal-title {
+  margin-top: 5%;
+}
 .button2:hover {
   transform: scale(1);
   background-color: rgb(211, 210, 210);
