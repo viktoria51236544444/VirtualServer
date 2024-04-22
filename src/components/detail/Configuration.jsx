@@ -268,13 +268,15 @@ const Configuration = () => {
         <div className={style.container__block1}>
           <div className={style.configuration_container_first}>
             <div className={style.config_proccessor}>
-              <h3>Процессоры</h3>
+              <h3 style={{ marginLeft: "-220%", marginTop: "10%" }}>
+                Процессоры
+              </h3>
               <div className={style.dropdown}>
                 <button
                   className={style.dropbtn}
                   onClick={() => setIsOpenRegion(!isOpenRegion)}
                 >
-                  {selectedProcessor || "процессоры"} ▼
+                  {selectedProcessor || "Процессоры"} ▼
                 </button>
                 {isOpenRegion && (
                   <div className={style.dropdown_content}>
