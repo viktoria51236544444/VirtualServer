@@ -22,10 +22,10 @@
   z-index: 1;
   text-align: left;
   font-size: 17px;
-  margin-left: -107%;
+
   padding: 10px;
   width: 200px;
-  margin-top: 1%;
+  margin-top: -50%;
 }
 
 .dropdown_content label {
@@ -47,7 +47,7 @@
 .container__block1 {
   display: flex;
   gap: 10%;
-  width: 107%;
+  width: 108.5%;
   height: 60vh;
   background-color: white;
   text-align: center;
@@ -115,6 +115,9 @@
   transform: scale(1.05);
   background-color: #5ecc50;
 }
+.range {
+  background-color: black;
+}
 .slider_container2 {
   position: absolute;
   top: 0;
@@ -164,5 +167,8 @@
 .slider_button:hover {
   background-color: #9694ff;
 }
-
+.cores_container {
+  margin-left: -220%;
+  margin-top: 2%;
+}
 /* ! Вопросы */

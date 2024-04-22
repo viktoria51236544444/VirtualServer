@@ -301,11 +301,11 @@ const Configuration = () => {
               <h3>Ядра, шт</h3>
               <input
                 type="range"
-                min="2"
-                max="198"
+                min="0"
+                max="40"
                 value={selectedCores}
                 onChange={handleCoresChange}
-                className={style.slider}
+                className={style.range}
               />
               <span>{selectedCores}</span>
             </div>
@@ -317,7 +317,7 @@ const Configuration = () => {
                 max="1536"
                 value={selectedRAM}
                 onChange={handleRAMChange}
-                className={style.slider}
+                className={style.range}
               />
               <span>{selectedRAM}</span>
             </div>
