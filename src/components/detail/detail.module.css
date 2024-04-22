@@ -8,6 +8,7 @@
 }
 .configuration_container_second {
   margin-left: 18%;
+  font-size: 18px;
 }
 .config_proccessor {
   margin-top: 2%;
@@ -91,49 +92,53 @@
   font-family: Nunito !important;
 }
 
-.btns {
-  margin-top: 7%;
-}
-.button_resert {
-  margin-right: 4%;
-}
 .cloudVps_green {
   background-color: green;
 }
 .cloudVps_red {
   background-color: red;
 }
+.card {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 70px;
+  margin-right: 115px;
+}
 
-.btns {
+.cardContent {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
+  gap: 10px;
 }
 
 .button {
   border: none;
-  color: white;
-  height: 50px;
+  color: black;
+  height: 45px;
   border-radius: 5px;
   cursor: pointer;
-  background-color: #7c8db5;
+  background-color: #5ecc50;
   transition: all 0.3s ease;
+  width: 140px;
 }
 .button2 {
   border: none;
-  color: white;
-  height: 50px;
+  color: black;
+  height: 45px;
   border-radius: 5px;
   cursor: pointer;
-  background-color: #54b548;
+  background-color: rgb(211, 210, 210);
   transition: all 0.3s ease;
 }
 .button:hover {
   transform: scale(1.05);
-  background-color: #9694ff;
-}
-.button2:hover {
-  transform: scale(1.05);
   background-color: #5ecc50;
+}
+
+.button2:hover {
+  transform: scale(1);
+  background-color: rgb(211, 210, 210);
 }
 .range {
   background-color: black;
