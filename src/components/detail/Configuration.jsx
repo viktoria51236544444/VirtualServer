@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import style from "./detail.module.css";
 import { Modal, Backdrop, Fade, Button } from "@mui/material";
+import Order from "./Order";
 
 const Configuration = () => {
   const [selectedProcessor, setSelectedProcessor] = useState(null);
@@ -448,6 +449,7 @@ const Configuration = () => {
           </div>
         </div> */}
       </div>
+      <Order />
     </div>
   );
 };
