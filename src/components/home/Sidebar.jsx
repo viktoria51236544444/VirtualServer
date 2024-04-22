@@ -98,26 +98,16 @@ function Sidebar(props) {
         <CssBaseline />
         <Box
           sx={{
-            width: `calc(98% - ${drawerWidth}px)`,
+            width: `calc(101.1% - ${drawerWidth}px)`,
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
             padding: "0 40px",
-            marginLeft: "20%",
+            marginLeft: "18%",
             backgroundColor: "white",
-
-            borderRadius: "10px",
             height: "80px",
-            marginTop: "1%",
           }}
         >
-          <div className={styles.search__container}>
-            <input
-              className={styles.search__input}
-              type="text"
-              placeholder={t("search")}
-            />
-          </div>
           <div
             style={{
               display: "flex",
