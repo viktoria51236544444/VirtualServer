@@ -23,7 +23,6 @@ const Questions = () => {
 
   return (
     <div className={styles.main}>
-      <h4>Часто задаваемые вопросы</h4>
       <div className={styles.container}>
         <center>
           <div className={styles.accordian}>

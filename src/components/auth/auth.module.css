@@ -56,3 +56,17 @@
   width: 60px;
   margin-bottom: -20px;
 }
+.form_control {
+  background-color: white;
+  height: 50px !important;
+}
+.btn {
+  background-color: green !important;
+  width: 330px !important;
+  height: 40px !important;
+  padding: 10px !important;
+  font-size: 16px !important;
+}
+.btn:hover {
+  background-color: rgb(2, 126, 2) !important;
+}
