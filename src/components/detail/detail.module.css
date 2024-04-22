@@ -21,7 +21,7 @@
   width: 170px;
 }
 .discs_container {
-  margin-top: 22%;
+  margin-top: 28%;
 }
 .ram_container {
   margin-top: 20%;
@@ -62,12 +62,16 @@
 .dropdown:hover .dropdown_content {
   display: block;
 }
+
 .features_container label {
   display: flex;
 }
+.checkboxes input {
+  width: 8.3%;
+}
 .container__block1 {
   display: flex;
-
+  border-top: 6px solid #7c8db5;
   width: 108.5%;
   height: 60vh;
   background-color: white;
@@ -75,7 +79,7 @@
   border-radius: 5px;
   justify-content: center;
   margin-left: -19.7%;
-  margin-top: -6%;
+  margin-top: -4%;
 }
 
 .total_price_container {
@@ -102,7 +106,7 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  margin-bottom: 70px;
+  margin-bottom: 190px;
   margin-right: 115px;
 }
 
@@ -200,7 +204,7 @@
   width: 80vw;
   margin-left: 19%;
   position: relative;
-  margin-top: -2%;
+  margin-top: -3%;
   height: auto;
   padding: 2vw;
   padding-top: 5vw;

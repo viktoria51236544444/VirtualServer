@@ -46,6 +46,7 @@ const navigationItems = {
   news: {
     text: "Новости",
     icon: Group5,
+    link: "/",
   },
   questions: {
     text: "Вопросы",
@@ -73,6 +74,8 @@ function Sidebar(props) {
   const [selectedItem, setSelectedItem] = useState(null);
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedLanguage, setSelectedLanguage] = useState("ru");
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedFileName, setSelectedFileName] = useState("");
   const { openModal, handleOpenModal, handleCloseModal } = useModal(false);
 
   const handleItemClick = (item) => {
@@ -91,6 +94,16 @@ function Sidebar(props) {
   const isMenuOpen = Boolean(anchorEl);
 
   const { t } = useTranslation();
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setSelectedFile(file);
+    setSelectedFileName(file.name);
+  };
+
+  const handlePayment = () => {
+    // Add logic for payment processing using selectedFile
+  };
 
   return (
     <I18nextProvider i18n={i18n}>
@@ -116,6 +129,7 @@ function Sidebar(props) {
               fontSize: "18px",
             }}
           >
+
             <p style={{ margin: "0" }}>Баланс: 2000$</p>
             {/* <img style={{ width: "40px" }} src={Group26} alt="" /> */}
             <Button
@@ -136,8 +150,9 @@ function Sidebar(props) {
                   marginLeft: "35%",
                   marginTop: "5%",
                   borderRadius: "10px",
-                  width: "33%",
-                  height: "40%",
+                  width: "30%",
+                  height: "45%",
+
                   textAlign: "center",
                 }}
                 in={openModal}
@@ -153,16 +168,19 @@ function Sidebar(props) {
                   }}
                   className={styles.modal}
                 >
-                  <h2 id="transition-modal-title">Как можно пополнить</h2>
-                  <p style={{ margin: "20", marginTop: "5%" }}>
+
+                  <h3 id="transition-modal-title">Как можно пополнить</h3>
+                  <p style={{ marginBottom: "3%", marginTop: "2%" }}>
                     О!Деньги: 996501304053
                   </p>
-                  <p style={{ margin: "0" }}>Mbank: 996501304053</p>
+                  <p style={{ marginBottom: "16%" }}>Mbank: 996501304053</p>
                   <Button
-                    variant="contained"
+                    variant="outlined"
                     component="label"
                     style={{
                       transition: "background-color 0.3s",
+                      marginBottom: "-20%",
+                      marginTop: "-6%",
                       marginBottom: "-13%",
                       marginTop: "15%",
                       color: "black",
@@ -172,8 +190,24 @@ function Sidebar(props) {
                       },
                     }}
                   >
-                    Прикрепить чек
-                    <input type="file" style={{ display: "none" }} />
+                    {selectedFileName ? selectedFileName : "Прикрепить чек"}
+                    <input
+                      type="file"
+                      style={{ display: "none" }}
+                      onChange={handleFileChange}
+                    />
+                  </Button>
+                  <Button
+                    style={{
+                      marginTop: "23%",
+                      marginBottom: "-15%",
+                      backgroundColor: "green",
+                      width: "30vh",
+                    }}
+                    variant="contained"
+                    onClick={handlePayment}
+                  >
+                    Оплатить
                   </Button>
                 </div>
               </Fade>

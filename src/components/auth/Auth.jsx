@@ -32,7 +32,7 @@ const Auth = () => {
             },
           },
           color: {
-            value: "#435EBE",
+            value: "#00a10d",
           },
           shape: {
             type: "circle",
@@ -162,7 +162,7 @@ const Auth = () => {
   useEffect(() => {
     if (isValidData) {
       // Если данные правильные, перенаправляем на "/home"
-      navigate("/home");
+      navigate("/");
     }
   }, [isValidData, navigate]);
 

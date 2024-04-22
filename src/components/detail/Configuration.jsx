@@ -222,42 +222,21 @@ const Configuration = () => {
   const handleCloseModal = () => {
     setOpenModal(false);
   };
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedFileName, setSelectedFileName] = useState("");
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setSelectedFile(file);
+    setSelectedFileName(file.name);
+  };
+
+  const handlePayment = () => {
+    // Add logic for payment processing using selectedFile
+  };
+
   return (
     <div>
       <div>
-        <div
-          style={{
-            width: "65%",
-            backgroundColor: "rgba(255, 255, 255, 0.8)",
-            borderTop: "6px solid #7c8db5",
-            marginLeft: "28%",
-            marginTop: "4%",
-            height: "70px",
-            color: "black",
-            display: "flex",
-            textAlign: "center",
-            borderRadius: "10px",
-          }}
-        >
-          <div
-            style={{ width: "560px", display: "table-cell", marginTop: "2%" }}
-          >
-            <h4 style={{ marginLeft: "-10%" }}>Конфигуратор</h4>
-          </div>
-
-          <div style={{ marginTop: "2%", display: "flex", gap: "60px" }}>
-            <h4>Общая цена:</h4>
-            <h5
-              style={{
-                marginTop: "-2%",
-                border: "1px solid #7c8db5",
-                padding: "10px",
-              }}
-            >
-              {totalPrice} сом/мес.
-            </h5>
-          </div>
-        </div>
         <div
           className={style.configuration_container}
           style={{
@@ -268,8 +247,11 @@ const Configuration = () => {
         >
           <div className={style.container__block1}>
             <div className={style.configuration_container_first}>
-              <div className={style.config_proccessor}>
-                <h3>Процессоры</h3>
+              <div
+                className={style.config_proccessor}
+                style={{ marginTop: "8%" }}
+              >
+                <h3 style={{ fontSize: "20px" }}>Процессоры</h3>
                 <div className={style.dropdown}>
                   <button
                     className={style.dropbtn}
@@ -296,7 +278,7 @@ const Configuration = () => {
                 </div>
               </div>
               <div className={style.cores_container}>
-                <h3>Ядра, шт</h3>
+                <h3 style={{ fontSize: "20px" }}>Ядра, шт</h3>
                 <input
                   type="range"
                   min="0"
@@ -309,7 +291,7 @@ const Configuration = () => {
               </div>
 
               <div className={style.ram_container}>
-                <h3>Объем RAM, ГБ</h3>
+                <h3 style={{ fontSize: "20px" }}>Объем RAM, ГБ</h3>
                 <input
                   type="range"
                   min="0"
@@ -323,43 +305,45 @@ const Configuration = () => {
             </div>
             <div className={style.configuration_container_second}>
               <div className={style.discs_container}>
-                <h3>Диски</h3>
+                <h3 style={{ fontSize: "20px" }}>Диски</h3>
                 {renderDiskOptions()}
               </div>
               <div className={style.features_container}>
-                <h3>Особенности</h3>
-                <label>
-                  <input
-                    type="checkbox"
-                    checked={selectedGPU}
-                    onChange={handleGPUSelect}
-                  />
-                  GPU
-                </label>
-                <label>
-                  <input
-                    type="checkbox"
-                    checked={selectedPowerSupply}
-                    onChange={handlePowerSupplySelect}
-                  />
-                  2 блока питания
-                </label>
-                <label>
-                  <input
-                    type="checkbox"
-                    checked={selectedKVM}
-                    onChange={handleKVMSelect}
-                  />
-                  KVM-консоль
-                </label>
-                <label>
-                  <input
-                    type="checkbox"
-                    checked={selectedPrivateNetwork}
-                    onChange={handlePrivateNetworkSelect}
-                  />
-                  Приватная сеть
-                </label>
+                <h3 style={{ fontSize: "20px" }}>Особенности</h3>
+                <div className={style.checkboxes}>
+                  <label>
+                    <input
+                      type="checkbox"
+                      checked={selectedGPU}
+                      onChange={handleGPUSelect}
+                    />
+                    GPU
+                  </label>
+                  <label>
+                    <input
+                      type="checkbox"
+                      checked={selectedPowerSupply}
+                      onChange={handlePowerSupplySelect}
+                    />
+                    2 блока питания
+                  </label>
+                  <label>
+                    <input
+                      type="checkbox"
+                      checked={selectedKVM}
+                      onChange={handleKVMSelect}
+                    />
+                    KVM-консоль
+                  </label>
+                  <label>
+                    <input
+                      type="checkbox"
+                      checked={selectedPrivateNetwork}
+                      onChange={handlePrivateNetworkSelect}
+                    />
+                    Приватная сеть
+                  </label>
+                </div>
               </div>
             </div>
             <div className={style.card}>
@@ -406,7 +390,7 @@ const Configuration = () => {
                   flexDirection: "column",
                   justifyContent: "flex-end",
                   alignItems: "center",
-                  padding: "100px",
+                  padding: "80px",
                 }}
                 className={style.modal}
               >
@@ -421,22 +405,38 @@ const Configuration = () => {
                 <h2 style={{ marginTop: "30px" }} id="transition-modal-title">
                   Как можно оплатить
                 </h2>
-                <p style={{ margin: "10" }}>О!Деньги: 996501304053</p>
-                <p style={{ margin: "0" }}>Mbank: 996501304053</p>
+                <p style={{ marginBottom: "2%" }}>О!Деньги: 996501304053</p>
+                <p style={{ marginBottom: "10%" }}>Mbank: 996501304053</p>
                 <Button
-                  variant="contained"
+                  variant="outlined"
                   component="label"
                   style={{
                     transition: "background-color 0.3s",
-                    marginBottom: "-10%",
-                    marginTop: "5%",
+                    marginBottom: "-20%",
+                    marginTop: "-6%",
                     "&:hover": {
                       backgroundColor: "#4caf50",
                     },
                   }}
                 >
-                  Прикрепить чек
-                  <input type="file" style={{ display: "none" }} />
+                  {selectedFileName ? selectedFileName : "Прикрепить чек"}
+                  <input
+                    type="file"
+                    style={{ display: "none" }}
+                    onChange={handleFileChange}
+                  />
+                </Button>
+                <Button
+                  style={{
+                    marginTop: "23%",
+                    marginBottom: "-15%",
+                    backgroundColor: "green",
+                    width: "26vh",
+                  }}
+                  variant="contained"
+                  onClick={handlePayment}
+                >
+                  Оплатить
                 </Button>
               </div>
             </Fade>
