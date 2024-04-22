@@ -98,14 +98,13 @@ function Sidebar(props) {
         <CssBaseline />
         <Box
           sx={{
-            width: `calc(101.1% - ${drawerWidth}px)`,
+            width: `calc(101.% - ${drawerWidth}px)`,
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
             padding: "0 40px",
-            marginLeft: "18%",
             backgroundColor: "white",
-            height: "80px",
+            height: "60px",
           }}
         >
           <div
@@ -113,12 +112,18 @@ function Sidebar(props) {
               display: "flex",
               justifyContent: "flex-end",
               alignItems: "center",
-              marginLeft: "30%",
+              marginLeft: "20%",
+              fontSize: "18px",
             }}
           >
-            <p style={{ margin: "0" }}>2000$</p>
-            <img style={{ width: "40px" }} src={Group26} alt="" />
-            <Button onClick={handleOpenModal}>Пополнить</Button>
+            <p style={{ margin: "0" }}>Баланс: 2000$</p>
+            {/* <img style={{ width: "40px" }} src={Group26} alt="" /> */}
+            <Button
+              sx={{ fontSize: "17px", color: "#5ecc50" }}
+              onClick={handleOpenModal}
+            >
+              Пополнить
+            </Button>
             <Modal
               aria-labelledby="transition-modal-title"
               aria-describedby="transition-modal-description"
@@ -131,7 +136,7 @@ function Sidebar(props) {
                   marginLeft: "35%",
                   marginTop: "5%",
                   borderRadius: "10px",
-                  width: "30%",
+                  width: "33%",
                   height: "40%",
                   textAlign: "center",
                 }}
@@ -149,17 +154,21 @@ function Sidebar(props) {
                   className={styles.modal}
                 >
                   <h2 id="transition-modal-title">Как можно пополнить</h2>
-                  <p style={{ margin: "15" }}>О!Деньги: 996501304053</p>
+                  <p style={{ margin: "20", marginTop: "5%" }}>
+                    О!Деньги: 996501304053
+                  </p>
                   <p style={{ margin: "0" }}>Mbank: 996501304053</p>
                   <Button
                     variant="contained"
                     component="label"
                     style={{
                       transition: "background-color 0.3s",
-                      marginBottom: "-15%",
+                      marginBottom: "-13%",
                       marginTop: "15%",
+                      color: "black",
+                      backgroundColor: "#5ecc50",
                       "&:hover": {
-                        backgroundColor: "#4caf50",
+                        backgroundColor: "#5ecc50",
                       },
                     }}
                   >
@@ -170,38 +179,40 @@ function Sidebar(props) {
               </Fade>
             </Modal>
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              class="bi bi-person"
-              viewBox="0 0 16 16"
-            >
-              <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
-            </svg>
-            <p style={{ margin: "0" }}>admin@gmail.com</p>
-          </div>
-          <div className={styles.navbarRight}>
-            <IconButton onClick={handleLanguageClick}>
-              <LanguageIcon />
-            </IconButton>
-            <Menu
-              anchorEl={anchorEl}
-              open={isMenuOpen}
-              onClose={() => handleLanguageClose(selectedLanguage)}
-            >
-              <MenuItem onClick={() => handleLanguageClose("ru")}>
-                Русский
-              </MenuItem>
-              <MenuItem onClick={() => handleLanguageClose("en")}>
-                English
-              </MenuItem>
-              <MenuItem onClick={() => handleLanguageClose("kg")}>
-                Кыргызча
-              </MenuItem>
-            </Menu>
+          <div style={{ display: "flex", gap: "3%" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                fill="currentColor"
+                class="bi bi-person"
+                viewBox="0 0 16 16"
+              >
+                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
+              </svg>
+              <p style={{ margin: "0", fontSize: "16px" }}>admin@gmail.com</p>
+            </div>
+            <div className={styles.navbarRight}>
+              <IconButton onClick={handleLanguageClick}>
+                <LanguageIcon />
+              </IconButton>
+              <Menu
+                anchorEl={anchorEl}
+                open={isMenuOpen}
+                onClose={() => handleLanguageClose(selectedLanguage)}
+              >
+                <MenuItem onClick={() => handleLanguageClose("ru")}>
+                  Русский
+                </MenuItem>
+                <MenuItem onClick={() => handleLanguageClose("en")}>
+                  English
+                </MenuItem>
+                <MenuItem onClick={() => handleLanguageClose("kg")}>
+                  Кыргызча
+                </MenuItem>
+              </Menu>
+            </div>
           </div>
         </Box>
 
@@ -224,6 +235,7 @@ function Sidebar(props) {
                 width: drawerWidth,
                 backgroundColor: "#fff",
                 color: "#25396f",
+                borderRight: "none",
               },
             }}
             open
