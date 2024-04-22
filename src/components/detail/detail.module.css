@@ -4,18 +4,28 @@
 }
 
 .dropbtn {
-  margin-left: -20%;
+  margin-left: -215%;
   background-color: whitesmoke;
   border: none;
-  padding: 10px;
+  padding: 20px;
+  border-radius: 5px;
+  width: 200px;
 }
 
 .dropdown_content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
+  background-color: white;
+  border: 2px solid #7c8db5;
+  border-radius: 5px;
+  min-width: 130px;
   z-index: 1;
+  text-align: left;
+  font-size: 17px;
+
+  padding: 10px;
+  width: 200px;
+  margin-top: -50%;
 }
 
 .dropdown_content label {
@@ -37,7 +47,7 @@
 .container__block1 {
   display: flex;
   gap: 10%;
-  width: 107%;
+  width: 108.5%;
   height: 60vh;
   background-color: white;
   text-align: center;
@@ -105,6 +115,9 @@
   transform: scale(1.05);
   background-color: #5ecc50;
 }
+.range {
+  background-color: black;
+}
 .slider_container2 {
   position: absolute;
   top: 0;
@@ -154,5 +167,8 @@
 .slider_button:hover {
   background-color: #9694ff;
 }
-
+.cores_container {
+  margin-left: -220%;
+  margin-top: 2%;
+}
 /* ! Вопросы */
