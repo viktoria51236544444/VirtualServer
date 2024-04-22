@@ -227,10 +227,41 @@ const Configuration = () => {
   return (
     <div>
       <div
+        style={{
+          width: "980px",
+          backgroundColor: "rgba(255, 255, 255, 0.8)",
+          borderTop: "6px solid #7c8db5",
+          marginLeft: "28%",
+          marginTop: "2%",
+          height: "70px",
+          color: "black",
+          display: "flex",
+          textAlign: "center",
+          borderRadius: "10px",
+        }}
+      >
+        <div style={{ width: "560px", display: "table-cell", marginTop: "2%" }}>
+          <h4 style={{ marginLeft: "-10%" }}>Конфигуратор</h4>
+        </div>
+
+        <div style={{ marginTop: "2%", display: "flex", gap: "60px" }}>
+          <h4>Общая цена:</h4>
+          <h5
+            style={{
+              marginTop: "-2%",
+              border: "1px solid #7c8db5",
+              padding: "10px",
+            }}
+          >
+            {totalPrice} сом/мес.
+          </h5>
+        </div>
+      </div>
+      <div
         className={style.configuration_container}
         style={{
           display: "flex",
-          marginLeft: "20%",
+          marginLeft: "40%",
           marginTop: "4%",
         }}
       >
@@ -331,8 +362,8 @@ const Configuration = () => {
           </div>
         </div>
 
-        <div className={style.total_price_container}>
-          <h3>Общая сумма: {totalPrice} сом в месяц</h3>
+        {/* <div className={style.total_price_container}>
+          <h3>Итоговая сумма: {totalPrice} сом в месяц</h3>
           <div className={style.selected_options}>
             {selectedOptions.map((option, index) => (
               <div key={index} className={style.selected_option}>
@@ -415,7 +446,7 @@ const Configuration = () => {
               </Fade>
             </Modal>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

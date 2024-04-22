@@ -4,15 +4,10 @@
 }
 
 .dropbtn {
-  background-color: #54b548;
-  color: white;
-  font-size: 14px;
+  margin-left: -20%;
+  background-color: whitesmoke;
   border: none;
-  cursor: pointer;
-  border-radius: 4px;
-  width: 150px;
-  height: 45px;
-  text-transform: uppercase;
+  padding: 10px;
 }
 
 .dropdown_content {
@@ -42,23 +37,24 @@
 .container__block1 {
   display: flex;
   gap: 10%;
-  width: 55%;
+  width: 107%;
   height: 60vh;
   background-color: white;
   text-align: center;
   border-radius: 5px;
   justify-content: center;
-  align-items: center;
+  margin-left: -19.7%;
+  margin-top: -6%;
 }
 
 .total_price_container {
-  margin-left: 1.5%;
-  width: 35%;
-  height: 50vh;
+  margin-left: -20%;
+  width: 109%;
+  height: 10vh;
   background-color: white;
   border-radius: 5px;
-  text-align: center;
-  margin-top: 5%;
+  margin-top: 0.5%;
+  border: 2px solid rgb(150, 148, 148);
 }
 
 .configuration_container {
@@ -78,11 +74,6 @@
   background-color: red;
 }
 
-.configuration_container_first h3,
-.configuration_container_second h3,
-.total_price_container h3 {
-  color: #25396f;
-}
 .btns {
   display: flex;
   justify-content: center;
@@ -163,3 +154,5 @@
 .slider_button:hover {
   background-color: #9694ff;
 }
+
+/* ! Вопросы */
