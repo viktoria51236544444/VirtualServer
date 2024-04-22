@@ -52,10 +52,6 @@ const navigationItems = {
     icon: Group6,
     link: "/questions",
   },
-  help: {
-    text: "Помощь",
-    icon: Group7,
-  },
 };
 
 function useModal(initialState = false) {
