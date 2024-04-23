@@ -42,7 +42,7 @@ jobs:
           port: 2430
           password: Afina954120
           source: "deploy.tar"
-          target: "/virtualserver/"
+          target: "/mttp-site/build/"
           tar_dereference: true
           rm: true
 
@@ -57,7 +57,7 @@ jobs:
             whoami
             ls -la
             cd ..
-            cd virtualserver/
+            cd /mttp-site/build/
             ls -la
             tar -xvf deploy.tar
             systemctl restart nginx

@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, Backdrop, Fade, Button } from "@mui/material";
+import { Button } from "@mui/material";
 const Order = () => {
   return (
     <div
@@ -48,7 +48,7 @@ const Order = () => {
             Заказать
           </Button>
         </div>
-      </div>{" "}
+      </div>
       <div
         style={{
           marginRight: "12px",
