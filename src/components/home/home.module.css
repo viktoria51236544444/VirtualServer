@@ -88,7 +88,6 @@
 .home_container {
   display: flex;
   margin-left: 2%;
-  background-color: #f6f6f6;
   padding: 20px;
 }
 
@@ -100,23 +99,21 @@
 .info_container {
   width: 40%;
 }
+.info_container h3 {
+  margin-top: 2%;
+}
 
 .cards {
   display: flex;
   flex-direction: column;
+  margin-top: 7%;
 }
 
 .card {
-  background-color: #fff;
   padding: 20px;
   border-radius: 10px;
-  margin-bottom: 20px;
-  transition: transform 0.5 ease, box-shadow 0.6s ease;
-  animation: moveCard 7s linear infinite alternate;
-}
-
-.card:hover {
-  transform: translateY(-10px);
+  margin-bottom: 30px;
+  background-color: #fff;
 }
 
 .card h3 {
@@ -127,15 +124,6 @@
 .card p {
   color: #666;
   font-size: 14px;
-}
-
-@keyframes moveCard {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(-50px);
-  }
 }
 
 /*? home */

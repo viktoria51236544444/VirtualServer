@@ -4,10 +4,8 @@
 }
 .configuration_container_first {
   margin-top: 3%;
-  margin-left: -10%;
 }
 .configuration_container_second {
-  margin-left: 18%;
   font-size: 18px;
 }
 .config_proccessor {
@@ -24,11 +22,10 @@
   margin-top: 28%;
 }
 .ram_container {
-  margin-top: 20%;
+  margin-top: 15%;
 }
 .cores_container {
-  /* margin-left: -220%; */
-  margin-top: 20%;
+  margin-top: 15%;
 }
 .features_container {
   margin-top: 28%;
@@ -71,15 +68,13 @@
 }
 .container__block1 {
   display: flex;
-  border-top: 6px solid #7c8db5;
-  width: 108.5%;
+  width: 80%;
   height: 60vh;
   background-color: white;
   text-align: justify;
   border-radius: 5px;
-  justify-content: center;
+  justify-content: space-evenly;
   margin-left: -19.7%;
-  margin-top: -4%;
 }
 
 .total_price_container {
@@ -106,30 +101,32 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  margin-bottom: 190px;
-  margin-right: 115px;
+  margin-bottom: 200px;
+  margin-right: 400px;
 }
 
 .cardContent {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
+  text-align: center;
+  align-items: center;
 }
 
 .button {
   border: none;
   color: black;
-  height: 45px;
+  height: 42px;
   border-radius: 5px;
   cursor: pointer;
   background-color: #5ecc50;
   transition: all 0.3s ease;
-  width: 140px;
+  width: 138px;
 }
 .button2 {
   border: none;
   color: black;
-  height: 45px;
+  height: 42px;
   border-radius: 5px;
   cursor: pointer;
   background-color: rgb(211, 210, 210);

@@ -230,9 +230,7 @@ const Configuration = () => {
     setSelectedFileName(file.name);
   };
 
-  const handlePayment = () => {
-    // Add logic for payment processing using selectedFile
-  };
+  const handlePayment = () => {};
 
   return (
     <div>
@@ -249,7 +247,7 @@ const Configuration = () => {
             <div className={style.configuration_container_first}>
               <div
                 className={style.config_proccessor}
-                style={{ marginTop: "8%" }}
+                style={{ marginTop: "15%" }}
               >
                 <h3 style={{ fontSize: "20px" }}>Процессоры</h3>
                 <div className={style.dropdown}>
@@ -304,14 +302,17 @@ const Configuration = () => {
               </div>
             </div>
             <div className={style.configuration_container_second}>
-              <div className={style.discs_container}>
-                <h3 style={{ fontSize: "20px" }}>Диски</h3>
+              <div
+                style={{ fontSize: "15px" }}
+                className={style.discs_container}
+              >
+                <h3 style={{ fontSize: "20px", marginTop: "38%" }}>Диски</h3>
                 {renderDiskOptions()}
               </div>
               <div className={style.features_container}>
                 <h3 style={{ fontSize: "20px" }}>Особенности</h3>
                 <div className={style.checkboxes}>
-                  <label>
+                  <label style={{ fontSize: "15px" }}>
                     <input
                       type="checkbox"
                       checked={selectedGPU}
@@ -319,7 +320,7 @@ const Configuration = () => {
                     />
                     GPU
                   </label>
-                  <label>
+                  <label style={{ fontSize: "15px" }}>
                     <input
                       type="checkbox"
                       checked={selectedPowerSupply}
@@ -327,7 +328,7 @@ const Configuration = () => {
                     />
                     2 блока питания
                   </label>
-                  <label>
+                  <label style={{ fontSize: "15px" }}>
                     <input
                       type="checkbox"
                       checked={selectedKVM}
@@ -335,7 +336,7 @@ const Configuration = () => {
                     />
                     KVM-консоль
                   </label>
-                  <label>
+                  <label style={{ fontSize: "15px" }}>
                     <input
                       type="checkbox"
                       checked={selectedPrivateNetwork}
@@ -348,6 +349,10 @@ const Configuration = () => {
             </div>
             <div className={style.card}>
               <div className={style.cardContent}>
+                <h5>
+                  Итого: {totalPrice}
+                  <span style={{ fontSize: "15px" }}> сом в месяц</span>
+                </h5>
                 <button
                   onClick={handleOpenModal}
                   className={`${style.button} ${style.button_order}`}
@@ -370,6 +375,7 @@ const Configuration = () => {
             open={openModal}
             onClose={handleCloseModal}
             closeAfterTransition
+            sx={{ textAlign: "justify" }}
           >
             <Fade
               style={{
@@ -378,8 +384,7 @@ const Configuration = () => {
                 borderRadius: "10px",
                 width: "40%",
                 height: "80%",
-
-                textAlign: "center",
+                textAlign: "justify",
               }}
               in={openModal}
             >
@@ -390,21 +395,23 @@ const Configuration = () => {
                   flexDirection: "column",
                   justifyContent: "flex-end",
                   alignItems: "center",
-                  padding: "80px",
+                  padding: "90px",
                 }}
                 className={style.modal}
               >
-                <h3>Общая сумма: {totalPrice} сом в месяц</h3>
                 <div className={style.selected_options}>
                   {selectedOptions.map((option, index) => (
                     <div key={index} className={style.selected_option}>
                       {option.name}: {option.value}
                     </div>
                   ))}
+                  <div style={{ marginTop: "5%" }}>
+                    <h4>Итого: {totalPrice} сом в месяц</h4>
+                  </div>
                 </div>
-                <h2 style={{ marginTop: "30px" }} id="transition-modal-title">
+                <h3 style={{ marginTop: "30px" }} id="transition-modal-title">
                   Как можно оплатить
-                </h2>
+                </h3>
                 <p style={{ marginBottom: "2%" }}>О!Деньги: 996501304053</p>
                 <p style={{ marginBottom: "10%" }}>Mbank: 996501304053</p>
                 <Button
