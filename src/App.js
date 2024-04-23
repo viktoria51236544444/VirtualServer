@@ -6,7 +6,7 @@ import Auth from "./components/auth/Auth";
 const App = () => {
   return (
     <div>
-    <Auth/>
+<Sidebar/>
       <MainRoutes />
     </div>
   );
