@@ -1,89 +1,284 @@
-import React from "react";
+import React, { useState } from "react";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import { TableVirtuoso } from "react-virtuoso";
+import IconButton from "@mui/material/IconButton";
+import PauseIcon from "@mui/icons-material/Pause";
+import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
+import PowerOffIcon from "@mui/icons-material/PowerOff";
 import styles from "./detail.module.css";
 
-const ServerTable = () => {
-  const servers = [
-    {
-      name: "Сервер 1",
-      ip: "192.168.1.1",
-      port: "8080",
-      status: "Онлайн",
-      players: 10,
-      maxPlayers: 20,
-    },
-    {
-      name: "Сервер 2",
-      ip: "192.168.1.2",
-      port: "8081",
-      status: "Оффлайн",
-      players: 0,
-      maxPlayers: 10,
-    },
-    {
-      name: "Сервер 2",
-      ip: "192.168.1.2",
-      port: "8081",
-      status: "Оффлайн",
-      players: 0,
-      maxPlayers: 10,
-    },
-    {
-      name: "Сервер 2",
-      ip: "192.168.1.2",
-      port: "8081",
-      status: "Оффлайн",
-      players: 0,
-      maxPlayers: 10,
-    },
-    {
-      name: "Сервер 2",
-      ip: "192.168.1.2",
-      port: "8081",
-      status: "Оффлайн",
-      players: 0,
-      maxPlayers: 10,
-      jkdskjhsf: "ncsnnlka",
-    },
-    {
-      name: "Сервер 2",
-      ip: "192.168.1.2",
-      port: "8081",
-      status: "Оффлайн",
-      players: 0,
-      maxPlayers: 10,
-    },
-  ];
+const localServersData = [
+  {
+    id: 12345,
+    name: "Admin",
+    location: "New York",
+    type: "Web Server",
+    status: "Активен до 18.06.24",
+    tariff: "vds.kg 450",
+    ip: "77.695.88.40.45698",
+    password: "Grup8569",
+  },
+  {
+    id: 69444,
+    name: "Admin",
+    location: "New York",
+    type: "Web Server",
+    status: "Активен до 18.06.24",
+    tariff: "vds.kg 450",
+    ip: "77.695.88.40.45698",
+    password: "Grup8569",
+  },
+  {
+    id: 78955,
+    name: "Admin",
+    location: "New York",
+    type: "Web Server",
+    status: "Активен до 18.06.24",
+    tariff: "vds.kg 450",
+    ip: "77.695.88.40.45698",
+    password: "Grup8569",
+  },
+  {
+    id: 18345,
+    name: "Admin",
+    location: "New York",
+    type: "Web Server",
+    status: "Активен до 18.06.24",
+    tariff: "vds.kg 450",
+    ip: "77.695.88.40.45698",
+    password: "Grup8569",
+  },
+  {
+    id: 12445,
+    name: "Admin",
+    location: "New York",
+    type: "Web Server",
+    status: "Активен до 18.06.24",
+    tariff: "vds.kg 450",
+    ip: "77.695.88.40.45698",
+    password: "Grup8569",
+  },
+  {
+    id: 14565,
+    name: "Admin",
+    location: "New York",
+    type: "Web Server",
+    status: "Активен до 18.06.24",
+    tariff: "vds.kg 450",
+    ip: "77.695.88.40.45698",
+    password: "Grup8569",
+  },
+  {
+    id: 92345,
+    name: "Admin",
+    location: "New York",
+    type: "Web Server",
+    status: "Активен до 18.06.24",
+    tariff: "vds.kg 450",
+    ip: "77.695.88.40.45698",
+    password: "Grup8569",
+  },
+  {
+    id: 12785,
+    name: "Admin",
+    location: "New York",
+    type: "Web Server",
+    status: "Активен до 18.06.24",
+    tariff: "vds.kg 450",
+    ip: "77.695.88.40.45698",
+    password: "Grup8569",
+  },
+  {
+    id: 16645,
+    name: "Admin",
+    location: "New York",
+    type: "Web Server",
+    status: "Активен до 18.06.24",
+    tariff: "vds.kg 450",
+    ip: "77.695.88.40.45698",
+    password: "Grup8569",
+  },
+];
 
+const columns = [
+  {
+    label: "ID",
+    dataKey: "id",
+  },
+  {
+    label: "Тарифы",
+    dataKey: "tariff",
+  },
+  {
+    label: "IP",
+    dataKey: "ip",
+  },
+  {
+    label: "Логин",
+    dataKey: "name",
+  },
+  {
+    label: "Пароль",
+    dataKey: "password",
+  },
+  {
+    label: "Статус",
+    dataKey: "status",
+  },
+  {
+    label: "Продлить",
+    dataKey: "update",
+  },
+  {
+    label: "Перезагрузить",
+    dataKey: "pauseIcon",
+  },
+  {
+    label: "Выключить",
+    dataKey: "powerOffIcon",
+  },
+];
+
+const VirtuosoTableComponents = {
+  Scroller: React.forwardRef((props, ref) => (
+    <TableContainer component={Paper} {...props} ref={ref} />
+  )),
+  Table: (props) => (
+    <Table
+      {...props}
+      sx={{ borderCollapse: "separate", tableLayout: "fixed" }}
+    />
+  ),
+  TableHead,
+  TableRow: ({ item: _item, ...props }) => <TableRow {...props} />,
+  TableBody: React.forwardRef((props, ref) => (
+    <TableBody {...props} ref={ref} />
+  )),
+};
+
+const calculateMinWidth = (dataKey) => {
+  switch (dataKey) {
+    case "id":
+      return 50;
+    case "tariff":
+      return 120;
+    case "ip":
+      return 200; // Фиксированная ширина для столбца IP
+    case "name":
+      return 100;
+    case "password":
+      return 100;
+    case "status":
+      return 150;
+    case "update":
+      return 100;
+    case "pauseIcon":
+      return 50;
+    case "powerOffIcon":
+      return 50;
+    default:
+      return 100;
+  }
+};
+
+const fixedHeaderContent = () => {
   return (
-    <div className={styles.server__table__container}>
-      <h1>Мои сервера</h1>
-      <div className={styles.server_card}>
-        <table className={styles.server__info_table}>
-          <tbody>
-            {servers.map((server, index) => (
-              <tr key={index}>
-                <td>{server.name}</td>
-                <td>IP-адрес: {server.ip}</td>
-                <td>Порт: {server.port}</td>
-                <td>Статус: {server.status}</td>
-                <td>Статус: {server.jkdskjhsf}</td>
-                <td>Статус: {server.jkdskjhsf}</td>
-                <td>Статус: {server.jkdskjhsf}</td>
-                <td>Статус: {server.jkdskjhsf}</td>
-                <td>Статус: {server.jkdskjhsf}</td>
-                <td>Статус: {server.jkdskjhsf}</td>
-                <td>Статус: {server.jkdskjhsf}</td>
-                <td>Статус: {server.jkdskjhsf}</td>
-                <td>
-                  Количество игроков: {server.players}/{server.maxPlayers}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
+    <TableRow>
+      {columns.map((column) => (
+        <TableCell
+          key={column.dataKey}
+          variant="head"
+          align="left"
+          sx={{
+            backgroundColor: "background.paper",
+            minWidth: calculateMinWidth(column.dataKey),
+          }}
+          className={styles.tableCell} // Применяем стили из модуля CSS
+        >
+          {column.label}
+        </TableCell>
+      ))}
+    </TableRow>
   );
 };
 
-export default ServerTable;
+export default function MyServer() {
+  const [paused, setPaused] = useState({});
+  const [poweredOff, setPoweredOff] = useState({});
+
+  const handlePause = (id) => {
+    setPaused((prevPaused) => ({
+      ...prevPaused,
+      [id]: !prevPaused[id],
+    }));
+  };
+
+  const handlePowerOff = (id) => {
+    setPoweredOff((prevPoweredOff) => ({
+      ...prevPoweredOff,
+      [id]: !prevPoweredOff[id],
+    }));
+  };
+  const rowContent = (_index, row) => {
+    return (
+      <React.Fragment>
+        {columns.map((column) => (
+          <TableCell
+            key={column.dataKey}
+            align="left"
+            className={
+              column.dataKey === "tariff"
+                ? `${styles.tableCell} ${styles.tariffCell}`
+                : column.dataKey === "ip"
+                ? `${styles.tableCell} ${styles.ipCell}`
+                : styles.tableCell
+            }
+          >
+            {column.dataKey === "pauseIcon" ? (
+              <IconButton onClick={() => handlePause(row.id)}>
+                {paused[row.id] ? <DoubleArrowIcon /> : <PauseIcon />}
+              </IconButton>
+            ) : column.dataKey === "powerOffIcon" ? (
+              <IconButton
+                onClick={() => handlePowerOff(row.id)}
+                style={{ color: poweredOff[row.id] ? "grey" : "red" }}
+              >
+                <PowerOffIcon />
+              </IconButton>
+            ) : column.dataKey === "update" ? (
+              "IP"
+            ) : (
+              row[column.dataKey]
+            )}
+          </TableCell>
+        ))}
+      </React.Fragment>
+    );
+  };
+
+  return (
+    <Paper
+      style={{
+        height: 500,
+        width: "79%",
+        marginLeft: "20%",
+        marginTop: "3%",
+        borderRadius: 15,
+        overflow: "hidden",
+      }}
+    >
+      <TableVirtuoso
+        data={localServersData}
+        components={VirtuosoTableComponents}
+        fixedHeaderContent={fixedHeaderContent}
+        itemContent={rowContent}
+      />
+    </Paper>
+  );
+}
