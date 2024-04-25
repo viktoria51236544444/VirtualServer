@@ -82,48 +82,39 @@
   border-radius: 0;
   background-position: 100% center;
 }
+
+
+@media screen and (max-width: 1300px) {
+  .container__home {
+    width: 800px !important;
+    margin-left: 80px !important;
+  }
+}
+@media screen and (max-width: 770px) {
+  .container__home {
+    width: 600px !important;
+    margin-left: 100px !important;
+  }
+}
+@media screen and (max-width: 480px) {
+  .container__home {
+    width: 300px !important;
+    margin-left: 80px !important;
+  }
+}
+@media screen and (max-width: 400px) {
+  .container__home {
+    width: 280px !important;
+    margin-left: 70px !important;
+  }
+}
+@media screen and (max-width: 350px) {
+  .container__home {
+    width: 200px !important;
+    margin-left: 80px !important;
+  }
+}
 /*? home */
-/* home.module.css */
-
-.home_container {
-  display: flex;
-  margin-left: 2%;
-  padding: 20px;
+.cardContainer {
+  margin-bottom: 70px;
 }
-
-.news_container {
-  width: 30%;
-  margin-right: 20px;
-}
-
-.info_container {
-  width: 40%;
-}
-.info_container h3 {
-  margin-top: 2%;
-}
-
-.cards {
-  display: flex;
-  flex-direction: column;
-  margin-top: 7%;
-}
-
-.card {
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 30px;
-  background-color: #fff;
-}
-
-.card h3 {
-  margin-bottom: 10px;
-  color: #333;
-}
-
-.card p {
-  color: #666;
-  font-size: 14px;
-}
-
-/*? home */

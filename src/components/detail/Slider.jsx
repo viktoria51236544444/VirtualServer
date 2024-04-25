@@ -6,6 +6,7 @@ const Slider = () => {
   const [slides, setSlides] = useState([]);
   const sliderRef = useRef(null);
 
+ 
   const newsData = [
     {
       title: "Заголовок новости 1",
@@ -13,82 +14,76 @@ const Slider = () => {
       date: "01.04.2024",
     },
     {
-      title: "Заголовок новости 2",
-      description: "Описание новости 2...",
-      date: "02.04.2024",
+      title: "Заголовок новости 1",
+      description: "Описание новости 1...",
+      date: "01.04.2024",
+    },   {
+      title: "Заголовок новости 1",
+      description: "Описание новости 1...",
+      date: "01.04.2024",
+    },   {
+      title: "Заголовок новости 1",
+      description: "Описание новости 1...",
+      date: "01.04.2024",
+    },   {
+      title: "Заголовок новости 1",
+      description: "Описание новости 1...",
+      date: "01.04.2024",
+    },   {
+      title: "Заголовок новости 1",
+      description: "Описание новости 1...",
+      date: "01.04.2024",
+    },   {
+      title: "Заголовок новости 1",
+      description: "Описание новости 1...",
+      date: "01.04.2024",
+    },   {
+      title: "Заголовок новости 1",
+      description: "Описание новости 1...",
+      date: "01.04.2024",
+    },   {
+      title: "Заголовок новости 1",
+      description: "Описание новости 1...",
+      date: "01.04.2024",
+    },   {
+      title: "Заголовок новости 1",
+      description: "Описание новости 1...",
+      date: "01.04.2024",
+    },   {
+      title: "Заголовок новости 1",
+      description: "Описание новости 1...",
+      date: "01.04.2024",
+    },   {
+      title: "Заголовок новости 1",
+      description: "Описание новости 1...",
+      date: "01.04.2024",
     },
-    {
-      title: "Заголовок новости 3",
-      description: "Описание новости 3...",
-      date: "03.04.2024",
-    },
-    {
-      title: "Заголовок новости 3",
-      description: "Описание новости 3...",
-      date: "03.04.2024",
-    },
-    {
-      title: "Заголовок новости 3",
-      description: "Описание новости 3...",
-      date: "03.04.2024",
-    },
-    {
-      title: "Заголовок новости 3",
-      description: "Описание новости 3...",
-      date: "03.04.2024",
-    },
-    {
-      title: "Заголовок новости 3",
-      description: "Описание новости 3...",
-      date: "03.04.2024",
-    },
-    {
-      title: "Заголовок новости 3",
-      description: "Описание новости 3...",
-      date: "03.04.2024",
-    },
-    {
-      title: "Заголовок новости 3",
-      description: "Описание новости 3...",
-      date: "03.04.2024",
-    },
-    {
-      title: "Заголовок новости 3",
-      description: "Описание новости 3...",
-      date: "03.04.2024",
-    },
-    {
-      title: "Заголовок новости 3",
-      description: "Описание новости 3...",
-      date: "03.04.2024",
-    },
-    {
-      title: "Заголовок новости 3",
-      description: "Описание новости 3...",
-      date: "03.04.2024",
-    },
+
   ];
 
+
+  const calculateSlides = () => {
+    const maxSlidesPerPage = 6;
+    const calculatedSlides = [];
+
+
+    for (let i = 0; i < newsData.length; i += maxSlidesPerPage) {
+      const slidesPerPage = newsData.slice(i, i + maxSlidesPerPage);
+      calculatedSlides.push(slidesPerPage);
+    }
+
+    return calculatedSlides;
+  };
+
   useEffect(() => {
-    const calculateSlides = () => {
-      const maxSlidesPerPage = 6;
-      const calculatedSlides = [];
-
-      for (let i = 0; i < newsData.length; i += maxSlidesPerPage) {
-        const slidesPerPage = newsData.slice(i, i + maxSlidesPerPage);
-        calculatedSlides.push(slidesPerPage);
-      }
-
-      setSlides(calculatedSlides);
-    };
-
-    calculateSlides();
-  }, [newsData]);
+    setSlides(calculateSlides());
+  }, []); 
 
   const nextSet = () => {
-    setCurrentSet((prevSet) =>
-      prevSet === slides.length - 1 ? 0 : prevSet + 1
-    );
+    setCurrentSet(prevSet => {
+      const nextSetIndex = prevSet === slides.length - 1 ? 0 : prevSet + 1;
+      return nextSetIndex;
+    });
     scrollToTop();
   };
 

@@ -199,7 +199,7 @@
 /* ! Вопросы */
 .main {
   width: 80vw;
-  margin-left: 19%;
+  margin-left: 10%;
   position: relative;
   margin-top: -3%;
   height: auto;
@@ -239,9 +239,10 @@
   font-size: 2vw;
   color: #616161;
 }
-@media only screen and (max-width: 425px) {
+@media only screen and (max-width: 450px) {
   .main {
-    width: 90vw;
+    width: 80vw;
+    margin-left: 15%;
   }
   .sec {
     font-size: 4.5vw;
@@ -249,10 +250,7 @@
     padding: 4.5vw;
     margin-top: 1.5vw;
   }
-  .sec:hover {
-    width: 110%;
-    padding: 6vw;
-  }
+
   .collapsable {
     width: 100%;
     padding: 6vw;
@@ -261,5 +259,68 @@
   }
   .sec i {
     font-size: 6vw;
+  }
+}
+.slider_container2 {
+  display: none;
+}
+@media only screen and (max-width: 380px){
+  .main {
+  
+    margin-left: 18%;
+  }
+}
+@media only screen and (min-width: 780px) {
+  .slider_container2 {
+    display: block; 
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+
+}
+
+
+@media only screen and (max-width: 780px) {
+  table {
+    margin-left:10px;
+  }
+  .tariffCell {
+    display: none;
+
+  }
+  
+  .ipCell {
+    width: 100px; 
+  }
+  
+  .pauseIcon, .powerOffIcon {
+    width: 50px;
+  }
+}
+/* Корректировка размера шрифта и ширины колонок для маленьких экранов */
+@media only screen and (max-width: 500px) {
+  th,
+  td {
+    font-size: 8px !important; /* Уменьшаем размер шрифта */
+    padding: 3px; /* Корректируем отступы для контента */
+    white-space: nowrap; /* Предотвращаем перенос слов */
+    overflow: hidden; /* Скрываем лишний контент */
+    text-overflow: ellipsis; /* Добавляем многоточие для обрезанного контента */
+  }
+
+  .tariffCell {
+    display: none; /* Скрываем ячейку с тарифом */
   }
 }

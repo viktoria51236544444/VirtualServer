@@ -1,67 +1,54 @@
-import React from "react";
-import Slider from "../detail/Slider";
-import styles from "./home.module.css";
-import { Link } from "react-router-dom";
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import { CardActionArea } from '@mui/material';  
+import styles from './home.module.css';  
+import Slider from '../detail/Slider';
 
-const Home = () => {
+export default function ActionAreaCard() {
   return (
-    <div className={styles.home_container}>
-      <div className={styles.news_container}>
-        <Slider />
+    <Card className={styles.container__home} sx={{ width: '80%', margin: '0 auto', marginRight: "15%", }}>
+      <div className={styles.cardContainer}>
+      <CardActionArea>
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            Lizard
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Lizards are a widespread group of squamate reptiles, with over 6,000
+            species, ranging across all continents except Antarctica
+          </Typography>
+        </CardContent>
+      </CardActionArea>
       </div>
-      <div className={styles.info_container}>
-        <h3>Почему стоит покупать сервера именно у нас?</h3>
-        <div className={styles.cards}>
-          <div className={styles.card}>
-            <h4>23 года опыта</h4>
-            <p>
-              Работаем на рынке VDS хостинга с 2001 года, непрерывно растём и
-              развиваемся
-            </p>
-          </div>
-          <Link
-            style={{ textDecoration: "none", color: "#608ebe" }}
-            to={"/help"}
-          >
-            <div className={styles.card}>
-              <h4>Круглосуточная поддержка</h4>
-              <p>
-                Мы предоставляем круглосуточную техническую поддержку для наших
-                клиентов
-              </p>
-            </div>
-          </Link>
-        </div>
-        <div className={styles.card}>
-          <h4>Удобство</h4>
-          <p>
-            У нас вы можете
-            <Link
-              style={{ textDecoration: "none", color: "#608ebe" }}
-              to={"/myserver"}
-            >
-              наблюдать
-            </Link>
-            за своими серверами,
-            <Link
-              style={{ textDecoration: "none", color: "#608ebe" }}
-              to={"/order"}
-            >
-              покупать
-            </Link>
-            новые серверы в удобном формате и самостоятельно
-            <Link
-              style={{ textDecoration: "none", color: "#608ebe" }}
-              to={"/config"}
-            >
-              конфигурировать
-            </Link>
-            их по своему желанию
-          </p>
-        </div>
+      <div className={styles.cardContainer}>
+      <CardActionArea>
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            Lizard
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Lizards are a widespread group of squamate reptiles, with over 6,000
+            species, ranging across all continents except Antarctica
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      </div> 
+      <div className={styles.cardContainer}>
+      <CardActionArea>
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            Lizard
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Lizards are a widespread group of squamate reptiles, with over 6,000
+            species, ranging across all continents except Antarctica
+          </Typography>
+        </CardContent>
+      </CardActionArea>
       </div>
-    </div>
+      <Slider/>
+    </Card>
   );
-};
-
-export default Home;
+}
